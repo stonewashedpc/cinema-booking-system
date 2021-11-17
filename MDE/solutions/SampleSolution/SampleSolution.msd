@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<solution name="CinemaSolution" uuid="adc6a5f9-8066-499e-807c-943d5ce654b7" moduleVersion="0" compileInMPS="true" generatorOutputPath="C:/Users/Joel/eclipse-workspace/cinema-booking-system/MDE/solutions/CinemaSolution/source_gen">
+<solution name="SampleSolution" uuid="adc6a5f9-8066-499e-807c-943d5ce654b7" moduleVersion="0" compileInMPS="true">
   <models>
     <modelRoot contentPath="${module}" type="default">
       <sourceRoot location="models" />
@@ -13,7 +13,7 @@
     <language slang="l:9ded098b-ad6a-4657-bfd9-48636cfe8bc3:jetbrains.mps.lang.traceable" version="0" />
   </languageVersions>
   <dependencyVersions>
-    <module reference="adc6a5f9-8066-499e-807c-943d5ce654b7(CinemaSolution)" version="0" />
+    <module reference="adc6a5f9-8066-499e-807c-943d5ce654b7(SampleSolution)" version="0" />
   </dependencyVersions>
 </solution>
 
