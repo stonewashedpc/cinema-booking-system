@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<solution name="SampleSolution" uuid="adc6a5f9-8066-499e-807c-943d5ce654b7" moduleVersion="0" compileInMPS="true">
+<solution name="SampleSolution" uuid="adc6a5f9-8066-499e-807c-943d5ce654b7" moduleVersion="0" compileInMPS="true" generatorOutputPath="C:/Users/admin/MPSProjects/MDE/solutions/SampleSolution/source_gen">
   <models>
     <modelRoot contentPath="${module}" type="default">
       <sourceRoot location="models" />
