@@ -370,7 +370,7 @@
         </node>
       </node>
       <node concept="2zC27e" id="1MdcxidCk9P" role="3_Fx_f">
-        <property role="3_FBD6" value="for" />
+        <property role="3_FBD6" value="reservation" />
         <ref role="3_FBDr" node="1MdcxidCjFL" resolve="Reservation" />
       </node>
     </node>
