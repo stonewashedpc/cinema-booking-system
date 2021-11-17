@@ -8,7 +8,7 @@ import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 import java.util.concurrent.Semaphore;
 
-import mdeGen.commands.Command;
+import commands.Command;
 
 public class Client {
 	private String ip;

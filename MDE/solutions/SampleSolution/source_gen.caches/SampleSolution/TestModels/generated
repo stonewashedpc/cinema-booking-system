@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<product version="3" modelHash="5ghj5toahs3us5fhphvzsy5b3aojvry">
+  <files names="CompositeService.tst:ContainmentTest.tst:DerivedTest.tst:InheritanceHandling.tst:MultipleInheritance.tst:OperationParameterTest.tst:RelationTest.tst:SingletonTest.tst:SmallService.tst:baseTypes.tst:genTestFromMPS.tst:inheritanceTest.tst" />
+</product>
+

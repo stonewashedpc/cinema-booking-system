@@ -1,6 +1,6 @@
 package client;
 
-import mdeGen.commands.Command;
+import commands.Command;
 
 public abstract class CommandCallback<R> {
 

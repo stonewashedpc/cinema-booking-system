@@ -3,7 +3,7 @@ package client;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import mdeGen.commands.Command;
+import commands.Command;
 
 public class CommandExecutorService {
 	private ExecutorService executorService;

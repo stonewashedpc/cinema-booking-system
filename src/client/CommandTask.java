@@ -1,6 +1,6 @@
 package client;
 
-import mdeGen.commands.Command;
+import commands.Command;
 
 public class CommandTask<R> implements Runnable {
 	private Command<R> command;

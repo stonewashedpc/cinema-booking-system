@@ -7,7 +7,7 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
 
-import mdeGen.commands.Command;
+import commands.Command;
 
 public class ServerThread extends Thread {
 	private static final int SOCKET_TIMEOUT = 600000; // Timeout after 10 minutes (600000 milliseconds)
