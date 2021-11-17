@@ -1,3 +1,8 @@
 /bin/
 /.settings/
+protocols/CinemaService.txt
 MDE/configuration.txt
+MDE/languages/MetaModel/classes_gen/
+MDE/languages/MetaModel/generator/classes_gen/
+MDE/solutions/pluginSolution/classes_gen/
+MDE/solutions/SampleSolution/classes_gen/
