@@ -363,7 +363,7 @@
     <node concept="3_FBDc" id="1MdcxidCk5c" role="3_Gd4Z">
       <property role="TrG5h" value="Booking_For_Reservation" />
       <node concept="2zC0rd" id="1MdcxidCk6n" role="3_Fx_Q">
-        <property role="2zC0rY" value="1axOPyL0tmn/Injective" />
+        <property role="2zC0rY" value="1axOPyL0tmr/Containment" />
         <node concept="2zC6PY" id="1MdcxidCk6p" role="2zC0rK">
           <property role="3_FBD6" value="booking" />
           <ref role="2zC6PZ" node="1MdcxidCk8y" resolve="Booking" />
@@ -371,6 +371,7 @@
       </node>
       <node concept="2zC27e" id="1MdcxidCk9P" role="3_Fx_f">
         <property role="3_FBD6" value="reservation" />
+        <property role="2zC27X" value="1axOPyL0vao/PartialMap" />
         <ref role="3_FBDr" node="1MdcxidCjFL" resolve="Reservation" />
       </node>
     </node>
