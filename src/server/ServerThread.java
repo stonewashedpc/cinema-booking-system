@@ -28,6 +28,7 @@ public class ServerThread extends Thread {
 			
 			Command next;
 			while ((next = (Command) in.readObject()) != null) {
+				System.out.println("Processing new command");
 				next.execute();
 				out.writeObject(next);
 			}
@@ -50,6 +51,7 @@ public class ServerThread extends Thread {
 				clientSocket.close();
 			} catch (IOException e2) {
 				// TODO: handle exception
+				e2.printStackTrace();
 			}
 		}
 	}

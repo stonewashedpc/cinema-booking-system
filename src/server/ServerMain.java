@@ -1,9 +1,12 @@
 package server;
 
+import generated.cinemaService.CinemaService;
+
 public class ServerMain {
 
 	public static void main(String[] args) {
-		Server server = new Server(8080);
+		CinemaService.getInstance();
+		Server server = new Server(6666);
 		server.start();
 	}
 
