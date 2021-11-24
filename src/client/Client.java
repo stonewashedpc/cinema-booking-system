@@ -17,28 +17,78 @@ public class Client {
 	private Socket clientSocket;
 	private ObjectOutputStream out;
 	private ObjectInputStream in;
+	private ClientState clientState;
 
 	public Client(String ip, Integer port) throws UnknownHostException, IOException {
 		this.ip = ip;
 		this.port = port;
-		this.clientSocket = new Socket(ip, port);
-		this.out = new ObjectOutputStream(clientSocket.getOutputStream());
-		this.in = new ObjectInputStream(clientSocket.getInputStream());
-		this.clientSocket.setSoTimeout(1000); // Timout read from inputstream
 		this.mutex = new Semaphore(1);
+		this.clientState = new InitialState(this);
+	}
+	
+	public void connect() throws IOException {
+		this.clientState.connect();
 	}
 
 	public <R> Command<R> executeCommand(Command<R> command) throws IOException, InterruptedException, ClassNotFoundException {
-		this.mutex.acquire();
-		Command<R> commandResult = null;
-		try {
-		        this.out.writeObject(command);
-		        commandResult = (Command<R>) this.in.readObject();
-		} catch (SocketTimeoutException e) {
-		        // handle timeout (return command with exception?)
-		} finally {
-		        this.mutex.release();
-		}
-		return commandResult;
+		return this.clientState.executeCommand(command);
 	}
+
+	public Semaphore getMutex() {
+		return mutex;
+	}
+
+	public void setMutex(Semaphore mutex) {
+		this.mutex = mutex;
+	}
+
+	public Socket getClientSocket() {
+		return clientSocket;
+	}
+
+	public void setClientSocket(Socket clientSocket) {
+		this.clientSocket = clientSocket;
+	}
+
+	public ObjectOutputStream getOut() {
+		return out;
+	}
+
+	public void setOut(ObjectOutputStream out) {
+		this.out = out;
+	}
+
+	public ObjectInputStream getIn() {
+		return in;
+	}
+
+	public void setIn(ObjectInputStream in) {
+		this.in = in;
+	}
+
+	public ClientState getClientState() {
+		return clientState;
+	}
+
+	public void setClientState(ClientState clientState) {
+		this.clientState = clientState;
+	}
+
+	public String getIp() {
+		return ip;
+	}
+
+	public void setIp(String ip) {
+		this.ip = ip;
+	}
+
+	public Integer getPort() {
+		return port;
+	}
+
+	public void setPort(Integer port) {
+		this.port = port;
+	}
+	
+	
 }

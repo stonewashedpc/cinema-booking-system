@@ -18,6 +18,8 @@ public class Server extends Thread {
 			while (!this.isInterrupted()) {
 
 				ServerThread thread = new ServerThread(serverSocket.accept());
+				
+				System.out.println("Starting new Server Thread");
 
 				thread.start();
 			}

@@ -11,6 +11,9 @@ public class ClientMain {
 		// TODO Auto-generated method stub
 		try {
 			Client client = new Client("127.0.0.1", 6666);
+			
+			client.connect();
+			
 			CommandExecutorService service = new CommandExecutorService(client);
 			
 			for (int i = 1; i < 11; i++) {
