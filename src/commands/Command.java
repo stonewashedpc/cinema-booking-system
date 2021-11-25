@@ -18,4 +18,7 @@ public abstract class Command<R> implements Serializable{
 		c.execute();
 		return c.getResult();
 	}
+	public void setE(Exception e) {
+		this.e = e;
+	}
 }
