@@ -1,14 +1,12 @@
 package client;
 
-import java.io.IOException;
-
+import exceptions.ClientException;
 import generated.cinemaService.Film;
 import generated.cinemaService.commands.Film_constructor_Command;
 
 public class ClientMain {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		try {
 			Client client = new Client("127.0.0.1", 6666);
 			
@@ -33,8 +31,7 @@ public class ClientMain {
 					}
 				});
 			}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+		} catch (ClientException e) {
 			e.printStackTrace();
 		}
 	}

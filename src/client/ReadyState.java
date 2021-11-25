@@ -1,9 +1,7 @@
 package client;
 
-import java.io.IOException;
-import java.net.SocketTimeoutException;
-
 import commands.Command;
+import exceptions.ClientException;
 
 public class ReadyState extends ClientState {
 
@@ -13,23 +11,25 @@ public class ReadyState extends ClientState {
 	}
 
 	@Override
-	public void connect() throws IOException {
-		return; // Already connected
+	public void connect() throws ClientException {
+		throw new ClientException("already connected");
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
-	public <R> Command<R> executeCommand(Command<R> command)
-			throws IOException, InterruptedException, ClassNotFoundException {
-		this.getMyClient().getMutex().acquire();
+	public <R> Command<R> executeCommand(Command<R> command) {
 		Command<R> commandResult = null;
-		try {
-			this.getMyClient().getOut().writeObject(command);
-		        commandResult = (Command<R>) this.getMyClient().getIn().readObject();
-		} catch (SocketTimeoutException e) {
-		        // handle timeout (return command with exception?)
-		} finally {
-			this.getMyClient().getMutex().release();
-		}
+			try {
+				this.getMyClient().getMutex().acquire();
+				this.getMyClient().getOut().writeObject(command);
+			        commandResult = (Command<R>) this.getMyClient().getIn().readObject();
+			} catch (Exception e) {
+				// handle exceptions (return command with Exception)
+				command.setE(e);
+				return command;
+			} finally {
+				this.getMyClient().getMutex().release();
+			}
 		return commandResult;
 	}
 }

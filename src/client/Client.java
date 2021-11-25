@@ -1,14 +1,12 @@
 package client;
 
-import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-import java.net.SocketTimeoutException;
-import java.net.UnknownHostException;
 import java.util.concurrent.Semaphore;
 
 import commands.Command;
+import exceptions.ClientException;
 
 public class Client {
 	private String ip;
@@ -19,18 +17,18 @@ public class Client {
 	private ObjectInputStream in;
 	private ClientState clientState;
 
-	public Client(String ip, Integer port) throws UnknownHostException, IOException {
+	public Client(String ip, Integer port) {
 		this.ip = ip;
 		this.port = port;
 		this.mutex = new Semaphore(1);
 		this.clientState = new InitialState(this);
 	}
 	
-	public void connect() throws IOException {
+	public void connect() throws ClientException {
 		this.clientState.connect();
 	}
 
-	public <R> Command<R> executeCommand(Command<R> command) throws IOException, InterruptedException, ClassNotFoundException {
+	public <R> Command<R> executeCommand(Command<R> command) throws ClientException {
 		return this.clientState.executeCommand(command);
 	}
 
