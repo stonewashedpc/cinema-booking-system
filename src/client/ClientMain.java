@@ -17,12 +17,13 @@ public class ClientMain {
 			CommandExecutorService service = new CommandExecutorService(client);
 			
 			for (int i = 1; i < 11; i++) {
-				service.queueCommand(new Film_constructor_Command(String.valueOf(i)), new CommandCallback<Film>() {
+				service.queueCommand(new Film_constructor_Command("Der Film " + String.valueOf(i)), new CommandCallback<Film>() {
 
 					@Override
 					protected void onException(Exception exception) {
 						// TODO Auto-generated method stub
 						System.out.println("Client: An Exception ocurred");
+						exception.printStackTrace();
 					}
 
 					@Override

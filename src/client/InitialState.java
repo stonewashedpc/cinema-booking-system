@@ -58,16 +58,19 @@ public class InitialState extends ClientState {
 
 	        // Creating an ObjectOutputStream over a CipherOutputStream
 	        //Cipher aesCipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
-	        Cipher aesCipher = Cipher.getInstance("AES/CTR/NoPadding");
-	        aesCipher.init(Cipher.ENCRYPT_MODE, aesKey, new IvParameterSpec(new byte[16]));
+	        Cipher aesCipherEncrypt = Cipher.getInstance("AES/CTR/NoPadding");
+	        aesCipherEncrypt.init(Cipher.ENCRYPT_MODE, aesKey, new IvParameterSpec(new byte[16]));
 	        
-	        CipherOutputStream cipherOutputStream = new CipherOutputStream(this.getMyClient().getClientSocket().getOutputStream(), aesCipher);
+	        Cipher aesCipherDecrypt = Cipher.getInstance("AES/CTR/NoPadding");
+			aesCipherDecrypt.init(Cipher.DECRYPT_MODE, aesKey, new IvParameterSpec(new byte[16]));
+	        
+	        CipherOutputStream cipherOutputStream = new CipherOutputStream(this.getMyClient().getClientSocket().getOutputStream(), aesCipherEncrypt);
 	        
 	        this.getMyClient().setOut(new ObjectOutputStream(cipherOutputStream));
 	        
 	        this.getMyClient().getOut().flush();
 
-	        CipherInputStream cipherInputStream = new CipherInputStream(this.getMyClient().getClientSocket().getInputStream(), aesCipher);
+	        CipherInputStream cipherInputStream = new CipherInputStream(this.getMyClient().getClientSocket().getInputStream(), aesCipherDecrypt);
 	        
 	        this.getMyClient().setIn(new ObjectInputStream(cipherInputStream));
 	        

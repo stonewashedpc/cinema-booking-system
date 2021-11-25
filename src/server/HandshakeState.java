@@ -61,10 +61,13 @@ public class HandshakeState extends ServerState {
 			System.out.println("Server > INFO > converted decrypted aesKey: " + Arrays.toString(aesKey.getEncoded()));
 			
 			//Cipher aesCipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
-			Cipher aesCipher = Cipher.getInstance("AES/CTR/NoPadding");
-			aesCipher.init(Cipher.DECRYPT_MODE, aesKey, new IvParameterSpec(new byte[16]));
+			Cipher aesCipherDecrypt = Cipher.getInstance("AES/CTR/NoPadding");
+			aesCipherDecrypt.init(Cipher.DECRYPT_MODE, aesKey, new IvParameterSpec(new byte[16]));
 			
-			CipherOutputStream cipherOutputStream = new CipherOutputStream(this.getMyServerThread().getClientSocket().getOutputStream(), aesCipher);
+			Cipher aesCipherEncrypt = Cipher.getInstance("AES/CTR/NoPadding");
+	        aesCipherEncrypt.init(Cipher.ENCRYPT_MODE, aesKey, new IvParameterSpec(new byte[16]));
+			
+			CipherOutputStream cipherOutputStream = new CipherOutputStream(this.getMyServerThread().getClientSocket().getOutputStream(), aesCipherEncrypt);
 			System.out.println("Server > INFO > created cipherOutputStream");
 			
 			this.getMyServerThread().setOut(new ObjectOutputStream(cipherOutputStream));
@@ -73,7 +76,7 @@ public class HandshakeState extends ServerState {
 			this.getMyServerThread().getOut().flush();
 
 			// Creating an ObjectInputStream over a CipherInputStream
-			CipherInputStream cipherInputStream = new CipherInputStream(this.getMyServerThread().getClientSocket().getInputStream(), aesCipher);
+			CipherInputStream cipherInputStream = new CipherInputStream(this.getMyServerThread().getClientSocket().getInputStream(), aesCipherDecrypt);
 			System.out.println("Server > INFO > created cipherInputStream");
 			
 			this.getMyServerThread().setIn(new ObjectInputStream(cipherInputStream));
