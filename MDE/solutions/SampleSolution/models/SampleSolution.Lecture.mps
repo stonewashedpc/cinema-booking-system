@@ -239,12 +239,6 @@
         <property role="3_Gd5q" value="cancel" />
       </node>
     </node>
-    <node concept="3_Gd56" id="1MdcxidCjGD" role="3_Gd4Z">
-      <property role="TrG5h" value="Mitte" />
-      <node concept="3_Gd5r" id="1MdcxidCjGZ" role="3_Gd4E">
-        <property role="3_Gd5q" value="stornieren" />
-      </node>
-    </node>
     <node concept="3_Gd56" id="1MdcxidCjHo" role="3_Gd4Z">
       <property role="TrG5h" value="CShow" />
       <node concept="2_wlaR" id="1MdcxidCjHK" role="2_wlle">
