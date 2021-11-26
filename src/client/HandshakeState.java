@@ -77,8 +77,7 @@ public class HandshakeState extends ClientState {
 			System.out.println("Client ready");
 		} catch (Exception e) {
 			this.getMyClient().setClientState(new InitialState(this.getMyClient()));
-			e.printStackTrace(); // print detailed stack trace for debugging purposes
-			throw new ClientException("An exception ocurred while handshaking: " + e.getMessage());
+			throw new ClientException("An exception ocurred while handshaking", e);
 		}
 	}
 

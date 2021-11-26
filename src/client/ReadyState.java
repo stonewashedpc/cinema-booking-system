@@ -25,7 +25,7 @@ public class ReadyState extends ClientState {
 			        commandResult = (Command<R>) this.getMyClient().getIn().readObject();
 			} catch (Exception e) {
 				// handle exceptions (return command with Exception)
-				command.setE(e);
+				command.setE(new ClientException("An exception ocurred while executing command", e));
 				return command;
 			} finally {
 				this.getMyClient().getMutex().release();
