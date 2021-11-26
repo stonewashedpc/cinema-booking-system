@@ -1,4 +1,4 @@
-/**--- Generated at Thu Nov 18 14:34:02 CET 2021 
+/**--- Generated at Fri Nov 26 18:45:13 CET 2021 
  * --- Mode = Integrated Database 
  * --- Change only in Editable Sections!  
  * --- Do NOT touch section numbering!   
@@ -120,16 +120,16 @@ public class Hall extends Observable implements java.io.Serializable, IHall
 /**
  * 
  */
-   public Back addShow(Film film){
-      // TODO: Implement Operation addShow
-      return null;
+   public void removeShow(CShow show){
+      // TODO: Implement Operation removeShow
+      return;
    }
 /**
  * 
  */
-   public void removeShow(CShow show){
-      // TODO: Implement Operation removeShow
-      return;
+   public Back addShow(Film film){
+      // TODO: Implement Operation addShow
+      return null;
    }
 //90 ===== GENERATED: End of Your Operations ======
 }

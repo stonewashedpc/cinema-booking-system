@@ -1,4 +1,4 @@
-/**--- Generated at Thu Nov 18 14:34:02 CET 2021 
+/**--- Generated at Fri Nov 26 18:45:13 CET 2021 
  * --- No Change Allowed!  
  */
 package generated.cinemaService.proxies;
@@ -74,10 +74,10 @@ public class HallProxy implements IHall{
    public void setName(String newName) throws PersistenceException{
       this.getTheObject().setName(newName);
    }
-   public Back addShow(Film film){
-      return this.getTheObject().addShow(film);
-   }
    public void removeShow(CShow show){
       this.getTheObject().removeShow(show);
+   }
+   public Back addShow(Film film){
+      return this.getTheObject().addShow(film);
    }
 }

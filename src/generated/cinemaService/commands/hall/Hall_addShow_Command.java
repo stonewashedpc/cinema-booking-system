@@ -1,11 +1,11 @@
-/**--- Generated at Thu Nov 18 14:34:02 CET 2021 
+/**--- Generated at Fri Nov 26 18:45:13 CET 2021 
  * --- No Change Allowed!  
  */
 package generated.cinemaService.commands.hall;
 import generated.cinemaService.*;
 import commands.*;
 public class Hall_addShow_Command extends ObjectCommand<Hall, Back>{
-   private static final long serialVersionUID = -2116684270L;
+   private static final long serialVersionUID = 358555479L;
    private Film film;
    public Hall_addShow_Command(Hall receiver, Film film){
       super(receiver);
