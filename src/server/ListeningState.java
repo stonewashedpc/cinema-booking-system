@@ -1,8 +1,7 @@
 package server;
 
-import java.io.IOException;
-
 import commands.Command;
+import exceptions.ServerException;
 
 public class ListeningState extends ServerState {
 
@@ -11,13 +10,18 @@ public class ListeningState extends ServerState {
 	}
 
 	@Override
-	public void handle() throws IOException, ClassNotFoundException {
-		System.out.println("Server listening");
-		Command next;
-		while ((next = (Command) this.getMyServerThread().getIn().readObject()) != null) {
-			System.out.println("Processing new command");
-			next.execute();
-			this.getMyServerThread().getOut().writeObject(next);
+	public void handle() throws ServerException {
+		System.out.println("ServerThread listening to " + this.getMyServerThread().getClientHostname());
+		try {
+			Command<?> next;
+			while ((next = (Command<?>) this.getMyServerThread().getIn().readObject()) != null) {
+				System.out.println("Processing new command for client: " + this.getMyServerThread().getClientHostname());
+				next.execute();
+				this.getMyServerThread().getOut().writeObject(next);
+			}
+		} catch (Exception e) {
+			throw new ServerException("An error occurred while handling commands for client: "
+					+ this.getMyServerThread().getClientHostname(), e);
 		}
 	}
 }

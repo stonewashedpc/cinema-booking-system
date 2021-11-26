@@ -1,7 +1,6 @@
 package server;
 
 import java.io.DataInputStream;
-import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.security.KeyPair;
@@ -15,6 +14,7 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
 import crypto.Cryptography;
+import exceptions.ServerException;
 
 public class HandshakeState extends ServerState {
 
@@ -23,8 +23,10 @@ public class HandshakeState extends ServerState {
 	}
 
 	@Override
-	public void handle() throws IOException, ClassNotFoundException {
+	public void handle() throws ServerException {
 		try {
+			this.getMyServerThread().getClientSocket().setSoTimeout(600000); // Timeout after 10 minutes (600000 milliseconds)
+			
 			KeyPair keyPair = Cryptography.generateKeyPair();
 			
 			ObjectOutputStream objectOutputStream = new ObjectOutputStream(this.getMyServerThread().getClientSocket().getOutputStream());
@@ -83,9 +85,10 @@ public class HandshakeState extends ServerState {
 			System.out.println("Server > INFO > created ObjectInputStream");
 			
 			this.getMyServerThread().setServerState(new ListeningState(this.getMyServerThread()));
+			System.out.println("Handshake successful for client: " + this.getMyServerThread().getClientHostname());
 		} catch (Exception e) {
-			e.printStackTrace();
 			this.endOfProcessing();
+			throw new ServerException("Handshake failed for client: " + this.getMyServerThread().getClientHostname(), e);
 		}
 	}
 

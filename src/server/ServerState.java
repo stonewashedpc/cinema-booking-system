@@ -1,6 +1,6 @@
 package server;
 
-import java.io.IOException;
+import exceptions.ServerException;
 
 public abstract class ServerState {
 	
@@ -10,7 +10,7 @@ public abstract class ServerState {
 		this.myServerThread = myServerThread;
 	}
 	
-	public abstract void handle() throws IOException, ClassNotFoundException;
+	public abstract void handle() throws ServerException;
 	
 	protected void endOfProcessing(){
 		this.getMyServerThread().setServerState(new CloseState(this.getMyServerThread()));

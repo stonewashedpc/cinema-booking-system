@@ -19,14 +19,12 @@ public class ClientMain {
 
 					@Override
 					protected void onException(Exception exception) {
-						// TODO Auto-generated method stub
 						System.out.println("Client: An Exception ocurred");
 						exception.printStackTrace();
 					}
 
 					@Override
 					protected void onSuccess(Film result) {
-						// TODO Auto-generated method stub
 						System.out.println("Client: Received result from Server: " + result.getName());
 					}
 				});
