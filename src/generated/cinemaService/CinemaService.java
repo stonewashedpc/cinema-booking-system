@@ -1,4 +1,4 @@
-/**--- Generated at Thu Nov 18 14:34:01 CET 2021 
+/**--- Generated at Fri Nov 26 18:45:12 CET 2021 
  * --- Mode = Integrated Database 
  * --- Change only in Editable Sections!  
  * --- Do NOT touch section numbering!   
@@ -26,7 +26,6 @@ public class CinemaService extends Observable{
    private Map<Integer,PasswordProxy> passwordCache;
    private Map<Integer,ReservationProxy> reservationCache;
    private Map<Integer,BookingProxy> bookingCache;
-   private Map<Integer,MitteProxy> mitteCache;
    private Map<Integer,CShowProxy> cShowCache;
    private Map<Integer,FilmProxy> filmCache;
    private Map<Integer,HallProxy> hallCache;
@@ -50,7 +49,6 @@ public class CinemaService extends Observable{
       this.passwordCache = new InitialProxyLoader<PasswordProxy>("generated", "CinemaService", "cinemaService", "Password", "Password").perform();
       this.reservationCache = new InitialProxyLoader<ReservationProxy>("generated", "CinemaService", "cinemaService", "Reservation", "Reservation").perform();
       this.bookingCache = new InitialProxyLoader<BookingProxy>("generated", "CinemaService", "cinemaService", "Booking", "Booking").perform();
-      this.mitteCache = new InitialProxyLoader<MitteProxy>("generated", "CinemaService", "cinemaService", "Mitte", "Mitte").perform();
       this.cShowCache = new InitialProxyLoader<CShowProxy>("generated", "CinemaService", "cinemaService", "CShow", "CShow").perform();
       this.filmCache = new InitialProxyLoader<FilmProxy>("generated", "CinemaService", "cinemaService", "Film", "Film").perform();
       this.hallCache = new InitialProxyLoader<HallProxy>("generated", "CinemaService", "cinemaService", "Hall", "Hall").perform();
@@ -219,15 +217,6 @@ public class CinemaService extends Observable{
    public Map<Integer,BookingProxy> getBookingCache(){
       return this.bookingCache;
    }
-   public Mitte getMitte(Integer id){
-      return this.mitteCache.get(id).getTheObject();
-   }
-   public void addMitteProxy(MitteProxy p) throws PersistenceException{
-      this.mitteCache.put(p.getId(), p);
-   }
-   public Map<Integer,MitteProxy> getMitteCache(){
-      return this.mitteCache;
-   }
    public CShow getCShow(Integer id){
       return this.cShowCache.get(id).getTheObject();
    }
@@ -280,27 +269,6 @@ public class CinemaService extends Observable{
 /**
  * 
  */
-   public void removeFilm(Film film){
-      // TODO: Implement Operation removeFilm
-      return;
-   }
-/**
- * 
- */
-   public User register(String name, String password){
-      // TODO: Implement Operation register
-      return null;
-   }
-/**
- * 
- */
-   public void removeHall(Hall hall){
-      // TODO: Implement Operation removeHall
-      return;
-   }
-/**
- * 
- */
    public Film addFilm(String name){
       // TODO: Implement Operation addFilm
       return null;
@@ -308,7 +276,7 @@ public class CinemaService extends Observable{
 /**
  * 
  */
-   public User register(String name, String password, Role role){
+   public User register(String name, String password){
       // TODO: Implement Operation register
       return null;
    }
@@ -322,6 +290,20 @@ public class CinemaService extends Observable{
 /**
  * 
  */
+   public Reservation reserve(User user, Seat seat, CShow show){
+      // TODO: Implement Operation reserve
+      return null;
+   }
+/**
+ * 
+ */
+   public User register(String name, String password, Role role){
+      // TODO: Implement Operation register
+      return null;
+   }
+/**
+ * 
+ */
    public Hall addHall(String name){
       // TODO: Implement Operation addHall
       return null;
@@ -329,9 +311,16 @@ public class CinemaService extends Observable{
 /**
  * 
  */
-   public Reservation reserve(User user, Seat seat, CShow show){
-      // TODO: Implement Operation reserve
-      return null;
+   public void removeHall(Hall hall){
+      // TODO: Implement Operation removeHall
+      return;
+   }
+/**
+ * 
+ */
+   public void removeFilm(Film film){
+      // TODO: Implement Operation removeFilm
+      return;
    }
 //90 ===== GENERATED: End of Your Operations ======
 }

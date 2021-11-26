@@ -1,4 +1,4 @@
-/**--- Generated at Thu Nov 18 14:34:01 CET 2021 
+/**--- Generated at Fri Nov 26 18:45:13 CET 2021 
  * --- No Change Allowed!  
  */
 package generated.cinemaService.proxies;
@@ -19,6 +19,6 @@ public interface IReservation extends Identifiable{
    public User getUser() throws PersistenceException;
    public Booking getBooking() throws PersistenceException;
    public CShow getShow() throws PersistenceException;
-   public void cancel();
    public Booking book();
+   public void cancel();
 }

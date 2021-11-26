@@ -1,4 +1,4 @@
-/**--- Generated at Thu Nov 18 14:34:02 CET 2021 
+/**--- Generated at Fri Nov 26 18:45:13 CET 2021 
  * --- No Change Allowed!  
  */
 package generated.cinemaService.proxies;
@@ -22,6 +22,6 @@ public interface IHall extends Identifiable{
    public boolean removeFromRows(SeatingRow arg) throws ConstraintViolation, PersistenceException;
    public String getName() ;
    public void setName(String newName) throws PersistenceException;
-   public Back addShow(Film film);
    public void removeShow(CShow show);
+   public Back addShow(Film film);
 }

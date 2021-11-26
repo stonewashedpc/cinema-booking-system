@@ -1,4 +1,4 @@
-/**--- Generated at Thu Nov 18 14:34:01 CET 2021 
+/**--- Generated at Fri Nov 26 18:45:13 CET 2021 
  * --- No Change Allowed!  
  */
 package generated.cinemaService.proxies;
@@ -72,10 +72,10 @@ public class ReservationProxy implements IReservation{
    public CShow getShow() throws PersistenceException{
       return this.getTheObject().getShow();
    }
-   public void cancel(){
-      this.getTheObject().cancel();
-   }
    public Booking book(){
       return this.getTheObject().book();
+   }
+   public void cancel(){
+      this.getTheObject().cancel();
    }
 }

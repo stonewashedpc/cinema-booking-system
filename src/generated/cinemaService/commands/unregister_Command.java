@@ -1,11 +1,11 @@
-/**--- Generated at Thu Nov 18 14:34:01 CET 2021 
+/**--- Generated at Fri Nov 26 18:45:12 CET 2021 
  * --- No Change Allowed!  
  */
 package generated.cinemaService.commands;
 import generated.cinemaService.*;
 import commands.*;
 public class unregister_Command extends ServiceCommand<Void>{
-   private static final long serialVersionUID = 1042892241L;
+   private static final long serialVersionUID = -1868180133L;
    private User user;
    public unregister_Command(User user){
       super();
