@@ -1,56 +1,72 @@
 package server;
 
-import java.io.EOFException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-import java.net.SocketTimeoutException;
 
-import commands.Command;
+import exceptions.ServerException;
 
 public class ServerThread extends Thread {
-	private static final int SOCKET_TIMEOUT = 600000; // Timeout after 10 minutes (600000 milliseconds)
-	private Socket clientSocket;
+	private final Socket clientSocket;
+	private ServerState serverState;
+	
+	private ObjectOutputStream out;
+	private ObjectInputStream in;
 
 	public ServerThread(Socket clientSocket) {
 		this.clientSocket = clientSocket;
+		this.serverState = new HandshakeState(this);
 	}
 
 	public void run() {
-		ObjectOutputStream out = null;
-		ObjectInputStream in = null;
+		
 		try {
-			out = new ObjectOutputStream(clientSocket.getOutputStream());
-			in = new ObjectInputStream(clientSocket.getInputStream());
-
-			clientSocket.setSoTimeout(SOCKET_TIMEOUT);
-			
-			Command next;
-			while ((next = (Command) in.readObject()) != null) {
-				next.execute();
-				out.writeObject(next);
+			while(!this.isInterrupted()) {
+				this.serverState.handle();
 			}
-		} catch (EOFException e) {
-			// TODO: handle exception
-			System.out.println("ServerThread: EOF reached");
-		} catch (SocketTimeoutException e) {
-			// TODO: handle exception
-			System.out.println("ServerThread: Socket timeout");
-		} catch (IOException e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO: handle exception
+			
+		} catch (ServerException e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				out.close();
-				in.close();
+				if (out != null) out.close();
+				if (in != null) in.close();
 				clientSocket.close();
-			} catch (IOException e2) {
-				// TODO: handle exception
-			}
+				System.out.println("Connection closed for client: " + this.getClientHostname());
+			} catch (IOException e2) {e2.printStackTrace();}
 		}
+	}
+
+	public ServerState getServerState() {
+		return serverState;
+	}
+	
+	public void setServerState(ServerState serverState) {
+		this.serverState = serverState;
+	}
+
+	public Socket getClientSocket() {
+		return clientSocket;
+	}
+
+	public ObjectOutputStream getOut() {
+		return out;
+	}
+
+	public void setOut(ObjectOutputStream out) {
+		this.out = out;
+	}
+
+	public ObjectInputStream getIn() {
+		return in;
+	}
+
+	public void setIn(ObjectInputStream in) {
+		this.in = in;
+	}
+	
+	public String getClientHostname() {
+		return this.clientSocket.getInetAddress().getCanonicalHostName();
 	}
 }

@@ -20,12 +20,17 @@ public class CommandTask<R> implements Runnable {
 
 	public void run() {
 		try {
-		if(this.callback != null) {
-		        this.callback.complete(this.client.executeCommand(this.command));
-		} else this.client.executeCommand(this.command);
+			if (this.callback != null) {
+				this.callback.complete(this.client.executeCommand(this.command));
+			} else
+				this.client.executeCommand(this.command);
 		} catch (Exception e) {
 			e.printStackTrace();
-			// TODO: handle exception
+			// Return command with exception if callback available
+			if (this.callback != null) {
+				command.setE(e);
+				this.callback.complete(command);
+			}
 		}
 	}
 }
