@@ -1,16 +1,26 @@
-/**--- Generated at Fri Nov 26 18:45:13 CET 2021 
+/**--- Generated at Sat Nov 27 15:31:40 CET 2021 
  * --- Mode = Integrated Database 
  * --- Change only in Editable Sections!  
  * --- Do NOT touch section numbering!   
  * --- Do NOT use automatic Eclipse Comment Formatting!   
  */
 package generated.cinemaService;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.KeySpec;
 //10 ===== GENERATED:      Import Section =========
 import java.sql.SQLException;
 import db.connection.NoConnectionException;
 import db.executer.PersistenceExecuterFactory;
 import exceptions.ConstraintViolation;
+
+import java.util.Base64;
 import java.util.List;
+
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
+
 import generated.cinemaService.proxies.IUser;
 import generated.cinemaService.relationControl.User_Has_PasswordSupervisor;
 import db.executer.PersistenceExecuterFactory;

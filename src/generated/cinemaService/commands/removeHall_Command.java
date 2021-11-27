@@ -1,11 +1,11 @@
-/**--- Generated at Fri Nov 26 18:45:12 CET 2021 
+/**--- Generated at Sat Nov 27 15:31:40 CET 2021 
  * --- No Change Allowed!  
  */
 package generated.cinemaService.commands;
 import generated.cinemaService.*;
 import commands.*;
 public class removeHall_Command extends ServiceCommand<Void>{
-   private static final long serialVersionUID = -923560433L;
+   private static final long serialVersionUID = 1606197022L;
    private Hall hall;
    public removeHall_Command(Hall hall){
       super();

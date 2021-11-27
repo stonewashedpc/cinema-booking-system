@@ -1,11 +1,11 @@
-/**--- Generated at Fri Nov 26 18:45:12 CET 2021 
+/**--- Generated at Sat Nov 27 15:31:40 CET 2021 
  * --- No Change Allowed!  
  */
 package generated.cinemaService.commands.user;
 import generated.cinemaService.*;
 import commands.*;
 public class User_setRole_Command extends ObjectCommand<User, Void>{
-   private static final long serialVersionUID = -1332645087L;
+   private static final long serialVersionUID = 118481692L;
    private Role arg;
    public User_setRole_Command(User receiver, Role arg){
       super(receiver);

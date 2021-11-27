@@ -1,4 +1,4 @@
-/**--- Generated at Fri Nov 26 18:45:12 CET 2021 
+/**--- Generated at Sat Nov 27 15:31:40 CET 2021 
  * --- No Change Allowed!  
  */
 package generated.cinemaService.proxies;
@@ -15,6 +15,7 @@ import generated.cinemaService.relationControl.User_Has_RoleSupervisor;
 import generated.cinemaService.Reservation;
 import java.util.List;
 import exceptions.ConstraintViolation;
+import generated.cinemaService.AuthenticationException;
 public class UserProxy implements IUser{
    private Integer id;
    private Optional<User> theObject;
@@ -80,10 +81,10 @@ public class UserProxy implements IUser{
    public void setUsername(String newUsername) throws PersistenceException{
       this.getTheObject().setUsername(newUsername);
    }
-   public void logout(){
-      this.getTheObject().logout();
+   public String login(String password)throws AuthenticationException{
+      return this.getTheObject().login(password);
    }
-   public void login(){
-      this.getTheObject().login();
+   public void logout(String authToken)throws AuthenticationException{
+      this.getTheObject().logout(authToken);
    }
 }

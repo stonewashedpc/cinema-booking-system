@@ -38,9 +38,13 @@
         <child id="3845874433725125412" name="target" index="3_Fx_f" />
         <child id="3845874433725125405" name="owner" index="3_Fx_Q" />
       </concept>
+      <concept id="3845874433725012803" name="MetaModel.structure.Exception" flags="ng" index="3_Gd4C">
+        <property id="3845874433725012806" name="errorText" index="3_Gd4H" />
+      </concept>
       <concept id="3845874433725012817" name="MetaModel.structure.Service" flags="ng" index="3_Gd4U">
         <child id="6576532306767764468" name="operations" index="2_wlaX" />
         <child id="3845874433725111961" name="generalisations" index="3_F_jM" />
+        <child id="3845874433725024985" name="exceptions" index="3_G82M" />
         <child id="3845874433725012820" name="relationTypes" index="3_Gd4Z" />
       </concept>
       <concept id="3845874433725012776" name="MetaModel.structure.PrimitiveType" flags="ng" index="3_Gd53" />
@@ -51,6 +55,7 @@
       </concept>
       <concept id="3845874433725012784" name="MetaModel.structure.Operation" flags="ng" index="3_Gd5r">
         <property id="3845874433725012785" name="techName" index="3_Gd5q" />
+        <reference id="7979841542586465541" name="exception" index="3NuQEv" />
         <child id="1967123554056188092" name="returnType" index="BBx3f" />
         <child id="3845874433725021043" name="formalParameters" index="3_Gf4o" />
       </concept>
@@ -81,6 +86,18 @@
   </node>
   <node concept="3_Gd4U" id="1MdcxidCjBV">
     <property role="TrG5h" value="CinemaService" />
+    <node concept="3_Gd5r" id="6eCPIMgbFTY" role="2_wlaX">
+      <property role="3_Gd5q" value="getUserByUsername" />
+      <node concept="3_Gf45" id="6eCPIMgbFUB" role="3_Gf4o">
+        <property role="TrG5h" value="username" />
+        <node concept="BxOjD" id="6eCPIMgbFUF" role="BBx2O">
+          <ref role="BxOjI" node="5H4ykBYMXjQ" resolve="String" />
+        </node>
+      </node>
+      <node concept="BxOjD" id="6eCPIMgbFUI" role="BBx3f">
+        <ref role="BxOjI" node="1MdcxidCjCK" resolve="User" />
+      </node>
+    </node>
     <node concept="3_Gd5r" id="1MdcxidCku6" role="2_wlaX">
       <property role="3_Gd5q" value="register" />
       <node concept="3_Gf45" id="1MdcxidCkuh" role="3_Gf4o">
@@ -182,9 +199,26 @@
       </node>
       <node concept="3_Gd5r" id="1MdcxidCjCO" role="3_Gd4E">
         <property role="3_Gd5q" value="login" />
+        <ref role="3NuQEv" node="6eCPIMgbFTG" resolve="AuthenticationException" />
+        <node concept="3_Gf45" id="6eCPIMgbFTP" role="3_Gf4o">
+          <property role="TrG5h" value="password" />
+          <node concept="BxOjD" id="6eCPIMgbFTT" role="BBx2O">
+            <ref role="BxOjI" node="5H4ykBYMXjQ" resolve="String" />
+          </node>
+        </node>
+        <node concept="BxOjD" id="6eCPIMgbFTW" role="BBx3f">
+          <ref role="BxOjI" node="5H4ykBYMXjQ" resolve="String" />
+        </node>
       </node>
       <node concept="3_Gd5r" id="1MdcxidCjCU" role="3_Gd4E">
         <property role="3_Gd5q" value="logout" />
+        <ref role="3NuQEv" node="6eCPIMgbFTG" resolve="AuthenticationException" />
+        <node concept="3_Gf45" id="6eCPIMgbFTI" role="3_Gf4o">
+          <property role="TrG5h" value="authToken" />
+          <node concept="BxOjD" id="6eCPIMgbFTM" role="BBx2O">
+            <ref role="BxOjI" node="5H4ykBYMXjQ" resolve="String" />
+          </node>
+        </node>
       </node>
     </node>
     <node concept="3_Gd56" id="1MdcxidCjDr" role="3_Gd4Z">
@@ -502,6 +536,10 @@
       <node concept="BxOjD" id="1MdcxidCk6U" role="BBx3f">
         <ref role="BxOjI" node="1MdcxidCjFL" resolve="Reservation" />
       </node>
+    </node>
+    <node concept="3_Gd4C" id="6eCPIMgbFTG" role="3_G82M">
+      <property role="TrG5h" value="AuthenticationException" />
+      <property role="3_Gd4H" value="An AuthenticationException ocurred" />
     </node>
   </node>
 </model>

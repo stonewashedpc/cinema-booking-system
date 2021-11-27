@@ -1,4 +1,4 @@
-/**--- Generated at Fri Nov 26 18:45:12 CET 2021 
+/**--- Generated at Sat Nov 27 15:31:40 CET 2021 
  * --- No Change Allowed!  
  */
 package generated.cinemaService.proxies;
@@ -10,6 +10,7 @@ import generated.cinemaService.Role;
 import generated.cinemaService.Reservation;
 import java.util.List;
 import exceptions.ConstraintViolation;
+import generated.cinemaService.AuthenticationException;
 public interface IUser extends Identifiable{
    public User getTheObject();
    public Integer getId();
@@ -22,6 +23,6 @@ public interface IUser extends Identifiable{
    public boolean removeFromReservations(Reservation arg) throws ConstraintViolation, PersistenceException;
    public String getUsername() ;
    public void setUsername(String newUsername) throws PersistenceException;
-   public void logout();
-   public void login();
+   public String login(String password)throws AuthenticationException;
+   public void logout(String authToken)throws AuthenticationException;
 }

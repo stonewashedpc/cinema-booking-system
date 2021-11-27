@@ -4,13 +4,15 @@
 package generated.cinemaService.commands;
 import generated.cinemaService.*;
 import commands.*;
-public class getBookingCache_Command extends ServiceCommand<java.util.Map<Integer, generated.cinemaService.proxies.BookingProxy>>{
-   private static final long serialVersionUID = -1653051023L;
-   public getBookingCache_Command(){
+public class getUserByUsername_Command extends ServiceCommand<User>{
+   private static final long serialVersionUID = 1046688780L;
+   private String username;
+   public getUserByUsername_Command(String username){
       super();
+      this.username = username;
    }
    public void execute(){
-      try{this.result = CinemaService.getInstance().getBookingCache();
+      try{this.result = CinemaService.getInstance().getUserByUsername(username);
       }catch(Exception e){this.e = e;
       }finally{CinemaService.getInstance().notifyObservers(this);}
    }
