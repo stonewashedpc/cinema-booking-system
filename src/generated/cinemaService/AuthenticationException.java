@@ -19,6 +19,9 @@ public class AuthenticationException extends Exception
       super("An AuthenticationException ocurred");
    }
    //60 ===== Editable : Your Constructors ===========
+   public AuthenticationException(String message){
+	   super(message);
+   }
    
    //70 ===== GENERATED:      Feature Access =========
    //80 ===== Editable : Your Operations =============
