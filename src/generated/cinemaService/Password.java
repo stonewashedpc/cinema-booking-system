@@ -111,8 +111,13 @@ public class Password extends Observable implements java.io.Serializable, IPassw
  * 
  */
    public Boolean checkPassword(String pw){
-      // TODO: Implement Operation checkPassword
-      return null;
+	   byte[] passwordHash = null;
+	   try {
+		   KeySpec spec = new PBEKeySpec(pw.toCharArray(), Base64.getDecoder().decode(this.salt), 65536, 128);
+		   SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
+		   passwordHash = factory.generateSecret(spec).getEncoded();
+	   } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {e.printStackTrace();}
+	   return this.password.equals(Base64.getEncoder().encodeToString(passwordHash));
    }
 //90 ===== GENERATED: End of Your Operations ======
 }

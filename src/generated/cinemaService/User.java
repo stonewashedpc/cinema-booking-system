@@ -13,6 +13,8 @@ import exceptions.ConstraintViolation;
 import generated.cinemaService.relationControl.User_Has_PasswordSupervisor;
 import generated.cinemaService.relationControl.User_Has_RoleSupervisor;
 import java.util.List;
+
+import authentication.AuthenticationService;
 import generated.cinemaService.proxies.IReservation;
 import generated.cinemaService.relationControl.User_ReservationSupervisor;
 import db.executer.PersistenceExecuterFactory;
@@ -122,16 +124,14 @@ public class User extends Observable implements java.io.Serializable, IUser
 /**
  * 
  */
-   public void logout(){
-      // TODO: Implement Operation logout
-      return;
+   public String login(String password)throws AuthenticationException{
+      return AuthenticationService.getInstance().loginUser(this.username, password);
    }
 /**
  * 
  */
-   public void login(){
-      // TODO: Implement Operation login
-      return;
+   public void logout(String authToken)throws AuthenticationException{
+      AuthenticationService.getInstance().logoutUser(this, authToken);
    }
 //90 ===== GENERATED: End of Your Operations ======
 }
