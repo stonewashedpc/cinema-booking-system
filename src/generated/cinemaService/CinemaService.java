@@ -290,8 +290,21 @@ public class CinemaService extends Observable{
  * 
  */
    public User register(String name, String password, Role role){
-      // TODO: Implement Operation register
-      return null;
+	   byte[] salt = new byte[16];
+	   SecureRandom random = new SecureRandom();
+	   random.nextBytes(salt);
+	   byte[] passwordHash = null;
+	   
+	   try {
+		   KeySpec spec = new PBEKeySpec(password.toCharArray(), salt, 65536, 128);
+		   SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
+		   passwordHash = factory.generateSecret(spec).getEncoded();
+	   } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {e.printStackTrace();}
+	   
+	   Password userPassword = Password.createFresh(Base64.getEncoder().encodeToString(passwordHash), Base64.getEncoder().encodeToString(salt));
+	   User user = User.createFresh(userPassword, role, name);
+	   
+	   return user;
    }
 /**
  * 
@@ -343,21 +356,7 @@ public class CinemaService extends Observable{
  * 
  */
    public User register(String name, String password){
-	   byte[] salt = new byte[16];
-	   SecureRandom random = new SecureRandom();
-	   random.nextBytes(salt);
-	   byte[] passwordHash = null;
-	   
-	   try {
-		   KeySpec spec = new PBEKeySpec(password.toCharArray(), salt, 65536, 128);
-		   SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
-		   passwordHash = factory.generateSecret(spec).getEncoded();
-	   } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {e.printStackTrace();}
-	   
-	   Password userPassword = Password.createFresh(Base64.getEncoder().encodeToString(passwordHash), Base64.getEncoder().encodeToString(salt));
-	   User user = User.createFresh(userPassword, Customer.getInstance(), name);
-	   
-	   return user;
+	   return register(name, password, Customer.getInstance());
    }
 /**
 * 
