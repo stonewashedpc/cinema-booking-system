@@ -1,4 +1,4 @@
-/**--- Generated at Sat Nov 27 15:31:40 CET 2021 
+/**--- Generated at Sun Nov 28 22:51:00 CET 2021 
  * --- No Change Allowed!  
  */
 package generated.cinemaService.proxies;
@@ -13,5 +13,4 @@ public interface IBooking extends Identifiable{
    public Integer getId();
    public Optional<Reservation> getReservation() throws PersistenceException;
    public void setReservation(Reservation newReservation)throws ConstraintViolation, PersistenceException;
-   public void cancel();
 }

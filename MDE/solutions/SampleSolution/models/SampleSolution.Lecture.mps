@@ -537,6 +537,35 @@
         <ref role="BxOjI" node="1MdcxidCjFL" resolve="Reservation" />
       </node>
     </node>
+    <node concept="3_Gd5r" id="3NqiH4nMmeE" role="2_wlaX">
+      <property role="3_Gd5q" value="login" />
+      <ref role="3NuQEv" node="6eCPIMgbFTG" resolve="AuthenticationException" />
+      <node concept="3_Gf45" id="3NqiH4nMmfn" role="3_Gf4o">
+        <property role="TrG5h" value="username" />
+        <node concept="BxOjD" id="3NqiH4nMmfr" role="BBx2O">
+          <ref role="BxOjI" node="5H4ykBYMXjQ" resolve="String" />
+        </node>
+      </node>
+      <node concept="3_Gf45" id="3NqiH4nMmfu" role="3_Gf4o">
+        <property role="TrG5h" value="password" />
+        <node concept="BxOjD" id="3NqiH4nMmf$" role="BBx2O">
+          <ref role="BxOjI" node="5H4ykBYMXjQ" resolve="String" />
+        </node>
+      </node>
+      <node concept="BxOjD" id="3NqiH4nMmfB" role="BBx3f">
+        <ref role="BxOjI" node="5H4ykBYMXjQ" resolve="String" />
+      </node>
+    </node>
+    <node concept="3_Gd5r" id="3NqiH4nMmfD" role="2_wlaX">
+      <property role="3_Gd5q" value="logout" />
+      <ref role="3NuQEv" node="6eCPIMgbFTG" resolve="AuthenticationException" />
+      <node concept="3_Gf45" id="3NqiH4nMmgs" role="3_Gf4o">
+        <property role="TrG5h" value="authToken" />
+        <node concept="BxOjD" id="3NqiH4nMmgw" role="BBx2O">
+          <ref role="BxOjI" node="5H4ykBYMXjQ" resolve="String" />
+        </node>
+      </node>
+    </node>
     <node concept="3_Gd4C" id="6eCPIMgbFTG" role="3_G82M">
       <property role="TrG5h" value="AuthenticationException" />
       <property role="3_Gd4H" value="An AuthenticationException ocurred" />

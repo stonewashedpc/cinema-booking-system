@@ -1,4 +1,4 @@
-/**--- Generated at Sat Nov 27 15:31:40 CET 2021 
+/**--- Generated at Sun Nov 28 22:50:59 CET 2021 
  * --- Mode = Integrated Database 
  * --- Change only in Editable Sections!  
  * --- Do NOT touch section numbering!   
@@ -29,6 +29,8 @@ import java.util.Map;
 
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
+
+import authentication.AuthenticationService;
 //20 ===== Editable : Your import section =========
 //30 ===== GENERATED: Main Section ================
 public class CinemaService extends Observable{
@@ -357,5 +359,17 @@ public class CinemaService extends Observable{
 	   
 	   return user;
    }
+/**
+* 
+*/
+  public String login(String username, String password)throws AuthenticationException{
+     return AuthenticationService.getInstance().loginUser(username, password);
+  }
+/**
+* 
+*/
+  public void logout(String authToken)throws AuthenticationException{
+     AuthenticationService.getInstance().logoutUser(authToken);
+  }
 //90 ===== GENERATED: End of Your Operations ======
 }

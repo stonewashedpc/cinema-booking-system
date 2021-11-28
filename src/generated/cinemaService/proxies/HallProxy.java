@@ -1,4 +1,4 @@
-/**--- Generated at Sat Nov 27 15:31:40 CET 2021 
+/**--- Generated at Sun Nov 28 22:51:00 CET 2021 
  * --- No Change Allowed!  
  */
 package generated.cinemaService.proxies;
@@ -12,8 +12,6 @@ import generated.cinemaService.CShow;
 import java.util.List;
 import exceptions.ConstraintViolation;
 import generated.cinemaService.SeatingRow;
-import generated.cinemaService.Back;
-import generated.cinemaService.Film;
 public class HallProxy implements IHall{
    private Integer id;
    private Optional<Hall> theObject;
@@ -73,11 +71,5 @@ public class HallProxy implements IHall{
    }
    public void setName(String newName) throws PersistenceException{
       this.getTheObject().setName(newName);
-   }
-   public void removeShow(CShow show){
-      this.getTheObject().removeShow(show);
-   }
-   public Back addShow(Film film){
-      return this.getTheObject().addShow(film);
    }
 }

@@ -37,9 +37,9 @@ public class AuthenticationService {
 		} else throw new AuthenticationException("Username does not exist");
 	}
 	
-	public void logoutUser(User user, String authToken) throws AuthenticationException {
+	public void logoutUser(String authToken) throws AuthenticationException {
 		Session session = authMap.get(authToken);
-		if(session != null && session.getUser().equals(user)) {
+		if(session != null) {
 			authMap.remove(authToken);
 		} else throw new AuthenticationException("Logout failed");
 	}

@@ -1,11 +1,11 @@
-/**--- Generated at Sat Nov 27 15:31:40 CET 2021 
+/**--- Generated at Sun Nov 28 22:51:00 CET 2021 
  * --- No Change Allowed!  
  */
 package generated.cinemaService.commands.hall;
 import generated.cinemaService.*;
 import commands.*;
 public class Hall_removeFromRows_Command extends ObjectCommand<Hall, Boolean>{
-   private static final long serialVersionUID = 1233773728L;
+   private static final long serialVersionUID = 1465000261L;
    private SeatingRow arg;
    public Hall_removeFromRows_Command(Hall receiver, SeatingRow arg){
       super(receiver);

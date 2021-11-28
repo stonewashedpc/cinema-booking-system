@@ -1,4 +1,4 @@
-/**--- Generated at Sat Nov 27 15:31:40 CET 2021 
+/**--- Generated at Sun Nov 28 22:50:59 CET 2021 
  * --- Mode = Integrated Database 
  * --- Change only in Editable Sections!  
  * --- Do NOT touch section numbering!   
@@ -131,7 +131,7 @@ public class User extends Observable implements java.io.Serializable, IUser
  * 
  */
    public void logout(String authToken)throws AuthenticationException{
-      AuthenticationService.getInstance().logoutUser(this, authToken);
+      AuthenticationService.getInstance().logoutUser(authToken);
    }
 //90 ===== GENERATED: End of Your Operations ======
 }

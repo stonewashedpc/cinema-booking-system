@@ -1,4 +1,4 @@
-/**--- Generated at Sat Nov 27 15:31:40 CET 2021 
+/**--- Generated at Sun Nov 28 22:51:00 CET 2021 
  * --- No Change Allowed!  
  */
 package generated.cinemaService.proxies;
@@ -56,8 +56,5 @@ public class PasswordProxy implements IPassword{
    }
    public void setSalt(String newSalt) throws PersistenceException{
       this.getTheObject().setSalt(newSalt);
-   }
-   public Boolean checkPassword(String pw){
-      return this.getTheObject().checkPassword(pw);
    }
 }

@@ -1,11 +1,11 @@
-/**--- Generated at Sat Nov 27 15:31:40 CET 2021 
+/**--- Generated at Sun Nov 28 22:51:00 CET 2021 
  * --- No Change Allowed!  
  */
 package generated.cinemaService.commands.password;
 import generated.cinemaService.*;
 import commands.*;
 public class Password_delete_Command extends ObjectCommand<Password, Void>{
-   private static final long serialVersionUID = 2053305963L;
+   private static final long serialVersionUID = -1636440240L;
    public Password_delete_Command(Password receiver){
       super(receiver);
    }

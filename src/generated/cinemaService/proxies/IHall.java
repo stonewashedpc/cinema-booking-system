@@ -1,4 +1,4 @@
-/**--- Generated at Sat Nov 27 15:31:40 CET 2021 
+/**--- Generated at Sun Nov 28 22:51:00 CET 2021 
  * --- No Change Allowed!  
  */
 package generated.cinemaService.proxies;
@@ -9,8 +9,6 @@ import generated.cinemaService.CShow;
 import java.util.List;
 import exceptions.ConstraintViolation;
 import generated.cinemaService.SeatingRow;
-import generated.cinemaService.Back;
-import generated.cinemaService.Film;
 public interface IHall extends Identifiable{
    public Hall getTheObject();
    public Integer getId();
@@ -22,6 +20,4 @@ public interface IHall extends Identifiable{
    public boolean removeFromRows(SeatingRow arg) throws ConstraintViolation, PersistenceException;
    public String getName() ;
    public void setName(String newName) throws PersistenceException;
-   public void removeShow(CShow show);
-   public Back addShow(Film film);
 }

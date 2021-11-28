@@ -4,13 +4,15 @@
 package generated.cinemaService.commands;
 import generated.cinemaService.*;
 import commands.*;
-public class getPasswordCache_Command extends ServiceCommand<java.util.Map<Integer, generated.cinemaService.proxies.PasswordProxy>>{
-   private static final long serialVersionUID = -1507227500L;
-   public getPasswordCache_Command(){
+public class logout_Command extends ServiceCommand<Void>{
+   private static final long serialVersionUID = -1903817586L;
+   private String authToken;
+   public logout_Command(String authToken){
       super();
+      this.authToken = authToken;
    }
    public void execute(){
-      try{this.result = CinemaService.getInstance().getPasswordCache();
+      try{CinemaService.getInstance().logout(authToken);
       }catch(Exception e){this.e = e;
       }finally{CinemaService.getInstance().notifyObservers(this);}
    }
