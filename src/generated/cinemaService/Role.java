@@ -1,4 +1,4 @@
-/**--- Generated at Fri Nov 26 18:45:13 CET 2021 
+/**--- Generated at Sun Nov 28 22:51:00 CET 2021 
  * --- Mode = Integrated Database 
  * --- Change only in Editable Sections!  
  * --- Do NOT touch section numbering!   
@@ -7,6 +7,9 @@
 package generated.cinemaService;
 //10 ===== GENERATED:      Import Section =========
 import java.sql.SQLException;
+
+import authentication.CommandWhitelist;
+import authentication.DefaultWhitelist;
 import db.connection.NoConnectionException;
 import db.executer.PersistenceExecuterFactory;
 import observation.Observable;
@@ -21,7 +24,7 @@ public abstract class Role extends Observable implements java.io.Serializable, I
    //30 ===== GENERATED:      Attribute Section ======
    private Integer id;
    //40 ===== Editable : Your Attribute Section ======
-   
+   private CommandWhitelist commandWhitelist = DefaultWhitelist.getInstance();
    //50 ===== GENERATED:      Constructor ============
    public Role(Integer id, boolean objectOnly)
    {
@@ -47,5 +50,8 @@ public abstract class Role extends Observable implements java.io.Serializable, I
    }
    public int hashCode() {return this.getId().hashCode();}
    //80 ===== Editable : Your Operations =============
+
+   public abstract CommandWhitelist getCommandWhitelist();
+   
 //90 ===== GENERATED: End of Your Operations ======
 }

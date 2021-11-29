@@ -7,6 +7,7 @@ import java.io.Serializable;
 public abstract class Command<R> implements Serializable{
 	protected R result;
 	protected Exception e;
+	protected String authToken;
 	public abstract void execute();
 	public R getResult() throws Exception{
 		if(this.e!=null) throw e;
@@ -20,5 +21,11 @@ public abstract class Command<R> implements Serializable{
 	}
 	public void setE(Exception e) {
 		this.e = e;
+	}
+	public String getAuthToken() {
+		return authToken;
+	}
+	public void setAuthToken(String authToken) {
+		this.authToken = authToken;
 	}
 }

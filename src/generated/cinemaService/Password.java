@@ -1,16 +1,25 @@
-/**--- Generated at Fri Nov 26 18:45:13 CET 2021 
+/**--- Generated at Sun Nov 28 22:51:00 CET 2021 
  * --- Mode = Integrated Database 
  * --- Change only in Editable Sections!  
  * --- Do NOT touch section numbering!   
  * --- Do NOT use automatic Eclipse Comment Formatting!   
  */
 package generated.cinemaService;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.KeySpec;
 //10 ===== GENERATED:      Import Section =========
 import java.sql.SQLException;
 import db.connection.NoConnectionException;
 import db.executer.PersistenceExecuterFactory;
 import exceptions.ConstraintViolation;
+
+import java.util.Base64;
 import java.util.List;
+
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
+
 import generated.cinemaService.proxies.IUser;
 import generated.cinemaService.relationControl.User_Has_PasswordSupervisor;
 import db.executer.PersistenceExecuterFactory;
@@ -101,8 +110,13 @@ public class Password extends Observable implements java.io.Serializable, IPassw
  * 
  */
    public Boolean checkPassword(String pw){
-      // TODO: Implement Operation checkPassword
-      return null;
+	   byte[] passwordHash = null;
+	   try {
+		   KeySpec spec = new PBEKeySpec(pw.toCharArray(), Base64.getDecoder().decode(this.salt), 65536, 128);
+		   SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
+		   passwordHash = factory.generateSecret(spec).getEncoded();
+	   } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {e.printStackTrace();}
+	   return this.password.equals(Base64.getEncoder().encodeToString(passwordHash));
    }
 //90 ===== GENERATED: End of Your Operations ======
 }

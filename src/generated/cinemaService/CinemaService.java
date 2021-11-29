@@ -1,4 +1,4 @@
-/**--- Generated at Fri Nov 26 18:45:12 CET 2021 
+/**--- Generated at Sun Nov 28 22:50:59 CET 2021 
  * --- Mode = Integrated Database 
  * --- Change only in Editable Sections!  
  * --- Do NOT touch section numbering!   
@@ -17,7 +17,20 @@ import observation.Observable;
 import db.executer.PersistenceExecuterFactory;
 import db.executer.PersistenceDMLExecuter;
 import db.connection.DBConnectionData;
+
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.KeySpec;
+import java.util.Base64;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.Map;
+
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
+
+import authentication.AuthenticationService;
 //20 ===== Editable : Your import section =========
 //30 ===== GENERATED: Main Section ================
 public class CinemaService extends Observable{
@@ -269,16 +282,29 @@ public class CinemaService extends Observable{
 /**
  * 
  */
-   public Film addFilm(String name){
-      // TODO: Implement Operation addFilm
+   public Hall addHall(String name){
+      // TODO: Implement Operation addHall
       return null;
    }
 /**
  * 
  */
-   public User register(String name, String password){
-      // TODO: Implement Operation register
-      return null;
+   public User register(String name, String password, Role role){
+	   byte[] salt = new byte[16];
+	   SecureRandom random = new SecureRandom();
+	   random.nextBytes(salt);
+	   byte[] passwordHash = null;
+	   
+	   try {
+		   KeySpec spec = new PBEKeySpec(password.toCharArray(), salt, 65536, 128);
+		   SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
+		   passwordHash = factory.generateSecret(spec).getEncoded();
+	   } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {e.printStackTrace();}
+	   
+	   Password userPassword = Password.createFresh(Base64.getEncoder().encodeToString(passwordHash), Base64.getEncoder().encodeToString(salt));
+	   User user = User.createFresh(userPassword, role, name);
+	   
+	   return user;
    }
 /**
  * 
@@ -290,22 +316,8 @@ public class CinemaService extends Observable{
 /**
  * 
  */
-   public Reservation reserve(User user, Seat seat, CShow show){
-      // TODO: Implement Operation reserve
-      return null;
-   }
-/**
- * 
- */
-   public User register(String name, String password, Role role){
-      // TODO: Implement Operation register
-      return null;
-   }
-/**
- * 
- */
-   public Hall addHall(String name){
-      // TODO: Implement Operation addHall
+   public Film addFilm(String name){
+      // TODO: Implement Operation addFilm
       return null;
    }
 /**
@@ -318,9 +330,45 @@ public class CinemaService extends Observable{
 /**
  * 
  */
+   public Reservation reserve(User user, Seat seat, CShow show){
+      // TODO: Implement Operation reserve
+      return null;
+   }
+/**
+ * 
+ */
    public void removeFilm(Film film){
       // TODO: Implement Operation removeFilm
       return;
    }
+/**
+ * 
+ */
+   public User getUserByUsername(String username){
+	   Collection<UserProxy> values = CinemaService.getInstance().getUserCache().values();
+		for (Iterator<UserProxy> iterator = values.iterator(); iterator.hasNext();) {
+			UserProxy userProxy = (UserProxy) iterator.next();
+			if(userProxy.getUsername().equals(username)) return userProxy.getTheObject();
+		}
+		return null;
+   }
+/**
+ * 
+ */
+   public User register(String name, String password){
+	   return register(name, password, Customer.getInstance());
+   }
+/**
+* 
+*/
+  public String login(String username, String password)throws AuthenticationException{
+     return AuthenticationService.getInstance().loginUser(username, password);
+  }
+/**
+* 
+*/
+  public void logout(String authToken)throws AuthenticationException{
+     AuthenticationService.getInstance().logoutUser(authToken);
+  }
 //90 ===== GENERATED: End of Your Operations ======
 }

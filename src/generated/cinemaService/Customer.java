@@ -1,4 +1,4 @@
-/**--- Generated at Fri Nov 26 18:45:13 CET 2021 
+/**--- Generated at Sun Nov 28 22:51:00 CET 2021 
  * --- Mode = Integrated Database 
  * --- Change only in Editable Sections!  
  * --- Do NOT touch section numbering!   
@@ -10,6 +10,11 @@ import java.sql.SQLException;
 import db.connection.NoConnectionException;
 import db.executer.PersistenceExecuterFactory;
 import java.util.Optional;
+
+import authentication.CommandWhitelist;
+import authentication.CustomerWhiteList;
+import authentication.DefaultWhitelist;
+
 import java.sql.ResultSet;
 import idManagement.IDManagerTransient;
 import db.executer.PersistenceException;
@@ -24,7 +29,7 @@ public class Customer extends Role implements java.io.Serializable, ICustomer
    //30 ===== GENERATED:      Attribute Section ======
    private static Optional<Customer> theInstance = Optional.empty();
    //40 ===== Editable : Your Attribute Section ======
-   
+   private CommandWhitelist commandWhitelist = CustomerWhiteList.getInstance();
    //50 ===== GENERATED:      Constructor ============
    private Customer(Integer id, boolean objectOnly)
    {
@@ -56,5 +61,8 @@ public class Customer extends Role implements java.io.Serializable, ICustomer
       return this;
    }
    //80 ===== Editable : Your Operations =============
+   public CommandWhitelist getCommandWhitelist() {
+		return commandWhitelist;
+	}
 //90 ===== GENERATED: End of Your Operations ======
 }

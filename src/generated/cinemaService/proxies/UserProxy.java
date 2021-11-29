@@ -1,4 +1,4 @@
-/**--- Generated at Fri Nov 26 18:45:12 CET 2021 
+/**--- Generated at Sun Nov 28 22:50:59 CET 2021 
  * --- No Change Allowed!  
  */
 package generated.cinemaService.proxies;
@@ -79,11 +79,5 @@ public class UserProxy implements IUser{
    }
    public void setUsername(String newUsername) throws PersistenceException{
       this.getTheObject().setUsername(newUsername);
-   }
-   public void logout(){
-      this.getTheObject().logout();
-   }
-   public void login(){
-      this.getTheObject().login();
    }
 }

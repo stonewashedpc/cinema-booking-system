@@ -1,11 +1,11 @@
-/**--- Generated at Fri Nov 26 18:45:13 CET 2021 
+/**--- Generated at Sat Nov 27 15:31:40 CET 2021 
  * --- No Change Allowed!  
  */
 package generated.cinemaService.commands.password;
 import generated.cinemaService.*;
 import commands.*;
 public class Password_checkPassword_Command extends ObjectCommand<Password, Boolean>{
-   private static final long serialVersionUID = 1393565881L;
+   private static final long serialVersionUID = -525476475L;
    private String pw;
    public Password_checkPassword_Command(Password receiver, String pw){
       super(receiver);
