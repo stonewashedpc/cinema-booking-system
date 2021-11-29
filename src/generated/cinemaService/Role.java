@@ -51,9 +51,7 @@ public abstract class Role extends Observable implements java.io.Serializable, I
    public int hashCode() {return this.getId().hashCode();}
    //80 ===== Editable : Your Operations =============
 
-public CommandWhitelist getCommandWhitelist() {
-	return commandWhitelist;
-}
+   public abstract CommandWhitelist getCommandWhitelist();
    
 //90 ===== GENERATED: End of Your Operations ======
 }
