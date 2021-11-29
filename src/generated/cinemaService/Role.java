@@ -7,6 +7,9 @@
 package generated.cinemaService;
 //10 ===== GENERATED:      Import Section =========
 import java.sql.SQLException;
+
+import authentication.CommandWhitelist;
+import authentication.DefaultWhitelist;
 import db.connection.NoConnectionException;
 import db.executer.PersistenceExecuterFactory;
 import observation.Observable;
@@ -21,7 +24,7 @@ public abstract class Role extends Observable implements java.io.Serializable, I
    //30 ===== GENERATED:      Attribute Section ======
    private Integer id;
    //40 ===== Editable : Your Attribute Section ======
-   
+   private CommandWhitelist commandWhitelist = DefaultWhitelist.getInstance();
    //50 ===== GENERATED:      Constructor ============
    public Role(Integer id, boolean objectOnly)
    {
@@ -47,5 +50,10 @@ public abstract class Role extends Observable implements java.io.Serializable, I
    }
    public int hashCode() {return this.getId().hashCode();}
    //80 ===== Editable : Your Operations =============
+
+public CommandWhitelist getCommandWhitelist() {
+	return commandWhitelist;
+}
+   
 //90 ===== GENERATED: End of Your Operations ======
 }
