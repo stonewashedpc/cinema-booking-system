@@ -34,6 +34,8 @@ public class ClientMain {
 				@Override
 				protected void onSuccess(String result) {
 					
+					System.out.println("Login successful. AuthToken is: " + result);
+					
 					String authToken = result;
 
 					Film_constructor_Command command = new Film_constructor_Command("TestFilm");
