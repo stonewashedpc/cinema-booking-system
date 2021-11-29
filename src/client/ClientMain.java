@@ -3,6 +3,8 @@ package client;
 import exceptions.ClientException;
 import generated.cinemaService.Film;
 import generated.cinemaService.commands.Film_constructor_Command;
+import generated.cinemaService.commands.login_Command;
+import generated.cinemaService.commands.logout_Command;
 
 public class ClientMain {
 
@@ -14,21 +16,88 @@ public class ClientMain {
 			
 			CommandExecutorService service = new CommandExecutorService(client);
 			
-			for (int i = 1; i < 11; i++) {
-				service.queueCommand(new Film_constructor_Command("Der Film " + String.valueOf(i)), new CommandCallback<Film>() {
+//			service.queueCommand(new register_Command("Erika Musterfrau", "1234512345"), new CommandCallback<User>() {
+//
+//				@Override
+//				protected void onSuccess(User result) {
+//					System.out.println("Registered user: " + result.getUsername());
+//				}
+//
+//				@Override
+//				protected void onException(Exception exception) {
+//					exception.printStackTrace();
+//				}
+//			});
+			
+			service.queueCommand(new login_Command("Erika Musterfrau", "1234512345"), new CommandCallback<String>() {
 
-					@Override
-					protected void onException(Exception exception) {
-						System.out.println("Client: An Exception ocurred");
-						exception.printStackTrace();
-					}
+				@Override
+				protected void onSuccess(String result) {
+					
+					String authToken = result;
 
-					@Override
-					protected void onSuccess(Film result) {
-						System.out.println("Client: Received result from Server: " + result.getName());
-					}
-				});
-			}
+					Film_constructor_Command command = new Film_constructor_Command("TestFilm");
+					
+					command.setAuthToken(authToken);
+					
+					service.queueCommand(command, new CommandCallback<Film>() {
+
+						@Override
+						protected void onSuccess(Film result) {
+							System.out.println("Film created successfully: " + result.getName());
+							
+							logout_Command logoutCommand = new logout_Command(authToken);
+							
+							logoutCommand.setAuthToken(authToken);
+							
+							service.queueCommand(logoutCommand, new CommandCallback<Void>() {
+
+								@Override
+								protected void onSuccess(Void result) {
+									System.out.println("Logout successful");
+									
+									Film_constructor_Command command = new Film_constructor_Command("TestFilm");
+									
+									command.setAuthToken(authToken);
+									
+									service.queueCommand(command, new CommandCallback<Film>() {
+
+										@Override
+										protected void onSuccess(Film result) {
+											System.out.println("Film created successfully: " + result.getName());
+										}
+
+										@Override
+										protected void onException(Exception exception) {
+											exception.printStackTrace();
+										}
+									});
+								}
+
+								@Override
+								protected void onException(Exception exception) {
+									exception.printStackTrace();
+								}
+							});
+						}
+
+						@Override
+						protected void onException(Exception exception) {
+							exception.printStackTrace();
+						}
+					});
+					
+					
+				}
+
+				@Override
+				protected void onException(Exception exception) {
+					exception.printStackTrace();
+				}
+			});
+			
+			
+			
 		} catch (ClientException e) {
 			e.printStackTrace();
 		}
