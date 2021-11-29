@@ -8,6 +8,7 @@ import java.util.HashMap;
 
 import generated.cinemaService.AuthenticationException;
 import generated.cinemaService.CinemaService;
+import generated.cinemaService.Role;
 import generated.cinemaService.User;
 
 public class AuthenticationService {
@@ -31,16 +32,15 @@ public class AuthenticationService {
 		if(user != null) {
 			if (user.getPassword().checkPassword(password)) {
 				String authToken = generateAuthToken();
-				authMap.put(authToken, new Session(user, getExpiryDate()));
+				this.authMap.put(authToken, new Session(user, getExpiryDate()));
 				return authToken;
 			} else throw new AuthenticationException("Invalid password");
 		} else throw new AuthenticationException("Username does not exist");
 	}
 	
 	public void logoutUser(String authToken) throws AuthenticationException {
-		Session session = authMap.get(authToken);
-		if(session != null) {
-			authMap.remove(authToken);
+		if(this.authMap.containsKey(authToken)) {
+			this.authMap.remove(authToken);
 		} else throw new AuthenticationException("Logout failed");
 	}
 	
@@ -56,5 +56,12 @@ public class AuthenticationService {
 		c.setTime(new Date());
 		c.add(Calendar.HOUR_OF_DAY, AUTHTOKEN_EXPIRY_TIME_HOURS);
 		return c.getTime();
+	}
+	
+	public Role findRole(String authToken) throws AuthenticationException {
+		Session session = this.authMap.get(authToken);
+		if (session == null) throw new AuthenticationException("Invalid Authentication Token");
+		if (session.hasExpired()) throw new AuthenticationException("Session key has expired");
+		return session.getUser().getRole();
 	}
 }
