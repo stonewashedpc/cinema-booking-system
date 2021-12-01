@@ -1,4 +1,4 @@
-/**--- Generated at Sun Nov 28 22:51:00 CET 2021 
+/**--- Generated at Wed Dec 01 21:14:10 CET 2021 
  * --- Mode = Integrated Database 
  * --- Change only in Editable Sections!  
  * --- Do NOT touch section numbering!   
@@ -26,13 +26,13 @@ public class Middle extends Category implements java.io.Serializable, IMiddle
    //40 ===== Editable : Your Attribute Section ======
    
    //50 ===== GENERATED:      Constructor ============
-   private Middle(Integer id, boolean objectOnly)
+   private Middle(Integer id, Optional<Integer> price, boolean objectOnly)
    {
-      super(id, objectOnly);
+      super(id, price, objectOnly);
       if(objectOnly) return;
    }
-   private static Middle instantiateRuntimeCopy(Integer id){
-      return new Middle(id, true);
+   private static Middle instantiateRuntimeCopy(Integer id, Optional<Integer> price){
+      return new Middle(id, price, true);
    }
    //60 ===== Editable : Your Constructors ===========
    
@@ -47,7 +47,9 @@ public class Middle extends Category implements java.io.Serializable, IMiddle
          Optional<ResultSet> rs = PersistenceExecuterFactory.getConfiguredFactory().getDBDMLExecuter().selectEntriesOfTable("Category", typeKey);
          if(rs.isPresent()) rs.get().next();
          Integer id = rs.isPresent() ? rs.get().getInt("id") : IDManagerTransient.getTheInstance().getNextId();
-         return Middle.instantiateRuntimeCopy(id);
+         Optional<Integer> price = Optional.empty();
+         if(rs.isPresent()) price = (rs.get().getObject("price") == null ? Optional.empty() : Optional.of(rs.get().getInt("price")));
+         return Middle.instantiateRuntimeCopy(id, price);
       } catch (SQLException | NoConnectionException e) {
          throw new PersistenceException(e.getMessage());
       }

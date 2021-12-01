@@ -1,4 +1,4 @@
-/**--- Generated at Sun Nov 28 22:51:00 CET 2021 
+/**--- Generated at Wed Dec 01 21:14:10 CET 2021 
  * --- No Change Allowed!  
  */
 package generated.cinemaService.proxies;
@@ -76,5 +76,11 @@ public class CShowProxy implements ICShow{
    }
    public Hall getHall() throws PersistenceException{
       return this.getTheObject().getHall();
+   }
+   public Integer calculateTotalIncome(){
+      return this.getTheObject().calculateTotalIncome();
+   }
+   public void setOpenForReservations(){
+      this.getTheObject().setOpenForReservations();
    }
 }

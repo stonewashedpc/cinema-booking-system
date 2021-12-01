@@ -1,4 +1,4 @@
-/**--- Generated at Sun Nov 28 22:51:00 CET 2021 
+/**--- Generated at Wed Dec 01 21:14:10 CET 2021 
  * --- Mode = Integrated Database 
  * --- Change only in Editable Sections!  
  * --- Do NOT touch section numbering!   
@@ -13,6 +13,7 @@ import observation.Observable;
 import generated.cinemaService.proxies.ICategory;
 import db.executer.PersistenceException;
 import exceptions.ConstraintViolation;
+import java.util.Optional;
 //20 ===== Editable : Your Import Section =========
 
 //25 ===== GENERATED:      Header Section =========
@@ -20,13 +21,15 @@ public abstract class Category extends Observable implements java.io.Serializabl
 {
    //30 ===== GENERATED:      Attribute Section ======
    private Integer id;
+   private Optional<Integer> price;
    //40 ===== Editable : Your Attribute Section ======
    
    //50 ===== GENERATED:      Constructor ============
-   public Category(Integer id, boolean objectOnly)
+   public Category(Integer id, Optional<Integer> price, boolean objectOnly)
    {
       super();
       this.setId(id);
+      this.price = price;
       if(objectOnly) return;
    }
    //60 ===== Editable : Your Constructors ===========
@@ -46,6 +49,14 @@ public abstract class Category extends Observable implements java.io.Serializabl
       return ((ICategory)o).getId().equals(this.getId());
    }
    public int hashCode() {return this.getId().hashCode();}
+   public Optional<Integer> getPrice() {
+      return this.price;
+   }
+   public void setPrice(Integer newPrice) throws PersistenceException{
+      this.price = Optional.of(newPrice);
+      try{PersistenceExecuterFactory.getConfiguredFactory().getDBDMLExecuter().update("Category", "price", newPrice.toString(), this.getId());
+      }catch(SQLException|NoConnectionException e){throw new PersistenceException(e.getMessage());}
+   }
    //80 ===== Editable : Your Operations =============
 //90 ===== GENERATED: End of Your Operations ======
 }

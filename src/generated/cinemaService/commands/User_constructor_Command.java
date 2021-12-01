@@ -1,11 +1,11 @@
-/**--- Generated at Sun Nov 28 22:50:59 CET 2021 
+/**--- Generated at Wed Dec 01 21:14:10 CET 2021 
  * --- No Change Allowed!  
  */
 package generated.cinemaService.commands;
 import generated.cinemaService.*;
 import commands.*;
 public class User_constructor_Command extends ServiceCommand<User>{
-   private static final long serialVersionUID = 142837571L;
+   private static final long serialVersionUID = 1450220442L;
    private Password password;
    private Role role;
    private String  username;

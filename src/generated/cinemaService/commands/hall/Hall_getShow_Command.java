@@ -1,4 +1,4 @@
-/**--- Generated at Sun Nov 28 22:51:00 CET 2021 
+/**--- Generated at Wed Dec 01 21:14:10 CET 2021 
  * --- No Change Allowed!  
  */
 package generated.cinemaService.commands.hall;
@@ -6,7 +6,7 @@ import generated.cinemaService.*;
 import commands.*;
 import java.util.Collection;
 public class Hall_getShow_Command extends ObjectCommand<Hall, Collection<CShow>>{
-   private static final long serialVersionUID = 557325380L;
+   private static final long serialVersionUID = -2093817542L;
    public Hall_getShow_Command(Hall receiver){
       super(receiver);
    }

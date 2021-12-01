@@ -4,13 +4,13 @@
 package generated.cinemaService.commands.cShow;
 import generated.cinemaService.*;
 import commands.*;
-public class CShow_getHall_Command extends ObjectCommand<CShow, Hall>{
-   private static final long serialVersionUID = -1767186203L;
-   public CShow_getHall_Command(CShow receiver){
+public class CShow_setOpenForReservations_Command extends ObjectCommand<CShow, Void>{
+   private static final long serialVersionUID = 378773593L;
+   public CShow_setOpenForReservations_Command(CShow receiver){
       super(receiver);
    }
    public void execute(){
-      try{this.result = this.receiver.getHall();
+      try{this.receiver.setOpenForReservations();
       }catch(Exception e){this.e = e;
       }finally{this.receiver.notifyObservers(this);}
    }

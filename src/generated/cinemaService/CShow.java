@@ -1,4 +1,4 @@
-/**--- Generated at Sun Nov 28 22:51:00 CET 2021 
+/**--- Generated at Wed Dec 01 21:14:10 CET 2021 
  * --- Mode = Integrated Database 
  * --- Change only in Editable Sections!  
  * --- Do NOT touch section numbering!   
@@ -116,5 +116,19 @@ public class CShow extends Observable implements java.io.Serializable, ICShow
       return Show_HallSupervisor.getInstance().getHall(this).getTheObject();
    }
    //80 ===== Editable : Your Operations =============
+/**
+ * 
+ */
+   public Integer calculateTotalIncome(){
+      // TODO: Implement Operation calculateTotalIncome
+      return null;
+   }
+/**
+ * 
+ */
+   public void setOpenForReservations(){
+      // TODO: Implement Operation setOpenForReservations
+      return;
+   }
 //90 ===== GENERATED: End of Your Operations ======
 }

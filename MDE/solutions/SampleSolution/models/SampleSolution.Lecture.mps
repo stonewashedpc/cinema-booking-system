@@ -275,6 +275,15 @@
     </node>
     <node concept="3_Gd56" id="1MdcxidCjHo" role="3_Gd4Z">
       <property role="TrG5h" value="CShow" />
+      <node concept="3_Gd5r" id="1BJ23tM9J9m" role="3_Gd4E">
+        <property role="3_Gd5q" value="setOpenForReservations" />
+      </node>
+      <node concept="3_Gd5r" id="1BJ23tM9J9o" role="3_Gd4E">
+        <property role="3_Gd5q" value="calculateTotalIncome" />
+        <node concept="BxOjD" id="1BJ23tM9J9r" role="BBx3f">
+          <ref role="BxOjI" node="5H4ykBYMXjV" resolve="Integer" />
+        </node>
+      </node>
       <node concept="2_wlaR" id="1MdcxidCjHK" role="2_wlle">
         <property role="3_FBD6" value="reservable" />
         <ref role="3_FBDr" node="5H4ykBYMXkd" resolve="Boolean" />
@@ -340,6 +349,11 @@
     </node>
     <node concept="3_Gd56" id="1MdcxidCjNx" role="3_Gd4Z">
       <property role="TrG5h" value="Category" />
+      <node concept="2_wlaR" id="1BJ23tM9J9t" role="2_wlle">
+        <property role="3_FBD6" value="price" />
+        <property role="2zC27X" value="1axOPyL0vao/PartialMap" />
+        <ref role="3_FBDr" node="5H4ykBYMXjV" resolve="Integer" />
+      </node>
     </node>
     <node concept="3_Gd56" id="1MdcxidCjQV" role="3_Gd4Z">
       <property role="TrG5h" value="Parterre" />

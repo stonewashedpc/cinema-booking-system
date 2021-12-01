@@ -2,9 +2,11 @@ package client;
 
 import exceptions.ClientException;
 import generated.cinemaService.Film;
+import generated.cinemaService.User;
 import generated.cinemaService.commands.Film_constructor_Command;
 import generated.cinemaService.commands.login_Command;
 import generated.cinemaService.commands.logout_Command;
+import generated.cinemaService.commands.register_Command;
 
 public class ClientMain {
 
