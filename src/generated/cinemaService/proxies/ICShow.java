@@ -1,4 +1,4 @@
-/**--- Generated at Wed Dec 01 21:14:10 CET 2021 
+/**--- Generated at Tue Dec 21 20:30:54 CET 2021 
  * --- No Change Allowed!  
  */
 package generated.cinemaService.proxies;
@@ -21,6 +21,4 @@ public interface ICShow extends Identifiable{
    public Boolean getReservable() ;
    public void setReservable(Boolean newReservable) throws PersistenceException;
    public Hall getHall() throws PersistenceException;
-   public Integer calculateTotalIncome();
-   public void setOpenForReservations();
 }

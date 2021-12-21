@@ -4,13 +4,15 @@
 package generated.cinemaService.commands.reservation;
 import generated.cinemaService.*;
 import commands.*;
-public class Reservation_delete_Command extends ObjectCommand<Reservation, Void>{
-   private static final long serialVersionUID = -1806675887L;
-   public Reservation_delete_Command(Reservation receiver){
+public class Reservation_setBooking_Command extends ObjectCommand<Reservation, Void>{
+   private static final long serialVersionUID = -1046141158L;
+   private Booking arg;
+   public Reservation_setBooking_Command(Reservation receiver, Booking arg){
       super(receiver);
+      this.arg = arg;
    }
    public void execute(){
-      try{Reservation.delete(receiver.getId());
+      try{this.receiver.setBooking(arg);
       }catch(Exception e){this.e = e;
       }finally{this.receiver.notifyObservers(this);}
    }

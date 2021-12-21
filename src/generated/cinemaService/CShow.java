@@ -1,4 +1,4 @@
-/**--- Generated at Wed Dec 01 21:14:10 CET 2021 
+/**--- Generated at Tue Dec 21 20:30:54 CET 2021 
  * --- Mode = Integrated Database 
  * --- Change only in Editable Sections!  
  * --- Do NOT touch section numbering!   
@@ -12,6 +12,8 @@ import db.executer.PersistenceExecuterFactory;
 import exceptions.ConstraintViolation;
 import generated.cinemaService.relationControl.Show_HallSupervisor;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import generated.cinemaService.proxies.IReservation;
 import generated.cinemaService.relationControl.Reservation_ShowSupervisor;
 import generated.cinemaService.relationControl.Show_Has_FilmSupervisor;
@@ -120,15 +122,14 @@ public class CShow extends Observable implements java.io.Serializable, ICShow
  * 
  */
    public Integer calculateTotalIncome(){
-      // TODO: Implement Operation calculateTotalIncome
-      return null;
+	   List<Reservation> bookedReservations = this.getReservations().stream().filter(r -> r.getBooking() != null).collect(Collectors.toList());
+	   return bookedReservations.stream().mapToInt(r -> r.getSeat().stream().mapToInt(seat -> seat.getRow().getCategory().getPrice().get()).sum()).sum();
    }
 /**
  * 
  */
    public void setOpenForReservations(){
-      // TODO: Implement Operation setOpenForReservations
-      return;
+      this.setReservable(true);
    }
 //90 ===== GENERATED: End of Your Operations ======
 }

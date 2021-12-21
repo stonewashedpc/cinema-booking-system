@@ -4,7 +4,7 @@
 package generated.cinemaService.commands.hall;
 import generated.cinemaService.*;
 import commands.*;
-public class Hall_addShow_Command extends ObjectCommand<Hall, Back>{
+public class Hall_addShow_Command extends ObjectCommand<Hall, CShow>{
    private static final long serialVersionUID = 2079343526L;
    private Film film;
    public Hall_addShow_Command(Hall receiver, Film film){

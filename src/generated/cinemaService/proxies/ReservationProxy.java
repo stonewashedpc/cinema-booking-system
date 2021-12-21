@@ -1,4 +1,4 @@
-/**--- Generated at Wed Dec 01 21:14:10 CET 2021 
+/**--- Generated at Tue Dec 21 20:30:53 CET 2021 
  * --- No Change Allowed!  
  */
 package generated.cinemaService.proxies;
@@ -8,12 +8,12 @@ import db.executer.*;
 import generated.cinemaService.Reservation;
 import java.sql.ResultSet;
 import java.util.Optional;
+import generated.cinemaService.Booking;
+import exceptions.ConstraintViolation;
 import generated.cinemaService.Seat;
 import java.util.List;
 import generated.cinemaService.User;
 import generated.cinemaService.relationControl.User_ReservationSupervisor;
-import generated.cinemaService.Booking;
-import generated.cinemaService.relationControl.Booking_For_ReservationSupervisor;
 import generated.cinemaService.CShow;
 import generated.cinemaService.relationControl.Reservation_ShowSupervisor;
 public class ReservationProxy implements IReservation{
@@ -49,10 +49,15 @@ public class ReservationProxy implements IReservation{
       try {
          rs = PersistenceExecuterFactory.getConfiguredFactory().getDBDMLExecuter().selectIdSpecifiedCursorAleadyAtFirstRow("Reservation", this.id);
          User user = User_ReservationSupervisor.getInstance().getUser(this).getTheObject();
-         Booking booking = Booking_For_ReservationSupervisor.getInstance().getBooking(this).getTheObject();
          CShow show = Reservation_ShowSupervisor.getInstance().getShow(this).getTheObject();
-         return Reservation.instantiateRuntimeCopy(this, user, booking, show);
+         return Reservation.instantiateRuntimeCopy(this, user, show);
       } catch (Exception e) {throw new PersistenceException(e.getMessage());}
+   }
+   public Optional<Booking> getBooking() throws PersistenceException{
+      return this.getTheObject().getBooking();
+   }
+   public void setBooking(Booking newBooking)throws ConstraintViolation, PersistenceException{
+      this.getTheObject().setBooking(newBooking);
    }
    public List<Seat> getSeat() throws PersistenceException{
       return this.getTheObject().getSeat();
@@ -65,9 +70,6 @@ public class ReservationProxy implements IReservation{
    }
    public User getUser() throws PersistenceException{
       return this.getTheObject().getUser();
-   }
-   public Booking getBooking() throws PersistenceException{
-      return this.getTheObject().getBooking();
    }
    public CShow getShow() throws PersistenceException{
       return this.getTheObject().getShow();

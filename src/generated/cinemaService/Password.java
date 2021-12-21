@@ -1,13 +1,10 @@
-/**--- Generated at Wed Dec 01 21:14:10 CET 2021 
+/**--- Generated at Tue Dec 21 20:30:53 CET 2021 
  * --- Mode = Integrated Database 
  * --- Change only in Editable Sections!  
  * --- Do NOT touch section numbering!   
  * --- Do NOT use automatic Eclipse Comment Formatting!   
  */
 package generated.cinemaService;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
-import java.security.spec.KeySpec;
 //10 ===== GENERATED:      Import Section =========
 import java.sql.SQLException;
 import db.connection.NoConnectionException;
@@ -28,6 +25,9 @@ import observation.Observable;
 import generated.cinemaService.proxies.IPassword;
 import db.executer.PersistenceException;
 //20 ===== Editable : Your Import Section =========
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.KeySpec;
 
 //25 ===== GENERATED:      Header Section =========
 public class Password extends Observable implements java.io.Serializable, IPassword

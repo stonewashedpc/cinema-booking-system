@@ -1,4 +1,4 @@
-/**--- Generated at Wed Dec 01 21:14:10 CET 2021 
+/**--- Generated at Tue Dec 21 20:30:53 CET 2021 
  * --- Mode = Integrated Database 
  * --- Change only in Editable Sections!  
  * --- Do NOT touch section numbering!   
@@ -23,6 +23,8 @@ import generated.cinemaService.proxies.*;
 import db.executer.PersistenceException;
 import java.util.List;
 import java.util.ArrayList;
+import generated.cinemaService.proxies.IBooking;
+import java.util.Optional;
 //20 ===== Editable : Your Import Section =========
 
 //25 ===== GENERATED:      Header Section =========
@@ -33,24 +35,22 @@ public class Reservation extends Observable implements java.io.Serializable, IRe
    //40 ===== Editable : Your Attribute Section ======
    
    //50 ===== GENERATED:      Constructor ============
-   private Reservation(Integer id, User user, Booking booking, CShow show, boolean objectOnly)
-   throws PersistenceException, ConstraintViolation{
+   private Reservation(Integer id, User user, CShow show, boolean objectOnly)
+   throws PersistenceException{
       super();
       this.setId(id);
       if(objectOnly) return;
       try{User_ReservationSupervisor.getInstance().add(user,this);}catch(ConstraintViolation cv){}// Ok, because consistency is guaranteed with this statement
-      if(booking.getReservation().isPresent()) throw new ConstraintViolation("Object cannot be instantiated, because " + booking+ " is full");
-      try{Booking_For_ReservationSupervisor.getInstance().set(booking,this);}catch(ConstraintViolation cv){}// Ok, because consistency is guaranteed with this statement
       try{Reservation_ShowSupervisor.getInstance().add(show,this);}catch(ConstraintViolation cv){}// Ok, because consistency is guaranteed with this statement
    }
-   public static Reservation createFresh(User user, Booking booking, CShow show)throws PersistenceException, ConstraintViolation{
+   public static Reservation createFresh(User user, CShow show)throws PersistenceException{
       db.executer.PersistenceDMLExecuter dmlExecuter = PersistenceExecuterFactory.getConfiguredFactory().getDBDMLExecuter();
       Integer id = dmlExecuter.getNextId();
       try{
          dmlExecuter.insertInto("Reservation", "id, typeKey", 
          id.toString() + ", " + PersistenceExecuterFactory.getConfiguredFactory().getTypeKeyManager().getTypeKey("CinemaService", "Reservation").toString());
       }catch(SQLException|NoConnectionException e){throw new PersistenceException(e.getMessage());}
-      Reservation me = new Reservation(id, user, booking, show, false);
+      Reservation me = new Reservation(id, user, show, false);
       CinemaService.getInstance().addReservationProxy(new ReservationProxy(me));
       return me;
    }
@@ -58,16 +58,18 @@ public class Reservation extends Observable implements java.io.Serializable, IRe
       if(!CinemaService.getInstance().getReservationCache().containsKey(id))throw new ConstraintViolation("Deletion not possible: " + "id " + id + " does not exist!");
       Reservation toBeDeleted = CinemaService.getInstance().getReservation(id);
       User_ReservationSupervisor.getInstance().getRelationData().removeAllPairsWithTarget(toBeDeleted);
-      Booking_For_ReservationSupervisor.getInstance().getRelationData().removeAllPairsWithTarget(toBeDeleted);
       Reservation_ShowSupervisor.getInstance().getRelationData().removeAllPairsWithTarget(toBeDeleted);
+      List<IBooking> targetsInBooking_For_Reservation = Booking_For_ReservationSupervisor.getInstance().getRelationData().getRelatedTargets(toBeDeleted);
+      if(targetsInBooking_For_Reservation.size()>0) throw new ConstraintViolation(" Deletion not possible: Object still contains other objects in Association Booking_For_Reservation");
+      Booking_For_ReservationSupervisor.getInstance().getRelationData().removeAllPairsWithSource(toBeDeleted);
       Reservation_SeatSupervisor.getInstance().getRelationData().removeAllPairsWithSource(toBeDeleted);
       CinemaService.getInstance().getReservationCache().remove(id);
       PersistenceExecuterFactory.getConfiguredFactory().getDBDMLExecuter().delete("Reservation", id);
    }
    /** Caution: A Call to this Method Requires to add any newly instantiated Object to its Cache! */
-   public static Reservation instantiateRuntimeCopy(ReservationProxy proxy, User user, Booking booking, CShow show)throws PersistenceException, ConstraintViolation{
+   public static Reservation instantiateRuntimeCopy(ReservationProxy proxy, User user, CShow show)throws PersistenceException{
       if(proxy.isObjectPresent()) return proxy.getTheObject();
-      return new Reservation(proxy.getId(), user, booking, show, true);
+      return new Reservation(proxy.getId(), user, show, true);
    }
    //60 ===== Editable : Your Constructors ===========
    
@@ -86,6 +88,13 @@ public class Reservation extends Observable implements java.io.Serializable, IRe
       return ((IReservation)o).getId().equals(this.getId());
    }
    public int hashCode() {return this.getId().hashCode();}
+   public Optional<Booking> getBooking() throws PersistenceException{
+      Optional<IBooking> opt = Booking_For_ReservationSupervisor.getInstance().getBooking(this);
+      return opt.isPresent() ? Optional.of(Booking_For_ReservationSupervisor.getInstance().getBooking(this).get().getTheObject()) : Optional.empty();
+   }
+   public void setBooking(Booking newBooking)throws ConstraintViolation, PersistenceException{
+      if(this.getBooking().isPresent()) Booking_For_ReservationSupervisor.getInstance().change(this, this.getBooking().get(), newBooking); else Booking_For_ReservationSupervisor.getInstance().set(this, newBooking);
+   }
    public List<Seat> getSeat() throws PersistenceException{
       List<Seat> result = new ArrayList<>();
       for (ISeat i : Reservation_SeatSupervisor.getInstance().getSeat(this)) result.add(i.getTheObject());
@@ -100,26 +109,28 @@ public class Reservation extends Observable implements java.io.Serializable, IRe
    public User getUser() throws PersistenceException{
       return User_ReservationSupervisor.getInstance().getUser(this).getTheObject();
    }
-   public Booking getBooking() throws PersistenceException{
-      return Booking_For_ReservationSupervisor.getInstance().getBooking(this).getTheObject();
-   }
    public CShow getShow() throws PersistenceException{
       return Reservation_ShowSupervisor.getInstance().getShow(this).getTheObject();
    }
    //80 ===== Editable : Your Operations =============
 /**
+ * @throws ConstraintViolation 
  * 
  */
-   public Booking book(){
-      // TODO: Implement Operation book
-      return null;
+   public Booking book() throws ConstraintViolation {
+      return Booking.createFresh(this);
    }
 /**
+ * @throws PersistenceException 
+ * @throws SQLException 
+ * @throws ConstraintViolation 
+ * @throws NoConnectionException 
  * 
  */
-   public void cancel(){
-      // TODO: Implement Operation cancel
-      return;
+   public void cancel() throws PersistenceException, ConstraintViolation, SQLException, NoConnectionException {
+	   if (this.getBooking().isPresent()) {
+		   Booking.delete(this.getBooking().get().getId());
+	}
    }
 //90 ===== GENERATED: End of Your Operations ======
 }

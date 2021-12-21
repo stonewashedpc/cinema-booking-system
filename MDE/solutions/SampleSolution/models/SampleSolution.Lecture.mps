@@ -407,14 +407,14 @@
       <node concept="2zC0rd" id="1MdcxidCk6n" role="3_Fx_Q">
         <property role="2zC0rY" value="1axOPyL0tmr/Containment" />
         <node concept="2zC6PY" id="1MdcxidCk6p" role="2zC0rK">
-          <property role="3_FBD6" value="booking" />
-          <ref role="2zC6PZ" node="1MdcxidCk8y" resolve="Booking" />
+          <property role="3_FBD6" value="reservation" />
+          <ref role="2zC6PZ" node="1MdcxidCjFL" resolve="Reservation" />
         </node>
       </node>
       <node concept="2zC27e" id="1MdcxidCk9P" role="3_Fx_f">
-        <property role="3_FBD6" value="reservation" />
+        <property role="3_FBD6" value="booking" />
         <property role="2zC27X" value="1axOPyL0vao/PartialMap" />
-        <ref role="3_FBDr" node="1MdcxidCjFL" resolve="Reservation" />
+        <ref role="3_FBDr" node="1MdcxidCk8y" resolve="Booking" />
       </node>
     </node>
     <node concept="3_FBDc" id="1MdcxidCkb2" role="3_Gd4Z">
@@ -486,6 +486,7 @@
     <node concept="3_FBDc" id="1MdcxidCkpc" role="3_Gd4Z">
       <property role="TrG5h" value="Row_Seat" />
       <node concept="2zC0rd" id="1MdcxidCk_C" role="3_Fx_Q">
+        <property role="2zC0rY" value="1axOPyL0tmr/Containment" />
         <node concept="2zC6PY" id="1MdcxidCk_E" role="2zC0rK">
           <property role="3_FBD6" value="row" />
           <ref role="2zC6PZ" node="1MdcxidCjK3" resolve="SeatingRow" />

@@ -1,4 +1,4 @@
-/**--- Generated at Wed Dec 01 21:14:10 CET 2021 
+/**--- Generated at Tue Dec 21 20:30:54 CET 2021 
  * --- Mode = Integrated Database 
  * --- Change only in Editable Sections!  
  * --- Do NOT touch section numbering!   
@@ -18,7 +18,7 @@ public class Booking_For_ReservationSupervisor
 {
    //30 ===== GENERATED:      Attribute Section ======
    private static Booking_For_ReservationSupervisor theInstance = new Booking_For_ReservationSupervisor();
-   private Relation<IBooking, IReservation> elements;
+   private Relation<IReservation, IBooking> elements;
    //40 ===== Editable : Your Attribute Section ======
    
    //50 ===== GENERATED:      Constructor ============
@@ -29,28 +29,28 @@ public class Booking_For_ReservationSupervisor
    
    //70 ===== GENERATED:      Feature Access =========
    public static Booking_For_ReservationSupervisor getInstance(){return theInstance;}
-   public Relation<IBooking, IReservation> getRelationData() {
+   public Relation<IReservation, IBooking> getRelationData() {
       return this.elements;
    }
-   public Optional<IReservation> getReservation(IBooking owner){
+   public Optional<IBooking> getBooking(IReservation owner){
       return (this.elements.getRelatedTargets(owner).size() == 0) ? Optional.empty() : Optional.of(this.elements.getRelatedTargets(owner).get(0));
    }
-   public void set(IBooking owner, IReservation target) throws ConstraintViolation, PersistenceException{
-      IReservation targetOld = this.getReservation(owner).isPresent() ? this.getReservation(owner).get() : null; IReservation targetNew = target;
+   public void set(IReservation owner, IBooking target) throws ConstraintViolation, PersistenceException{
+      IBooking targetOld = this.getBooking(owner).isPresent() ? this.getBooking(owner).get() : null; IBooking targetNew = target;
       this.elements.willViolateContainment(owner, targetOld, targetNew);
       this.elements.change(owner, targetOld, targetNew);
    }
    /** Used only by service class !! **/
-   public void setAlreadyPersistent(IBooking owner, IReservation target) throws ConstraintViolation{
-      IReservation targetOld = null; IReservation targetNew = target;
+   public void setAlreadyPersistent(IReservation owner, IBooking target) throws ConstraintViolation{
+      IBooking targetOld = null; IBooking targetNew = target;
       this.elements.willViolateContainment(owner, targetOld, targetNew);
       this.elements.setAlreadyPersistent(owner, targetNew);
    }
-   public void change(IBooking owner, IReservation targetOld, IReservation targetNew) throws ConstraintViolation, PersistenceException{
+   public void change(IReservation owner, IBooking targetOld, IBooking targetNew) throws ConstraintViolation, PersistenceException{
       this.elements.willViolateContainment(owner, targetOld, targetNew);
       this.elements.change(owner, targetOld, targetNew);
    }
-   public IBooking getBooking(IReservation target){
+   public IReservation getReservation(IBooking target){
       return this.elements.getRelatedSources(target).get(0);
    }
    //80 ===== Editable : Your Operations =============

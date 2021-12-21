@@ -1,4 +1,4 @@
-/**--- Generated at Wed Dec 01 21:14:10 CET 2021 
+/**--- Generated at Tue Dec 21 20:30:53 CET 2021 
  * --- No Change Allowed!  
  */
 package generated.cinemaService.proxies;
@@ -9,7 +9,7 @@ import generated.cinemaService.Booking;
 import java.sql.ResultSet;
 import java.util.Optional;
 import generated.cinemaService.Reservation;
-import exceptions.ConstraintViolation;
+import generated.cinemaService.relationControl.Booking_For_ReservationSupervisor;
 public class BookingProxy implements IBooking{
    private Integer id;
    private Optional<Booking> theObject;
@@ -42,13 +42,11 @@ public class BookingProxy implements IBooking{
       Optional<ResultSet> rs = Optional.empty();
       try {
          rs = PersistenceExecuterFactory.getConfiguredFactory().getDBDMLExecuter().selectIdSpecifiedCursorAleadyAtFirstRow("Booking", this.id);
-         return Booking.instantiateRuntimeCopy(this);
+         Reservation reservation = Booking_For_ReservationSupervisor.getInstance().getReservation(this).getTheObject();
+         return Booking.instantiateRuntimeCopy(this, reservation);
       } catch (Exception e) {throw new PersistenceException(e.getMessage());}
    }
-   public Optional<Reservation> getReservation() throws PersistenceException{
+   public Reservation getReservation() throws PersistenceException{
       return this.getTheObject().getReservation();
-   }
-   public void setReservation(Reservation newReservation)throws ConstraintViolation, PersistenceException{
-      this.getTheObject().setReservation(newReservation);
    }
 }

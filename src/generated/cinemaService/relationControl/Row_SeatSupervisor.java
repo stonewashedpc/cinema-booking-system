@@ -1,4 +1,4 @@
-/**--- Generated at Wed Dec 01 21:14:10 CET 2021 
+/**--- Generated at Tue Dec 21 20:30:54 CET 2021 
  * --- Mode = Integrated Database 
  * --- Change only in Editable Sections!  
  * --- Do NOT touch section numbering!   
@@ -37,18 +37,21 @@ public class Row_SeatSupervisor
    public List<ISeat> getSeats(ISeatingRow owner){
       return this.elements.getRelatedTargets(owner);
    }
-   public void add(ISeatingRow owner, ISeat target) throws PersistenceException{
+   public void add(ISeatingRow owner, ISeat target) throws ConstraintViolation, PersistenceException{
+      this.elements.willViolateInjectivity(owner, target);
       this.elements.addElement(owner,target);
    }
    /** Used only by service class !! **/
-   public void addAlreadyPersistent(ISeatingRow owner, ISeat target) throws PersistenceException{
+   public void addAlreadyPersistent(ISeatingRow owner, ISeat target) throws ConstraintViolation, PersistenceException{
+      this.elements.willViolateInjectivity(owner, target);
       this.elements.addElementAlreadyPersistent(owner,target);
    }
-   public boolean remove(ISeatingRow owner, ISeat target) throws PersistenceException{
+   public boolean remove(ISeatingRow owner, ISeat target) throws ConstraintViolation, PersistenceException{
+      this.elements.willViolateSurjectivity(owner, target);
       return this.elements.removeElement(owner,target);
    }
-   public Set<ISeatingRow> getRow(ISeat target){
-      return this.elements.getRelatedSources(target).stream().collect(Collectors.toSet());
+   public ISeatingRow getRow(ISeat target){
+      return this.elements.getRelatedSources(target).get(0);
    }
    //80 ===== Editable : Your Operations =============
 //90 ===== GENERATED: End of Your Operations ======

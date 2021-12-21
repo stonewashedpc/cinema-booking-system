@@ -1,4 +1,4 @@
-/**--- Generated at Wed Dec 01 21:14:10 CET 2021 
+/**--- Generated at Tue Dec 21 20:30:54 CET 2021 
  * --- No Change Allowed!  
  */
 package generated.cinemaService.proxies;
@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.util.Optional;
 import generated.cinemaService.Seat;
 import java.util.List;
+import exceptions.ConstraintViolation;
 import generated.cinemaService.Category;
 import generated.cinemaService.relationControl.Row_Has_CategorySupervisor;
 import generated.cinemaService.Hall;
@@ -55,10 +56,10 @@ public class SeatingRowProxy implements ISeatingRow{
    public List<Seat> getSeats() throws PersistenceException{
       return this.getTheObject().getSeats();
    }
-   public void addToSeats(Seat arg) throws PersistenceException{
+   public void addToSeats(Seat arg) throws ConstraintViolation, PersistenceException{
       this.getTheObject().addToSeats(arg);
    }
-   public boolean removeFromSeats(Seat arg) throws PersistenceException{
+   public boolean removeFromSeats(Seat arg) throws ConstraintViolation, PersistenceException{
       return this.getTheObject().removeFromSeats(arg);
    }
    public Category getCategory() throws PersistenceException{

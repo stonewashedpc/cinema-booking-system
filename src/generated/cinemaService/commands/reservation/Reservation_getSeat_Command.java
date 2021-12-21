@@ -1,4 +1,4 @@
-/**--- Generated at Wed Dec 01 21:14:10 CET 2021 
+/**--- Generated at Tue Dec 21 20:30:53 CET 2021 
  * --- No Change Allowed!  
  */
 package generated.cinemaService.commands.reservation;
@@ -6,7 +6,7 @@ import generated.cinemaService.*;
 import commands.*;
 import java.util.Collection;
 public class Reservation_getSeat_Command extends ObjectCommand<Reservation, Collection<Seat>>{
-   private static final long serialVersionUID = -833189768L;
+   private static final long serialVersionUID = -367484491L;
    public Reservation_getSeat_Command(Reservation receiver){
       super(receiver);
    }

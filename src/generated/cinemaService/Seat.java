@@ -1,4 +1,4 @@
-/**--- Generated at Wed Dec 01 21:14:10 CET 2021 
+/**--- Generated at Tue Dec 21 20:30:54 CET 2021 
  * --- Mode = Integrated Database 
  * --- Change only in Editable Sections!  
  * --- Do NOT touch section numbering!   
@@ -32,21 +32,22 @@ public class Seat extends Observable implements java.io.Serializable, ISeat
    //40 ===== Editable : Your Attribute Section ======
    
    //50 ===== GENERATED:      Constructor ============
-   private Seat(Integer id, Integer nr, boolean objectOnly)
-   {
+   private Seat(Integer id, Integer nr, SeatingRow row, boolean objectOnly)
+   throws PersistenceException{
       super();
       this.setId(id);
       this.nr = nr;
       if(objectOnly) return;
+      try{Row_SeatSupervisor.getInstance().add(row,this);}catch(ConstraintViolation cv){}// Ok, because consistency is guaranteed with this statement
    }
-   public static Seat createFresh(Integer nr)throws PersistenceException{
+   public static Seat createFresh(Integer nr, SeatingRow row)throws PersistenceException{
       db.executer.PersistenceDMLExecuter dmlExecuter = PersistenceExecuterFactory.getConfiguredFactory().getDBDMLExecuter();
       Integer id = dmlExecuter.getNextId();
       try{
          dmlExecuter.insertInto("Seat", "id, typeKey, nr", 
          id.toString() + ", " + PersistenceExecuterFactory.getConfiguredFactory().getTypeKeyManager().getTypeKey("CinemaService", "Seat").toString() + ", " + nr.toString());
       }catch(SQLException|NoConnectionException e){throw new PersistenceException(e.getMessage());}
-      Seat me = new Seat(id, nr, false);
+      Seat me = new Seat(id, nr, row, false);
       CinemaService.getInstance().addSeatProxy(new SeatProxy(me));
       return me;
    }
@@ -59,9 +60,9 @@ public class Seat extends Observable implements java.io.Serializable, ISeat
       PersistenceExecuterFactory.getConfiguredFactory().getDBDMLExecuter().delete("Seat", id);
    }
    /** Caution: A Call to this Method Requires to add any newly instantiated Object to its Cache! */
-   public static Seat instantiateRuntimeCopy(SeatProxy proxy, Integer nr){
+   public static Seat instantiateRuntimeCopy(SeatProxy proxy, Integer nr, SeatingRow row)throws PersistenceException{
       if(proxy.isObjectPresent()) return proxy.getTheObject();
-      return new Seat(proxy.getId(), nr, true);
+      return new Seat(proxy.getId(), nr, row, true);
    }
    //60 ===== Editable : Your Constructors ===========
    
@@ -88,10 +89,8 @@ public class Seat extends Observable implements java.io.Serializable, ISeat
       try{PersistenceExecuterFactory.getConfiguredFactory().getDBDMLExecuter().update("Seat", "nr", newNr.toString(), this.getId());
       }catch(SQLException|NoConnectionException e){throw new PersistenceException(e.getMessage());}
    }
-   public Set<SeatingRow> getRow() throws PersistenceException{
-      Set<SeatingRow> result = new HashSet<>();
-      for (ISeatingRow i : Row_SeatSupervisor.getInstance().getRow(this)) result.add(i.getTheObject());
-      return result;
+   public SeatingRow getRow() throws PersistenceException{
+      return Row_SeatSupervisor.getInstance().getRow(this).getTheObject();
    }
    //80 ===== Editable : Your Operations =============
 //90 ===== GENERATED: End of Your Operations ======

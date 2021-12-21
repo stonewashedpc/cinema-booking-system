@@ -1,4 +1,4 @@
-/**--- Generated at Wed Dec 01 21:14:10 CET 2021 
+/**--- Generated at Tue Dec 21 20:30:54 CET 2021 
  * --- Mode = Integrated Database 
  * --- Change only in Editable Sections!  
  * --- Do NOT touch section numbering!   
@@ -22,6 +22,7 @@ import generated.cinemaService.proxies.*;
 import db.executer.PersistenceException;
 import java.util.List;
 import java.util.ArrayList;
+import generated.cinemaService.proxies.ISeat;
 //20 ===== Editable : Your Import Section =========
 
 //25 ===== GENERATED:      Header Section =========
@@ -57,6 +58,8 @@ public class SeatingRow extends Observable implements java.io.Serializable, ISea
       if(!CinemaService.getInstance().getSeatingRowCache().containsKey(id))throw new ConstraintViolation("Deletion not possible: " + "id " + id + " does not exist!");
       SeatingRow toBeDeleted = CinemaService.getInstance().getSeatingRow(id);
       Hall_RowSupervisor.getInstance().getRelationData().removeAllPairsWithTarget(toBeDeleted);
+      List<ISeat> targetsInRow_Seat = Row_SeatSupervisor.getInstance().getRelationData().getRelatedTargets(toBeDeleted);
+      if(targetsInRow_Seat.size()>0) throw new ConstraintViolation(" Deletion not possible: Object still contains other objects in Association Row_Seat");
       Row_SeatSupervisor.getInstance().getRelationData().removeAllPairsWithSource(toBeDeleted);
       Row_Has_CategorySupervisor.getInstance().getRelationData().removeAllPairsWithSource(toBeDeleted);
       CinemaService.getInstance().getSeatingRowCache().remove(id);
@@ -89,10 +92,10 @@ public class SeatingRow extends Observable implements java.io.Serializable, ISea
       for (ISeat i : Row_SeatSupervisor.getInstance().getSeats(this)) result.add(i.getTheObject());
       return result;
    }
-   public void addToSeats(Seat arg) throws PersistenceException{
+   public void addToSeats(Seat arg) throws ConstraintViolation, PersistenceException{
       Row_SeatSupervisor.getInstance().add(this, arg);
    }
-   public boolean removeFromSeats(Seat arg) throws PersistenceException{
+   public boolean removeFromSeats(Seat arg) throws ConstraintViolation, PersistenceException{
       return Row_SeatSupervisor.getInstance().remove(this, arg);
    }
    public Category getCategory() throws PersistenceException{

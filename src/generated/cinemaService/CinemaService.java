@@ -1,4 +1,4 @@
-/**--- Generated at Wed Dec 01 21:14:10 CET 2021 
+/**--- Generated at Tue Dec 21 20:30:53 CET 2021 
  * --- Mode = Integrated Database 
  * --- Change only in Editable Sections!  
  * --- Do NOT touch section numbering!   
@@ -17,11 +17,13 @@ import observation.Observable;
 import db.executer.PersistenceExecuterFactory;
 import db.executer.PersistenceDMLExecuter;
 import db.connection.DBConnectionData;
+import db.connection.NoConnectionException;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.KeySpec;
+import java.sql.SQLException;
 import java.util.Base64;
 import java.util.Collection;
 import java.util.Iterator;
@@ -85,8 +87,8 @@ public class CinemaService extends Observable{
          try{this.addUser_ReservationElement(pair.getP1(), className1, pair.getP2(), className2);}catch(ConstraintViolation cv){throw new PersistenceException(cv.getMessage());}
       }
       for(IntegerPair pair : new InitialRelationLoader("Booking_For_Reservation").perform().values()){
-         String className1 = this.dmlExecuter.getNameOfConcreteType(pair.getP1(), "Booking", "CinemaService");
-         String className2 = this.dmlExecuter.getNameOfConcreteType(pair.getP2(), "Reservation", "CinemaService");
+         String className1 = this.dmlExecuter.getNameOfConcreteType(pair.getP1(), "Reservation", "CinemaService");
+         String className2 = this.dmlExecuter.getNameOfConcreteType(pair.getP2(), "Booking", "CinemaService");
          try{this.addBooking_For_ReservationElement(pair.getP1(), className1, pair.getP2(), className2);}catch(ConstraintViolation cv){throw new PersistenceException(cv.getMessage());}
       }
       for(IntegerPair pair : new InitialRelationLoader("Reservation_Show").perform().values()){
@@ -145,9 +147,9 @@ public class CinemaService extends Observable{
       User_ReservationSupervisor.getInstance().addAlreadyPersistent(proxy1, proxy2);
    }
    private void addBooking_For_ReservationElement(Integer id1, String className1, Integer id2, String className2) throws ConstraintViolation, PersistenceException{
-      IBooking proxy1 = null; IReservation proxy2 = null; 
-      if(className2.equals("Reservation"))  proxy2 = this.reservationCache.get(id2);
-      if(className1.equals("Booking"))  proxy1 = this.bookingCache.get(id1);
+      IReservation proxy1 = null; IBooking proxy2 = null; 
+      if(className1.equals("Reservation"))  proxy1 = this.reservationCache.get(id1);
+      if(className2.equals("Booking"))  proxy2 = this.bookingCache.get(id2);
       Booking_For_ReservationSupervisor.getInstance().setAlreadyPersistent(proxy1, proxy2);
    }
    private void addReservation_ShowElement(Integer id1, String className1, Integer id2, String className2) throws ConstraintViolation, PersistenceException{
@@ -283,8 +285,7 @@ public class CinemaService extends Observable{
  * 
  */
    public Hall addHall(String name){
-      // TODO: Implement Operation addHall
-      return null;
+      return Hall.createFresh(name);
    }
 /**
  * 
@@ -310,36 +311,55 @@ public class CinemaService extends Observable{
  * 
  */
    public void unregister(User user){
-      // TODO: Implement Operation unregister
-      return;
+      try {
+		User.delete(user.getId());
+	} catch (ConstraintViolation | SQLException | NoConnectionException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
    }
 /**
  * 
  */
    public Film addFilm(String name){
-      // TODO: Implement Operation addFilm
-      return null;
+      return Film.createFresh(name);
    }
 /**
  * 
  */
    public void removeHall(Hall hall){
-      // TODO: Implement Operation removeHall
-      return;
+      try {
+		Hall.delete(hall.getId());
+	} catch (ConstraintViolation | SQLException | NoConnectionException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
    }
 /**
  * 
  */
    public Reservation reserve(User user, Seat seat, CShow show){
-      // TODO: Implement Operation reserve
-      return null;
+	   // TODO Handle double reservation
+      try {
+		Reservation newReservation = Reservation.createFresh(user, show);
+		newReservation.addToSeat(seat);
+		return newReservation;
+	} catch (PersistenceException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+      return null; // TODO Ignore case for now
    }
 /**
  * 
  */
    public void removeFilm(Film film){
-      // TODO: Implement Operation removeFilm
-      return;
+      try {
+		Film.delete(film.getId());
+	} catch (ConstraintViolation | SQLException | NoConnectionException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
    }
 /**
  * 

@@ -1,4 +1,4 @@
-/**--- Generated at Wed Dec 01 21:14:10 CET 2021 
+/**--- Generated at Tue Dec 21 20:30:54 CET 2021 
  * --- Mode = Integrated Database 
  * --- Change only in Editable Sections!  
  * --- Do NOT touch section numbering!   
@@ -118,18 +118,18 @@ public class Hall extends Observable implements java.io.Serializable, IHall
    }
    //80 ===== Editable : Your Operations =============
 /**
+ * @throws ConstraintViolation 
+ * @throws PersistenceException 
  * 
  */
-   public void removeShow(CShow show){
-      // TODO: Implement Operation removeShow
-      return;
+   public void removeShow(CShow show) throws PersistenceException, ConstraintViolation{
+      this.removeFromShow(show);
    }
 /**
  * 
  */
-   public Back addShow(Film film){
-      // TODO: Implement Operation addShow
-      return null;
+   public CShow addShow(Film film){
+      return CShow.createFresh(film, false, this);
    }
 //90 ===== GENERATED: End of Your Operations ======
 }
