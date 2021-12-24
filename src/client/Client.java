@@ -3,6 +3,7 @@ package client;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.Optional;
 import java.util.concurrent.Semaphore;
 
 import commands.Command;
@@ -16,12 +17,14 @@ public class Client {
 	private ObjectOutputStream out;
 	private ObjectInputStream in;
 	private ClientState clientState;
+	private Optional<String> authToken;
 
 	public Client(String ip, Integer port) {
 		this.ip = ip;
 		this.port = port;
 		this.mutex = new Semaphore(1);
 		this.clientState = new InitialState(this);
+		this.authToken = Optional.empty();
 	}
 	
 	public void connect() throws ClientException {
@@ -29,6 +32,9 @@ public class Client {
 	}
 
 	public <R> Command<R> executeCommand(Command<R> command) throws ClientException {
+		if (this.authToken.isPresent()) {
+			command.setAuthToken(authToken.get());
+		} else command.setAuthToken(null);
 		return this.clientState.executeCommand(command);
 	}
 
@@ -87,6 +93,9 @@ public class Client {
 	public void setPort(Integer port) {
 		this.port = port;
 	}
-	
+
+	public void setAuthToken(String authToken) {
+		this.authToken = Optional.of(authToken);
+	}
 	
 }
