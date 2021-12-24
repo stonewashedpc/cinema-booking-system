@@ -27,6 +27,10 @@ public class ServerMain {
 		Middle.getInstance().setPrice(899);
 		Back.getInstance().setPrice(1299);
 		
+		Parterre.getInstance().setName("Parkett");
+		Middle.getInstance().setName("Mitte");
+		Back.getInstance().setName("Hinten");
+		
 //		CinemaService.getInstance().register("Erika Musterfrau", "1234512345");
 //		
 //		Film film1 = CinemaService.getInstance().addFilm("Bob der Baumeister");
@@ -52,6 +56,7 @@ public class ServerMain {
 //		CShow show1 = hall1.addShow(film1);
 //		CShow show2 = hall1.addShow(film2);
 //		show1.setOpenForReservations();
+//		show2.setOpenForReservations();
 //		
 //		CinemaService.getInstance().reserve(CinemaService.getInstance().getUserByUsername("Erika Musterfrau"), seat1, show1);
 //		CinemaService.getInstance().reserve(CinemaService.getInstance().getUserByUsername("Erika Musterfrau"), seat2, show1);
