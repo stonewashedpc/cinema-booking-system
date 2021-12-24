@@ -1,0 +1,52 @@
+JFDML JFormDesigner: "7.0.4.0.360" Java: "11.0.2" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq {space :::p, par l {seq l {par l {comp label1::l:p::p, comp label2::l:p::p}, space u:::p, par l {comp passwordField:::::x, comp usernameField:::::x}, space :::p}, seq l {space :p:143:p, comp loginButton::::155:x, space :p:155:p}, comp logLabel::l::453:x}}}"
+			"$verticalGroup": "par l {seq l {space :::p, par b {comp label1::b:p::p, comp usernameField::b:p::p}, space :::p, par b {comp label2::b:p::p, comp passwordField::b:p::p}, space u:::p, comp loginButton:::p::p, space ::7:x, comp logLabel:::p::p, space :::p}}"
+		} ) {
+			name: "this"
+			"title": "CinemaBookingClient - Login"
+			"defaultCloseOperation": 3
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "usernameField"
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "Username"
+			} )
+			add( new FormComponent( "javax.swing.JPasswordField" ) {
+				name: "passwordField"
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"text": "Password"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "loginButton"
+				"text": "Login"
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "logLabel"
+				"text": "Log"
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 55, 30 )
+			"size": new java.awt.Dimension( 465, 155 )
+		} )
+	}
+}

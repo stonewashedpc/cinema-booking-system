@@ -1,0 +1,57 @@
+JFDML JFormDesigner: "7.0.4.0.360" Java: "11.0.2" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq {space :::p, par l {comp scrollPane1::::1033:x, comp logLabel::l::1033:x}, space :::p}}"
+			"$verticalGroup": "par l {seq l {space :::p, comp scrollPane1:::p::p, space ::15:x, comp logLabel:::p::p, space :::p}}"
+		} ) {
+			name: "this"
+			"defaultCloseOperation": 3
+			"title": "CinemaBookingClient - Customer"
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane1"
+				add( new FormComponent( "javax.swing.JTable" ) {
+					name: "listViewShows"
+					auxiliary() {
+						"JavaCodeGenerator.variableGetter": true
+					}
+				} )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "logLabel"
+				"text": "Log"
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 80, 50 )
+			"size": new java.awt.Dimension( 1055, 510 )
+		} )
+		add( new FormNonVisual( "org.jdesktop.observablecollections.ObservableList" ) {
+			name: "observableListShows"
+			auxiliary() {
+				"JavaCodeGenerator.variableGetter": true
+				"JavaCodeGenerator.typeParameters": "CShowCell"
+			}
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 1210, 80 )
+		} )
+		addBindingGroup( new FormBindingGroup( class org.jdesktop.beansbinding.BindingGroup ) {
+			"name": "bindingGroup"
+			addBinding( new FormBinding( "observableListShows", null, "listViewShows", "elements" ) {
+				"subBindings": new com.jformdesigner.model.FormBinding[ new FormBinding( null, "hallName", null, null ) {
+					"columnName": "Saal"
+					"columnClass": "java.lang.String"
+					"editable": false
+				}, new FormBinding( null, "filmName", null, null ) {
+					"columnName": "Film"
+					"columnClass": "java.lang.String"
+					"editable": false
+				} ]
+			} )
+		} )
+	}
+}

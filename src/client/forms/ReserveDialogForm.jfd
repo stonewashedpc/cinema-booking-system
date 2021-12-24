@@ -1,0 +1,138 @@
+JFDML JFormDesigner: "7.0.4.0.360" Java: "11.0.2" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JDialog", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+			name: "this"
+			"title": "Reservieren"
+			"defaultCloseOperation": 2
+			"modal": true
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+				name: "dialogPane"
+				"border": new javax.swing.border.EmptyBorder( 12, 12, 12, 12 )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+					"$horizontalGroup": "par l {comp scrollPane1::l::669:x, comp separator1::l::669:x, comp separator2::l::669:x, seq {par l {comp label1:::p::p, comp label2:::p::p}, space u:::p, par l:::p {comp labelPrice::::74:x, comp labelSeatCount::::74:x}, space :0:497:x}}"
+					"$verticalGroup": "par l {seq l {comp separator2:::p::p, space :::p, comp scrollPane1:::p:140:p, space u:::p, comp separator1:::p::p, space :::p, par l {comp label1:::p::p, comp labelSeatCount:::p::p}, space u:::p, par l {comp label2:::p::p, comp labelPrice:::p::p}, space ::9:x}}"
+				} ) {
+					name: "contentPanel"
+					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+						name: "scrollPane1"
+						add( new FormComponent( "javax.swing.JTable" ) {
+							name: "listViewSeats"
+							auxiliary() {
+								"JavaCodeGenerator.variableGetter": true
+							}
+						} )
+					} )
+					add( new FormComponent( "com.jformdesigner.designer.wrapper.JGoodiesFormsSeparator" ) {
+						name: "separator1"
+						"text": "Ihre Reservierung"
+					} )
+					add( new FormComponent( "com.jformdesigner.designer.wrapper.JGoodiesFormsSeparator" ) {
+						name: "separator2"
+						"text": "Sitzplätze"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label1"
+						"text": "Anzahl Sitzplätze:"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label2"
+						"text": "Preis:"
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "labelSeatCount"
+						"text": "0"
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+						}
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "labelPrice"
+						"text": "0"
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+						}
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "Center"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
+					"$columnSpecs": "0:1.0, 80, 80"
+					"$rowSpecs": "0"
+					"$hGap": 5
+					"$vGap": 5
+				} ) {
+					name: "buttonBar"
+					"border": new javax.swing.border.EmptyBorder( 12, 0, 0, 0 )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "logLabel"
+						"text": "Log"
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+						}
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "buttonReserve"
+						"text": "Reservieren"
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+						}
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridx": 1
+						"gridy": 0
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "buttonCancel"
+						"text": "Abbrechen"
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+						}
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridx": 2
+						"gridy": 0
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "South"
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "Center"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 695, 330 )
+		} )
+		add( new FormNonVisual( "org.jdesktop.observablecollections.ObservableList" ) {
+			name: "observableListSeats"
+			auxiliary() {
+				"JavaCodeGenerator.typeParameters": "SeatCell"
+				"JavaCodeGenerator.variableGetter": true
+			}
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 815, 70 )
+		} )
+		addBindingGroup( new FormBindingGroup( class org.jdesktop.beansbinding.BindingGroup ) {
+			"name": "bindingGroup"
+			addBinding( new FormBinding( "observableListSeats", null, "listViewSeats", "elements" ) {
+				"subBindings": new com.jformdesigner.model.FormBinding[ new FormBinding( null, "categoryName", null, null ) {
+					"columnName": "Kategorie"
+					"columnClass": "java.lang.String"
+					"editable": false
+				}, new FormBinding( null, "row.nr", null, null ) {
+					"columnName": "Reihennummer"
+					"columnClass": "java.lang.Integer"
+					"editable": false
+				}, new FormBinding( null, "object.nr", null, null ) {
+					"columnName": "Sitznummer"
+					"columnClass": "java.lang.Integer"
+					"editable": false
+				}, new FormBinding( null, "${((price - (price % 100)) / 100) + (price % 100) / 100} Eur", null, null ) {
+					"columnName": "Preis"
+					"columnClass": "java.lang.String"
+					"editable": false
+				} ]
+			} )
+		} )
+	}
+}
