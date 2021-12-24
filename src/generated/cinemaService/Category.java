@@ -1,4 +1,4 @@
-/**--- Generated at Tue Dec 21 20:30:54 CET 2021 
+/**--- Generated at Fri Dec 24 00:10:00 CET 2021 
  * --- Mode = Integrated Database 
  * --- Change only in Editable Sections!  
  * --- Do NOT touch section numbering!   
@@ -22,14 +22,15 @@ public abstract class Category extends Observable implements java.io.Serializabl
    //30 ===== GENERATED:      Attribute Section ======
    private Integer id;
    private Optional<Integer> price;
+   private Optional<String> name;
    //40 ===== Editable : Your Attribute Section ======
-   
    //50 ===== GENERATED:      Constructor ============
-   public Category(Integer id, Optional<Integer> price, boolean objectOnly)
+   public Category(Integer id, Optional<Integer> price, Optional<String> name, boolean objectOnly)
    {
       super();
       this.setId(id);
       this.price = price;
+      this.name = name;
       if(objectOnly) return;
    }
    //60 ===== Editable : Your Constructors ===========
@@ -55,6 +56,14 @@ public abstract class Category extends Observable implements java.io.Serializabl
    public void setPrice(Integer newPrice) throws PersistenceException{
       this.price = Optional.of(newPrice);
       try{PersistenceExecuterFactory.getConfiguredFactory().getDBDMLExecuter().update("Category", "price", newPrice.toString(), this.getId());
+      }catch(SQLException|NoConnectionException e){throw new PersistenceException(e.getMessage());}
+   }
+   public Optional<String> getName() {
+      return this.name;
+   }
+   public void setName(String newName) throws PersistenceException{
+      this.name = Optional.of(newName);
+      try{PersistenceExecuterFactory.getConfiguredFactory().getDBDMLExecuter().update("Category", "name", "'" + newName + "'", this.getId());
       }catch(SQLException|NoConnectionException e){throw new PersistenceException(e.getMessage());}
    }
    //80 ===== Editable : Your Operations =============

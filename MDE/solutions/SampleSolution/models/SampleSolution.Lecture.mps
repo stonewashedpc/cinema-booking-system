@@ -19,6 +19,7 @@
       </concept>
       <concept id="6576532306767764478" name="MetaModel.structure.AttributeConnector" flags="ng" index="2_wlaR" />
       <concept id="1967123554055742618" name="MetaModel.structure.TypeAdapter" flags="ng" index="BxOjD">
+        <property id="1967123554057163781" name="isMany" index="BFjhQ" />
         <reference id="1967123554055742621" name="type" index="BxOjI" />
       </concept>
       <concept id="3845874433725122187" name="MetaModel.structure.Unidirectional" flags="ng" index="3_FwNw">
@@ -86,6 +87,13 @@
   </node>
   <node concept="3_Gd4U" id="1MdcxidCjBV">
     <property role="TrG5h" value="CinemaService" />
+    <node concept="3_Gd5r" id="23wyr667PC3" role="2_wlaX">
+      <property role="3_Gd5q" value="getReservableShows" />
+      <node concept="BxOjD" id="23wyr667PCT" role="BBx3f">
+        <property role="BFjhQ" value="true" />
+        <ref role="BxOjI" node="1MdcxidCjHo" resolve="CShow" />
+      </node>
+    </node>
     <node concept="3_Gd5r" id="6eCPIMgbFTY" role="2_wlaX">
       <property role="3_Gd5q" value="getUserByUsername" />
       <node concept="3_Gf45" id="6eCPIMgbFUB" role="3_Gf4o">
@@ -275,6 +283,13 @@
     </node>
     <node concept="3_Gd56" id="1MdcxidCjHo" role="3_Gd4Z">
       <property role="TrG5h" value="CShow" />
+      <node concept="3_Gd5r" id="4rIA0p2IBuy" role="3_Gd4E">
+        <property role="3_Gd5q" value="getReservableSeats" />
+        <node concept="BxOjD" id="4rIA0p2IBuB" role="BBx3f">
+          <property role="BFjhQ" value="true" />
+          <ref role="BxOjI" node="1MdcxidCjLS" resolve="Seat" />
+        </node>
+      </node>
       <node concept="3_Gd5r" id="1BJ23tM9J9m" role="3_Gd4E">
         <property role="3_Gd5q" value="setOpenForReservations" />
       </node>
@@ -326,6 +341,18 @@
     </node>
     <node concept="3_Gd56" id="1MdcxidCjK3" role="3_Gd4Z">
       <property role="TrG5h" value="SeatingRow" />
+      <node concept="3_Gd5r" id="4rIA0p2IBuK" role="3_Gd4E">
+        <property role="3_Gd5q" value="getCategoryName" />
+        <node concept="BxOjD" id="4rIA0p2IBuR" role="BBx3f">
+          <ref role="BxOjI" node="5H4ykBYMXjQ" resolve="String" />
+        </node>
+      </node>
+      <node concept="3_Gd5r" id="4rIA0p2IBuD" role="3_Gd4E">
+        <property role="3_Gd5q" value="getPrice" />
+        <node concept="BxOjD" id="4rIA0p2IBuI" role="BBx3f">
+          <ref role="BxOjI" node="5H4ykBYMXjV" resolve="Integer" />
+        </node>
+      </node>
       <node concept="2_wlaR" id="1MdcxidCjKF" role="2_wlle">
         <property role="3_FBD6" value="nr" />
         <ref role="3_FBDr" node="5H4ykBYMXjV" resolve="Integer" />
@@ -353,6 +380,11 @@
         <property role="3_FBD6" value="price" />
         <property role="2zC27X" value="1axOPyL0vao/PartialMap" />
         <ref role="3_FBDr" node="5H4ykBYMXjV" resolve="Integer" />
+      </node>
+      <node concept="2_wlaR" id="4rIA0p2IBuT" role="2_wlle">
+        <property role="3_FBD6" value="name" />
+        <property role="2zC27X" value="1axOPyL0vao/PartialMap" />
+        <ref role="3_FBDr" node="5H4ykBYMXjQ" resolve="String" />
       </node>
     </node>
     <node concept="3_Gd56" id="1MdcxidCjQV" role="3_Gd4Z">

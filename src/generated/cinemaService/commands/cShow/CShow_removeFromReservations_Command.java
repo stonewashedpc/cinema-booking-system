@@ -1,11 +1,11 @@
-/**--- Generated at Tue Dec 21 20:30:54 CET 2021 
+/**--- Generated at Fri Dec 24 00:10:00 CET 2021 
  * --- No Change Allowed!  
  */
 package generated.cinemaService.commands.cShow;
 import generated.cinemaService.*;
 import commands.*;
 public class CShow_removeFromReservations_Command extends ObjectCommand<CShow, Boolean>{
-   private static final long serialVersionUID = 242176282L;
+   private static final long serialVersionUID = -471650324L;
    private Reservation arg;
    public CShow_removeFromReservations_Command(CShow receiver, Reservation arg){
       super(receiver);

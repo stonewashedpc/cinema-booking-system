@@ -1,4 +1,4 @@
-/**--- Generated at Tue Dec 21 20:30:54 CET 2021 
+/**--- Generated at Fri Dec 24 00:10:00 CET 2021 
  * --- No Change Allowed!  
  */
 package generated.cinemaService.proxies;
@@ -10,4 +10,6 @@ public interface ICategory extends Identifiable{
    public Category getTheObject();
    public Optional<Integer> getPrice() ;
    public void setPrice(Integer newPrice) throws PersistenceException;
+   public Optional<String> getName() ;
+   public void setName(String newName) throws PersistenceException;
 }

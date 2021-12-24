@@ -1,4 +1,4 @@
-/**--- Generated at Tue Dec 21 20:30:53 CET 2021 
+/**--- Generated at Fri Dec 24 00:10:00 CET 2021 
  * --- Mode = Integrated Database 
  * --- Change only in Editable Sections!  
  * --- Do NOT touch section numbering!   
@@ -28,6 +28,7 @@ import java.util.Base64;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
@@ -390,5 +391,11 @@ public class CinemaService extends Observable{
   public void logout(String authToken)throws AuthenticationException{
      AuthenticationService.getInstance().logoutUser(authToken);
   }
+/**
+ * 
+ */
+   public Collection<CShow> getReservableShows(){
+      return this.getCShowCache().values().stream().filter(c -> c.getReservable()).map(c -> c.getTheObject()).collect(Collectors.toList());
+   }
 //90 ===== GENERATED: End of Your Operations ======
 }

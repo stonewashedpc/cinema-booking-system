@@ -1,4 +1,4 @@
-/**--- Generated at Tue Dec 21 20:30:54 CET 2021 
+/**--- Generated at Fri Dec 24 00:10:00 CET 2021 
  * --- Mode = Integrated Database 
  * --- Change only in Editable Sections!  
  * --- Do NOT touch section numbering!   
@@ -116,5 +116,21 @@ public class SeatingRow extends Observable implements java.io.Serializable, ISea
       return Hall_RowSupervisor.getInstance().getHall(this).getTheObject();
    }
    //80 ===== Editable : Your Operations =============
+/**
+ * 
+ */
+   public Integer getPrice(){
+	   if (this.getCategory().getPrice().isPresent()) {
+		   return this.getCategory().getPrice().get();
+	   } else return 0; // Return 0 if no price is set
+   }
+/**
+ * 
+ */
+   public String getCategoryName(){
+	   if (this.getCategory().getName().isPresent()) {
+		   return this.getCategory().getName().get();
+	   } else return "Unnamed Category"; // Return "Unnamed Category" if no name is set
+   }
 //90 ===== GENERATED: End of Your Operations ======
 }

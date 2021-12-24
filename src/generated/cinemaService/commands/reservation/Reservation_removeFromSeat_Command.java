@@ -1,11 +1,11 @@
-/**--- Generated at Tue Dec 21 20:30:53 CET 2021 
+/**--- Generated at Fri Dec 24 00:10:00 CET 2021 
  * --- No Change Allowed!  
  */
 package generated.cinemaService.commands.reservation;
 import generated.cinemaService.*;
 import commands.*;
 public class Reservation_removeFromSeat_Command extends ObjectCommand<Reservation, Boolean>{
-   private static final long serialVersionUID = -1575646611L;
+   private static final long serialVersionUID = -2135441689L;
    private Seat arg;
    public Reservation_removeFromSeat_Command(Reservation receiver, Seat arg){
       super(receiver);

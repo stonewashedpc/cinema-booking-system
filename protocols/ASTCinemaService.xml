@@ -189,12 +189,36 @@
       </attributes>
       <operations>
         <metaModel.JOperation>
-          <techName>setOpenForReservations</techName>
+          <techName>getReservableSeats</techName>
           <readableName></readableName>
           <documentation></documentation>
           <abstrakt>false</abstrakt>
           <formalParameters/>
-          <returnType reference="../../../../metaModel.JClass/operations/metaModel.JOperation/returnType"/>
+          <returnType>
+            <value class="metaModel.JTypeAdapter">
+              <type class="metaModel.JClassLink">
+                <name>Seat</name>
+                <state class="metaModel.JClassLinkStateLocallyAssigned">
+                  <target>
+                    <name>Seat</name>
+                    <singleton>false</singleton>
+                    <attributes>
+                      <metaModel.JAttributeConnector>
+                        <role>nr</role>
+                        <targetType class="metaModel.primitives.JInteger" defined-in="metaModel.JTargetConnector">
+                          <name>Integer</name>
+                        </targetType>
+                        <constraint class="metaModel.enumerations.JTotalMap" reference="../../../../../../../../../../../metaModel.JClass/attributes/metaModel.JAttributeConnector/constraint"/>
+                        <targetType class="metaModel.primitives.JInteger" reference="../targetType"/>
+                      </metaModel.JAttributeConnector>
+                    </attributes>
+                    <operations/>
+                  </target>
+                </state>
+              </type>
+              <isMany>true</isMany>
+            </value>
+          </returnType>
           <exception reference="../../../../metaModel.JClass/operations/metaModel.JOperation/returnType"/>
         </metaModel.JOperation>
         <metaModel.JOperation>
@@ -205,12 +229,19 @@
           <formalParameters/>
           <returnType>
             <value class="metaModel.JTypeAdapter">
-              <type class="metaModel.primitives.JInteger">
-                <name>Integer</name>
-              </type>
+              <type class="metaModel.primitives.JInteger" reference="../../../../metaModel.JOperation/returnType/value/type/state/target/attributes/metaModel.JAttributeConnector/targetType"/>
               <isMany>false</isMany>
             </value>
           </returnType>
+          <exception reference="../../../../metaModel.JClass/operations/metaModel.JOperation/returnType"/>
+        </metaModel.JOperation>
+        <metaModel.JOperation>
+          <techName>setOpenForReservations</techName>
+          <readableName></readableName>
+          <documentation></documentation>
+          <abstrakt>false</abstrakt>
+          <formalParameters/>
+          <returnType reference="../../../../metaModel.JClass/operations/metaModel.JOperation/returnType"/>
           <exception reference="../../../../metaModel.JClass/operations/metaModel.JOperation/returnType"/>
         </metaModel.JOperation>
       </operations>
@@ -240,6 +271,28 @@
         </metaModel.JAttributeConnector>
       </attributes>
       <operations>
+        <metaModel.JOperation>
+          <techName>removeShow</techName>
+          <readableName></readableName>
+          <documentation></documentation>
+          <abstrakt>false</abstrakt>
+          <formalParameters>
+            <metaModel.JParameter>
+              <name>show</name>
+              <type>
+                <type class="metaModel.JClassLink">
+                  <name>CShow</name>
+                  <state class="metaModel.JClassLinkStateLocallyAssigned">
+                    <target reference="../../../../../../../../../metaModel.JClass[8]"/>
+                  </state>
+                </type>
+                <isMany>false</isMany>
+              </type>
+            </metaModel.JParameter>
+          </formalParameters>
+          <returnType reference="../../../../metaModel.JClass/operations/metaModel.JOperation/returnType"/>
+          <exception reference="../../../../metaModel.JClass/operations/metaModel.JOperation/returnType"/>
+        </metaModel.JOperation>
         <metaModel.JOperation>
           <techName>addShow</techName>
           <readableName></readableName>
@@ -277,28 +330,6 @@
           </returnType>
           <exception reference="../../../../metaModel.JClass/operations/metaModel.JOperation/returnType"/>
         </metaModel.JOperation>
-        <metaModel.JOperation>
-          <techName>removeShow</techName>
-          <readableName></readableName>
-          <documentation></documentation>
-          <abstrakt>false</abstrakt>
-          <formalParameters>
-            <metaModel.JParameter>
-              <name>show</name>
-              <type>
-                <type class="metaModel.JClassLink">
-                  <name>CShow</name>
-                  <state class="metaModel.JClassLinkStateLocallyAssigned">
-                    <target reference="../../../../../../../../../metaModel.JClass[8]"/>
-                  </state>
-                </type>
-                <isMany>false</isMany>
-              </type>
-            </metaModel.JParameter>
-          </formalParameters>
-          <returnType reference="../../../../metaModel.JClass/operations/metaModel.JOperation/returnType"/>
-          <exception reference="../../../../metaModel.JClass/operations/metaModel.JOperation/returnType"/>
-        </metaModel.JOperation>
       </operations>
     </metaModel.JClass>
     <metaModel.JClass>
@@ -307,9 +338,9 @@
       <attributes>
         <metaModel.JAttributeConnector>
           <role>nr</role>
-          <targetType class="metaModel.primitives.JInteger" defined-in="metaModel.JTargetConnector" reference="../../../../metaModel.JClass[8]/operations/metaModel.JOperation[2]/returnType/value/type"/>
+          <targetType class="metaModel.primitives.JInteger" defined-in="metaModel.JTargetConnector" reference="../../../../metaModel.JClass[8]/operations/metaModel.JOperation/returnType/value/type/state/target/attributes/metaModel.JAttributeConnector/targetType"/>
           <constraint class="metaModel.enumerations.JTotalMap" reference="../../../../metaModel.JClass/attributes/metaModel.JAttributeConnector/constraint"/>
-          <targetType class="metaModel.primitives.JInteger" reference="../../../../metaModel.JClass[8]/operations/metaModel.JOperation[2]/returnType/value/type"/>
+          <targetType class="metaModel.primitives.JInteger" reference="../../../../metaModel.JClass[8]/operations/metaModel.JOperation/returnType/value/type/state/target/attributes/metaModel.JAttributeConnector/targetType"/>
         </metaModel.JAttributeConnector>
       </attributes>
       <operations>
@@ -331,9 +362,15 @@
                       <attributes>
                         <metaModel.JAttributeConnector>
                           <role>price</role>
-                          <targetType class="metaModel.primitives.JInteger" defined-in="metaModel.JTargetConnector" reference="../../../../../../../../../../../../metaModel.JClass[8]/operations/metaModel.JOperation[2]/returnType/value/type"/>
+                          <targetType class="metaModel.primitives.JInteger" defined-in="metaModel.JTargetConnector" reference="../../../../../../../../../../../../metaModel.JClass[8]/operations/metaModel.JOperation/returnType/value/type/state/target/attributes/metaModel.JAttributeConnector/targetType"/>
                           <constraint class="metaModel.enumerations.JPartialMap"/>
-                          <targetType class="metaModel.primitives.JInteger" reference="../../../../../../../../../../../../metaModel.JClass[8]/operations/metaModel.JOperation[2]/returnType/value/type"/>
+                          <targetType class="metaModel.primitives.JInteger" reference="../../../../../../../../../../../../metaModel.JClass[8]/operations/metaModel.JOperation/returnType/value/type/state/target/attributes/metaModel.JAttributeConnector/targetType"/>
+                        </metaModel.JAttributeConnector>
+                        <metaModel.JAttributeConnector>
+                          <role>name</role>
+                          <targetType class="metaModel.primitives.JString" defined-in="metaModel.JTargetConnector" reference="../../../../../../../../../../../../metaModel.JClass/attributes/metaModel.JAttributeConnector/targetType"/>
+                          <constraint class="metaModel.enumerations.JPartialMap" reference="../../metaModel.JAttributeConnector/constraint"/>
+                          <targetType class="metaModel.primitives.JString" reference="../../../../../../../../../../../../metaModel.JClass/attributes/metaModel.JAttributeConnector/targetType"/>
                         </metaModel.JAttributeConnector>
                       </attributes>
                       <operations/>
@@ -347,21 +384,37 @@
           <returnType reference="../../../../metaModel.JClass/operations/metaModel.JOperation/returnType"/>
           <exception reference="../../../../metaModel.JClass/operations/metaModel.JOperation/returnType"/>
         </metaModel.JOperation>
+        <metaModel.JOperation>
+          <techName>getCategoryName</techName>
+          <readableName></readableName>
+          <documentation></documentation>
+          <abstrakt>false</abstrakt>
+          <formalParameters/>
+          <returnType>
+            <value class="metaModel.JTypeAdapter">
+              <type class="metaModel.primitives.JString" reference="../../../../../../metaModel.JClass/attributes/metaModel.JAttributeConnector/targetType"/>
+              <isMany>false</isMany>
+            </value>
+          </returnType>
+          <exception reference="../../../../metaModel.JClass/operations/metaModel.JOperation/returnType"/>
+        </metaModel.JOperation>
+        <metaModel.JOperation>
+          <techName>getPrice</techName>
+          <readableName></readableName>
+          <documentation></documentation>
+          <abstrakt>false</abstrakt>
+          <formalParameters/>
+          <returnType>
+            <value class="metaModel.JTypeAdapter">
+              <type class="metaModel.primitives.JInteger" reference="../../../../../../metaModel.JClass[8]/operations/metaModel.JOperation/returnType/value/type/state/target/attributes/metaModel.JAttributeConnector/targetType"/>
+              <isMany>false</isMany>
+            </value>
+          </returnType>
+          <exception reference="../../../../metaModel.JClass/operations/metaModel.JOperation/returnType"/>
+        </metaModel.JOperation>
       </operations>
     </metaModel.JClass>
-    <metaModel.JClass>
-      <name>Seat</name>
-      <singleton>false</singleton>
-      <attributes>
-        <metaModel.JAttributeConnector>
-          <role>nr</role>
-          <targetType class="metaModel.primitives.JInteger" defined-in="metaModel.JTargetConnector" reference="../../../../metaModel.JClass[8]/operations/metaModel.JOperation[2]/returnType/value/type"/>
-          <constraint class="metaModel.enumerations.JTotalMap" reference="../../../../metaModel.JClass/attributes/metaModel.JAttributeConnector/constraint"/>
-          <targetType class="metaModel.primitives.JInteger" reference="../../../../metaModel.JClass[8]/operations/metaModel.JOperation[2]/returnType/value/type"/>
-        </metaModel.JAttributeConnector>
-      </attributes>
-      <operations/>
-    </metaModel.JClass>
+    <metaModel.JClass reference="../metaModel.JClass[8]/operations/metaModel.JOperation/returnType/value/type/state/target"/>
     <metaModel.JClass reference="../metaModel.JClass[11]/operations/metaModel.JOperation/formalParameters/metaModel.JParameter/type/type/state/target"/>
     <metaModel.JClass>
       <name>Parterre</name>
@@ -375,7 +428,7 @@
       <attributes/>
       <operations/>
     </metaModel.JClass>
-    <metaModel.JClass reference="../metaModel.JClass[10]/operations/metaModel.JOperation/returnType/value/type/state/target"/>
+    <metaModel.JClass reference="../metaModel.JClass[10]/operations/metaModel.JOperation[2]/returnType/value/type/state/target"/>
     <metaModel.JAssociation>
       <name>User_Has_Password</name>
       <owner class="metaModel.JUnidirectional">
@@ -513,7 +566,7 @@
         <targetType class="metaModel.JClassLink">
           <name>Seat</name>
           <state class="metaModel.JClassLinkStateLocallyAssigned">
-            <target reference="../../../../../metaModel.JClass[12]"/>
+            <target reference="../../../../../metaModel.JClass[8]/operations/metaModel.JOperation/returnType/value/type/state/target"/>
           </state>
         </targetType>
         <constraint class="metaModel.enumerations.JList" reference="../../../metaModel.JAssociation[3]/target/constraint"/>
@@ -613,7 +666,7 @@
         <targetType class="metaModel.JClassLink">
           <name>Seat</name>
           <state class="metaModel.JClassLinkStateLocallyAssigned">
-            <target reference="../../../../../metaModel.JClass[12]"/>
+            <target reference="../../../../../metaModel.JClass[8]/operations/metaModel.JOperation/returnType/value/type/state/target"/>
           </state>
         </targetType>
         <constraint class="metaModel.enumerations.JList" reference="../../../metaModel.JAssociation[3]/target/constraint"/>
@@ -646,6 +699,48 @@
   <generalisations class="set">
     <metaModel.JGeneralisation>
       <general>
+        <name>Category</name>
+        <state class="metaModel.JClassLinkStateLocallyAssigned">
+          <target reference="../../../../../relationTypes/metaModel.JClass[11]/operations/metaModel.JOperation/formalParameters/metaModel.JParameter/type/type/state/target"/>
+        </state>
+      </general>
+      <specific>
+        <name>Parterre</name>
+        <state class="metaModel.JClassLinkStateLocallyAssigned">
+          <target reference="../../../../../relationTypes/metaModel.JClass[14]"/>
+        </state>
+      </specific>
+    </metaModel.JGeneralisation>
+    <metaModel.JGeneralisation>
+      <general>
+        <name>Category</name>
+        <state class="metaModel.JClassLinkStateLocallyAssigned">
+          <target reference="../../../../../relationTypes/metaModel.JClass[11]/operations/metaModel.JOperation/formalParameters/metaModel.JParameter/type/type/state/target"/>
+        </state>
+      </general>
+      <specific>
+        <name>Middle</name>
+        <state class="metaModel.JClassLinkStateLocallyAssigned">
+          <target reference="../../../../../relationTypes/metaModel.JClass[15]"/>
+        </state>
+      </specific>
+    </metaModel.JGeneralisation>
+    <metaModel.JGeneralisation>
+      <general>
+        <name>Role</name>
+        <state class="metaModel.JClassLinkStateLocallyAssigned">
+          <target reference="../../../../../relationTypes/metaModel.JClass[3]"/>
+        </state>
+      </general>
+      <specific>
+        <name>Customer</name>
+        <state class="metaModel.JClassLinkStateLocallyAssigned">
+          <target reference="../../../../../relationTypes/metaModel.JClass[4]"/>
+        </state>
+      </specific>
+    </metaModel.JGeneralisation>
+    <metaModel.JGeneralisation>
+      <general>
         <name>Role</name>
         <state class="metaModel.JClassLinkStateLocallyAssigned">
           <target reference="../../../../../relationTypes/metaModel.JClass[3]"/>
@@ -666,56 +761,63 @@
         </state>
       </general>
       <specific>
-        <name>Middle</name>
-        <state class="metaModel.JClassLinkStateLocallyAssigned">
-          <target reference="../../../../../relationTypes/metaModel.JClass[15]"/>
-        </state>
-      </specific>
-    </metaModel.JGeneralisation>
-    <metaModel.JGeneralisation>
-      <general>
-        <name>Category</name>
-        <state class="metaModel.JClassLinkStateLocallyAssigned">
-          <target reference="../../../../../relationTypes/metaModel.JClass[11]/operations/metaModel.JOperation/formalParameters/metaModel.JParameter/type/type/state/target"/>
-        </state>
-      </general>
-      <specific>
-        <name>Parterre</name>
-        <state class="metaModel.JClassLinkStateLocallyAssigned">
-          <target reference="../../../../../relationTypes/metaModel.JClass[14]"/>
-        </state>
-      </specific>
-    </metaModel.JGeneralisation>
-    <metaModel.JGeneralisation>
-      <general>
-        <name>Role</name>
-        <state class="metaModel.JClassLinkStateLocallyAssigned">
-          <target reference="../../../../../relationTypes/metaModel.JClass[3]"/>
-        </state>
-      </general>
-      <specific>
-        <name>Customer</name>
-        <state class="metaModel.JClassLinkStateLocallyAssigned">
-          <target reference="../../../../../relationTypes/metaModel.JClass[4]"/>
-        </state>
-      </specific>
-    </metaModel.JGeneralisation>
-    <metaModel.JGeneralisation>
-      <general>
-        <name>Category</name>
-        <state class="metaModel.JClassLinkStateLocallyAssigned">
-          <target reference="../../../../../relationTypes/metaModel.JClass[11]/operations/metaModel.JOperation/formalParameters/metaModel.JParameter/type/type/state/target"/>
-        </state>
-      </general>
-      <specific>
         <name>Back</name>
         <state class="metaModel.JClassLinkStateLocallyAssigned">
-          <target reference="../../../../../relationTypes/metaModel.JClass[10]/operations/metaModel.JOperation/returnType/value/type/state/target"/>
+          <target reference="../../../../../relationTypes/metaModel.JClass[10]/operations/metaModel.JOperation[2]/returnType/value/type/state/target"/>
         </state>
       </specific>
     </metaModel.JGeneralisation>
   </generalisations>
   <operations class="set">
+    <metaModel.JOperation>
+      <techName>getUserByUsername</techName>
+      <readableName></readableName>
+      <documentation></documentation>
+      <abstrakt>false</abstrakt>
+      <formalParameters>
+        <metaModel.JParameter>
+          <name>username</name>
+          <type>
+            <type class="metaModel.primitives.JString" reference="../../../../../../relationTypes/metaModel.JClass/attributes/metaModel.JAttributeConnector/targetType"/>
+            <isMany>false</isMany>
+          </type>
+        </metaModel.JParameter>
+      </formalParameters>
+      <returnType>
+        <value class="metaModel.JTypeAdapter">
+          <type class="metaModel.JClassLink">
+            <name>User</name>
+            <state class="metaModel.JClassLinkStateLocallyAssigned">
+              <target reference="../../../../../../../relationTypes/metaModel.JClass"/>
+            </state>
+          </type>
+          <isMany>false</isMany>
+        </value>
+      </returnType>
+      <exception reference="../../../relationTypes/metaModel.JClass/operations/metaModel.JOperation/returnType"/>
+    </metaModel.JOperation>
+    <metaModel.JOperation>
+      <techName>unregister</techName>
+      <readableName></readableName>
+      <documentation></documentation>
+      <abstrakt>false</abstrakt>
+      <formalParameters>
+        <metaModel.JParameter>
+          <name>user</name>
+          <type>
+            <type class="metaModel.JClassLink">
+              <name>User</name>
+              <state class="metaModel.JClassLinkStateLocallyAssigned">
+                <target reference="../../../../../../../../relationTypes/metaModel.JClass"/>
+              </state>
+            </type>
+            <isMany>false</isMany>
+          </type>
+        </metaModel.JParameter>
+      </formalParameters>
+      <returnType reference="../../../relationTypes/metaModel.JClass/operations/metaModel.JOperation/returnType"/>
+      <exception reference="../../../relationTypes/metaModel.JClass/operations/metaModel.JOperation/returnType"/>
+    </metaModel.JOperation>
     <metaModel.JOperation>
       <techName>login</techName>
       <readableName></readableName>
@@ -748,62 +850,6 @@
       </exception>
     </metaModel.JOperation>
     <metaModel.JOperation>
-      <techName>reserve</techName>
-      <readableName></readableName>
-      <documentation></documentation>
-      <abstrakt>false</abstrakt>
-      <formalParameters>
-        <metaModel.JParameter>
-          <name>user</name>
-          <type>
-            <type class="metaModel.JClassLink">
-              <name>User</name>
-              <state class="metaModel.JClassLinkStateLocallyAssigned">
-                <target reference="../../../../../../../../relationTypes/metaModel.JClass"/>
-              </state>
-            </type>
-            <isMany>false</isMany>
-          </type>
-        </metaModel.JParameter>
-        <metaModel.JParameter>
-          <name>seat</name>
-          <type>
-            <type class="metaModel.JClassLink">
-              <name>Seat</name>
-              <state class="metaModel.JClassLinkStateLocallyAssigned">
-                <target reference="../../../../../../../../relationTypes/metaModel.JClass[12]"/>
-              </state>
-            </type>
-            <isMany>false</isMany>
-          </type>
-        </metaModel.JParameter>
-        <metaModel.JParameter>
-          <name>show</name>
-          <type>
-            <type class="metaModel.JClassLink">
-              <name>CShow</name>
-              <state class="metaModel.JClassLinkStateLocallyAssigned">
-                <target reference="../../../../../../../../relationTypes/metaModel.JClass[8]"/>
-              </state>
-            </type>
-            <isMany>false</isMany>
-          </type>
-        </metaModel.JParameter>
-      </formalParameters>
-      <returnType>
-        <value class="metaModel.JTypeAdapter">
-          <type class="metaModel.JClassLink">
-            <name>Reservation</name>
-            <state class="metaModel.JClassLinkStateLocallyAssigned">
-              <target reference="../../../../../../../relationTypes/metaModel.JClass[6]"/>
-            </state>
-          </type>
-          <isMany>false</isMany>
-        </value>
-      </returnType>
-      <exception reference="../../../relationTypes/metaModel.JClass/operations/metaModel.JOperation/returnType"/>
-    </metaModel.JOperation>
-    <metaModel.JOperation>
       <techName>removeHall</techName>
       <readableName></readableName>
       <documentation></documentation>
@@ -816,81 +862,6 @@
               <name>Hall</name>
               <state class="metaModel.JClassLinkStateLocallyAssigned">
                 <target reference="../../../../../../../../relationTypes/metaModel.JClass[10]"/>
-              </state>
-            </type>
-            <isMany>false</isMany>
-          </type>
-        </metaModel.JParameter>
-      </formalParameters>
-      <returnType reference="../../../relationTypes/metaModel.JClass/operations/metaModel.JOperation/returnType"/>
-      <exception reference="../../../relationTypes/metaModel.JClass/operations/metaModel.JOperation/returnType"/>
-    </metaModel.JOperation>
-    <metaModel.JOperation>
-      <techName>register</techName>
-      <readableName></readableName>
-      <documentation></documentation>
-      <abstrakt>false</abstrakt>
-      <formalParameters>
-        <metaModel.JParameter>
-          <name>name</name>
-          <type>
-            <type class="metaModel.primitives.JString" reference="../../../../../../relationTypes/metaModel.JClass/attributes/metaModel.JAttributeConnector/targetType"/>
-            <isMany>false</isMany>
-          </type>
-        </metaModel.JParameter>
-        <metaModel.JParameter>
-          <name>password</name>
-          <type>
-            <type class="metaModel.primitives.JString" reference="../../../../../../relationTypes/metaModel.JClass/attributes/metaModel.JAttributeConnector/targetType"/>
-            <isMany>false</isMany>
-          </type>
-        </metaModel.JParameter>
-      </formalParameters>
-      <returnType>
-        <value class="metaModel.JTypeAdapter">
-          <type class="metaModel.JClassLink">
-            <name>User</name>
-            <state class="metaModel.JClassLinkStateLocallyAssigned">
-              <target reference="../../../../../../../relationTypes/metaModel.JClass"/>
-            </state>
-          </type>
-          <isMany>false</isMany>
-        </value>
-      </returnType>
-      <exception reference="../../../relationTypes/metaModel.JClass/operations/metaModel.JOperation/returnType"/>
-    </metaModel.JOperation>
-    <metaModel.JOperation>
-      <techName>logout</techName>
-      <readableName></readableName>
-      <documentation></documentation>
-      <abstrakt>false</abstrakt>
-      <formalParameters>
-        <metaModel.JParameter>
-          <name>authToken</name>
-          <type>
-            <type class="metaModel.primitives.JString" reference="../../../../../../relationTypes/metaModel.JClass/attributes/metaModel.JAttributeConnector/targetType"/>
-            <isMany>false</isMany>
-          </type>
-        </metaModel.JParameter>
-      </formalParameters>
-      <returnType reference="../../../relationTypes/metaModel.JClass/operations/metaModel.JOperation/returnType"/>
-      <exception>
-        <value class="metaModel.JException" reference="../../../../relationTypes/metaModel.JClass/operations/metaModel.JOperation/exception/value"/>
-      </exception>
-    </metaModel.JOperation>
-    <metaModel.JOperation>
-      <techName>unregister</techName>
-      <readableName></readableName>
-      <documentation></documentation>
-      <abstrakt>false</abstrakt>
-      <formalParameters>
-        <metaModel.JParameter>
-          <name>user</name>
-          <type>
-            <type class="metaModel.JClassLink">
-              <name>User</name>
-              <state class="metaModel.JClassLinkStateLocallyAssigned">
-                <target reference="../../../../../../../../relationTypes/metaModel.JClass"/>
               </state>
             </type>
             <isMany>false</isMany>
@@ -923,6 +894,62 @@
       <exception reference="../../../relationTypes/metaModel.JClass/operations/metaModel.JOperation/returnType"/>
     </metaModel.JOperation>
     <metaModel.JOperation>
+      <techName>reserve</techName>
+      <readableName></readableName>
+      <documentation></documentation>
+      <abstrakt>false</abstrakt>
+      <formalParameters>
+        <metaModel.JParameter>
+          <name>user</name>
+          <type>
+            <type class="metaModel.JClassLink">
+              <name>User</name>
+              <state class="metaModel.JClassLinkStateLocallyAssigned">
+                <target reference="../../../../../../../../relationTypes/metaModel.JClass"/>
+              </state>
+            </type>
+            <isMany>false</isMany>
+          </type>
+        </metaModel.JParameter>
+        <metaModel.JParameter>
+          <name>seat</name>
+          <type>
+            <type class="metaModel.JClassLink">
+              <name>Seat</name>
+              <state class="metaModel.JClassLinkStateLocallyAssigned">
+                <target reference="../../../../../../../../relationTypes/metaModel.JClass[8]/operations/metaModel.JOperation/returnType/value/type/state/target"/>
+              </state>
+            </type>
+            <isMany>false</isMany>
+          </type>
+        </metaModel.JParameter>
+        <metaModel.JParameter>
+          <name>show</name>
+          <type>
+            <type class="metaModel.JClassLink">
+              <name>CShow</name>
+              <state class="metaModel.JClassLinkStateLocallyAssigned">
+                <target reference="../../../../../../../../relationTypes/metaModel.JClass[8]"/>
+              </state>
+            </type>
+            <isMany>false</isMany>
+          </type>
+        </metaModel.JParameter>
+      </formalParameters>
+      <returnType>
+        <value class="metaModel.JTypeAdapter">
+          <type class="metaModel.JClassLink">
+            <name>Reservation</name>
+            <state class="metaModel.JClassLinkStateLocallyAssigned">
+              <target reference="../../../../../../../relationTypes/metaModel.JClass[6]"/>
+            </state>
+          </type>
+          <isMany>false</isMany>
+        </value>
+      </returnType>
+      <exception reference="../../../relationTypes/metaModel.JClass/operations/metaModel.JOperation/returnType"/>
+    </metaModel.JOperation>
+    <metaModel.JOperation>
       <techName>addFilm</techName>
       <readableName></readableName>
       <documentation></documentation>
@@ -950,28 +977,20 @@
       <exception reference="../../../relationTypes/metaModel.JClass/operations/metaModel.JOperation/returnType"/>
     </metaModel.JOperation>
     <metaModel.JOperation>
-      <techName>getUserByUsername</techName>
+      <techName>getReservableShows</techName>
       <readableName></readableName>
       <documentation></documentation>
       <abstrakt>false</abstrakt>
-      <formalParameters>
-        <metaModel.JParameter>
-          <name>username</name>
-          <type>
-            <type class="metaModel.primitives.JString" reference="../../../../../../relationTypes/metaModel.JClass/attributes/metaModel.JAttributeConnector/targetType"/>
-            <isMany>false</isMany>
-          </type>
-        </metaModel.JParameter>
-      </formalParameters>
+      <formalParameters/>
       <returnType>
         <value class="metaModel.JTypeAdapter">
           <type class="metaModel.JClassLink">
-            <name>User</name>
+            <name>CShow</name>
             <state class="metaModel.JClassLinkStateLocallyAssigned">
-              <target reference="../../../../../../../relationTypes/metaModel.JClass"/>
+              <target reference="../../../../../../../relationTypes/metaModel.JClass[8]"/>
             </state>
           </type>
-          <isMany>false</isMany>
+          <isMany>true</isMany>
         </value>
       </returnType>
       <exception reference="../../../relationTypes/metaModel.JClass/operations/metaModel.JOperation/returnType"/>
@@ -1023,6 +1042,40 @@
       <exception reference="../../../relationTypes/metaModel.JClass/operations/metaModel.JOperation/returnType"/>
     </metaModel.JOperation>
     <metaModel.JOperation>
+      <techName>register</techName>
+      <readableName></readableName>
+      <documentation></documentation>
+      <abstrakt>false</abstrakt>
+      <formalParameters>
+        <metaModel.JParameter>
+          <name>name</name>
+          <type>
+            <type class="metaModel.primitives.JString" reference="../../../../../../relationTypes/metaModel.JClass/attributes/metaModel.JAttributeConnector/targetType"/>
+            <isMany>false</isMany>
+          </type>
+        </metaModel.JParameter>
+        <metaModel.JParameter>
+          <name>password</name>
+          <type>
+            <type class="metaModel.primitives.JString" reference="../../../../../../relationTypes/metaModel.JClass/attributes/metaModel.JAttributeConnector/targetType"/>
+            <isMany>false</isMany>
+          </type>
+        </metaModel.JParameter>
+      </formalParameters>
+      <returnType>
+        <value class="metaModel.JTypeAdapter">
+          <type class="metaModel.JClassLink">
+            <name>User</name>
+            <state class="metaModel.JClassLinkStateLocallyAssigned">
+              <target reference="../../../../../../../relationTypes/metaModel.JClass"/>
+            </state>
+          </type>
+          <isMany>false</isMany>
+        </value>
+      </returnType>
+      <exception reference="../../../relationTypes/metaModel.JClass/operations/metaModel.JOperation/returnType"/>
+    </metaModel.JOperation>
+    <metaModel.JOperation>
       <techName>addHall</techName>
       <readableName></readableName>
       <documentation></documentation>
@@ -1048,6 +1101,25 @@
         </value>
       </returnType>
       <exception reference="../../../relationTypes/metaModel.JClass/operations/metaModel.JOperation/returnType"/>
+    </metaModel.JOperation>
+    <metaModel.JOperation>
+      <techName>logout</techName>
+      <readableName></readableName>
+      <documentation></documentation>
+      <abstrakt>false</abstrakt>
+      <formalParameters>
+        <metaModel.JParameter>
+          <name>authToken</name>
+          <type>
+            <type class="metaModel.primitives.JString" reference="../../../../../../relationTypes/metaModel.JClass/attributes/metaModel.JAttributeConnector/targetType"/>
+            <isMany>false</isMany>
+          </type>
+        </metaModel.JParameter>
+      </formalParameters>
+      <returnType reference="../../../relationTypes/metaModel.JClass/operations/metaModel.JOperation/returnType"/>
+      <exception>
+        <value class="metaModel.JException" reference="../../../../relationTypes/metaModel.JClass/operations/metaModel.JOperation/exception/value"/>
+      </exception>
     </metaModel.JOperation>
   </operations>
   <exceptions class="set">

@@ -1,4 +1,4 @@
-/**--- Generated at Tue Dec 21 20:30:54 CET 2021 
+/**--- Generated at Fri Dec 24 00:10:00 CET 2021 
  * --- No Change Allowed!  
  */
 package generated.cinemaService.commands.seatingRow;
@@ -6,7 +6,7 @@ import generated.cinemaService.*;
 import commands.*;
 import java.util.Collection;
 public class SeatingRow_getSeats_Command extends ObjectCommand<SeatingRow, Collection<Seat>>{
-   private static final long serialVersionUID = 1111338874L;
+   private static final long serialVersionUID = 1108865546L;
    public SeatingRow_getSeats_Command(SeatingRow receiver){
       super(receiver);
    }

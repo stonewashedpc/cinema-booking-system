@@ -1,4 +1,4 @@
-/**--- Generated at Tue Dec 21 20:30:54 CET 2021 
+/**--- Generated at Fri Dec 24 00:10:00 CET 2021 
  * --- Mode = Integrated Database 
  * --- Change only in Editable Sections!  
  * --- Do NOT touch section numbering!   
@@ -25,6 +25,8 @@ import generated.cinemaService.relationControl.*;
 import generated.cinemaService.proxies.*;
 import db.executer.PersistenceException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 //20 ===== Editable : Your Import Section =========
 
 //25 ===== GENERATED:      Header Section =========
@@ -130,6 +132,17 @@ public class CShow extends Observable implements java.io.Serializable, ICShow
  */
    public void setOpenForReservations(){
       this.setReservable(true);
+   }
+/**
+ * 
+ */
+   public Collection<Seat> getReservableSeats(){
+	   Collection<Seat> reservableSeats = this.getHall().getRows().stream().flatMap(row -> row.getSeats().stream()).collect(Collectors.toList());
+	   Collection<Reservation> reservations  = this.getReservations();
+	   for(Reservation reservation : reservations) {
+		   reservableSeats.removeAll(reservation.getSeat());
+	   }
+	   return reservableSeats;
    }
 //90 ===== GENERATED: End of Your Operations ======
 }

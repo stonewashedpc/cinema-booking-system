@@ -1,4 +1,4 @@
-/**--- Generated at Tue Dec 21 20:30:54 CET 2021 
+/**--- Generated at Fri Dec 24 00:10:00 CET 2021 
  * --- Mode = Integrated Database 
  * --- Change only in Editable Sections!  
  * --- Do NOT touch section numbering!   
@@ -26,13 +26,13 @@ public class Back extends Category implements java.io.Serializable, IBack
    //40 ===== Editable : Your Attribute Section ======
    
    //50 ===== GENERATED:      Constructor ============
-   private Back(Integer id, Optional<Integer> price, boolean objectOnly)
+   private Back(Integer id, Optional<Integer> price, Optional<String> name, boolean objectOnly)
    {
-      super(id, price, objectOnly);
+      super(id, price, name, objectOnly);
       if(objectOnly) return;
    }
-   private static Back instantiateRuntimeCopy(Integer id, Optional<Integer> price){
-      return new Back(id, price, true);
+   private static Back instantiateRuntimeCopy(Integer id, Optional<Integer> price, Optional<String> name){
+      return new Back(id, price, name, true);
    }
    //60 ===== Editable : Your Constructors ===========
    
@@ -49,7 +49,9 @@ public class Back extends Category implements java.io.Serializable, IBack
          Integer id = rs.isPresent() ? rs.get().getInt("id") : IDManagerTransient.getTheInstance().getNextId();
          Optional<Integer> price = Optional.empty();
          if(rs.isPresent()) price = (rs.get().getObject("price") == null ? Optional.empty() : Optional.of(rs.get().getInt("price")));
-         return Back.instantiateRuntimeCopy(id, price);
+         Optional<String> name = Optional.empty();
+         if(rs.isPresent()) name = (rs.get().getObject("name") == null ? Optional.empty() : Optional.of(rs.get().getString("name")));
+         return Back.instantiateRuntimeCopy(id, price, name);
       } catch (SQLException | NoConnectionException e) {
          throw new PersistenceException(e.getMessage());
       }
