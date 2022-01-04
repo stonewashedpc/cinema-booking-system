@@ -9,6 +9,7 @@ import client.CommandCallback;
 import client.CommandExecutorService;
 import client.RowClickListener;
 import client.forms.CustomerForm;
+import client.forms.ReservationsDialogForm;
 import client.forms.ReserveDialogForm;
 import generated.cinemaService.CShow;
 import generated.cinemaService.commands.getReservableShows_Command;
@@ -32,6 +33,11 @@ public class CustomerController extends Controller<Client, CustomerForm> {
 				new ReserveDialogController(model, form);
 				form.setVisible(true);
 			}
+		});
+		this.view.getMenuItemReservations().addActionListener((e) -> {
+			ReservationsDialogForm form = new ReservationsDialogForm(view);
+			new ReservationsDialogController(model, form);
+			form.setVisible(true);
 		});
 	}
 	

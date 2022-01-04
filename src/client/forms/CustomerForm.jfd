@@ -5,7 +5,7 @@ new FormModel {
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 			"$horizontalGroup": "par l {seq {space :::p, par l {comp scrollPane1::::1033:x, comp logLabel::l::1033:x}, space :::p}}"
-			"$verticalGroup": "par l {seq l {space :::p, comp scrollPane1:::p::p, space ::15:x, comp logLabel:::p::p, space :::p}}"
+			"$verticalGroup": "par l {seq l {space :::p, comp scrollPane1:::p::p, space :::x, comp logLabel:::p::p, space :::p}}"
 		} ) {
 			name: "this"
 			"defaultCloseOperation": 3
@@ -26,6 +26,20 @@ new FormModel {
 					"JavaCodeGenerator.variableGetter": true
 				}
 			} )
+			menuBar: new FormContainer( "javax.swing.JMenuBar", new FormLayoutManager( class javax.swing.JMenuBar ) ) {
+				name: "menuBar1"
+				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
+					name: "menu1"
+					"text": "View"
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "menuItemReservations"
+						"text": "Reservations"
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+						}
+					} )
+				} )
+			}
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 80, 50 )
 			"size": new java.awt.Dimension( 1055, 510 )
