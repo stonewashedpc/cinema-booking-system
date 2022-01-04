@@ -1,0 +1,121 @@
+JFDML JFormDesigner: "7.0.4.0.360" Java: "11.0.2" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JDialog", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+			name: "this"
+			"title": "CinemaBookingClient - Reservations"
+			"defaultCloseOperation": 2
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+				name: "dialogPane"
+				"border": new javax.swing.border.EmptyBorder( 12, 12, 12, 12 )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+					"$horizontalGroup": "par l {comp scrollPane1::::654:x, seq t {space :0:0:x, comp buttonCancelReservation:::p:92:p, space :::p, comp buttonBookReservation:::p:92:p}}"
+					"$verticalGroup": "par l {seq l {comp scrollPane1:::p:208:p, space :::p, par b {comp buttonBookReservation::b:p::p, comp buttonCancelReservation::b:p::p}, space :0:2:x}}"
+				} ) {
+					name: "contentPanel"
+					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+						name: "scrollPane1"
+						add( new FormComponent( "javax.swing.JTable" ) {
+							name: "listViewReservations"
+							"selectionMode": 0
+							auxiliary() {
+								"JavaCodeGenerator.variableGetter": true
+							}
+						} )
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "buttonBookReservation"
+						"text": "Buchen"
+						"enabled": false
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+						}
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "buttonCancelReservation"
+						"text": "Stornieren"
+						"enabled": false
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+						}
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "Center"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
+					"$columnSpecs": "0:1.0, 80, 80"
+					"$rowSpecs": "0"
+					"$hGap": 5
+					"$vGap": 5
+				} ) {
+					name: "buttonBar"
+					"border": new javax.swing.border.EmptyBorder( 12, 0, 0, 0 )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "buttonOk"
+						"text": "OK"
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+						}
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridx": 1
+						"gridy": 0
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "buttonCancel"
+						"text": "Cancel"
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+						}
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridx": 2
+						"gridy": 0
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "South"
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "Center"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 680, 330 )
+		} )
+		add( new FormNonVisual( "org.jdesktop.observablecollections.ObservableList" ) {
+			name: "observableListReservations"
+			auxiliary() {
+				"JavaCodeGenerator.variableGetter": true
+				"JavaCodeGenerator.typeParameters": "ReservationCell"
+			}
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 735, 15 )
+		} )
+		addBindingGroup( new FormBindingGroup( class org.jdesktop.beansbinding.BindingGroup ) {
+			"name": "bindingGroup"
+			addBinding( new FormBinding( "observableListReservations", null, "listViewReservations", "elements" ) {
+				"subBindings": new com.jformdesigner.model.FormBinding[ new FormBinding( null, "hallName", null, null ) {
+					"columnName": "Hall Name"
+					"columnClass": "java.lang.String"
+					"editable": false
+				}, new FormBinding( null, "filmName", null, null ) {
+					"columnName": "Film Name"
+					"columnClass": "java.lang.String"
+					"editable": false
+				}, new FormBinding( null, "seatCount", null, null ) {
+					"columnName": "Seat Count"
+					"columnClass": "java.lang.Integer"
+					"editable": false
+				}, new FormBinding( null, "${((totalPrice - (totalPrice % 100)) / 100) + (totalPrice % 100) / 100} Eur", null, null ) {
+					"columnName": "Total Price"
+					"columnClass": "java.lang.String"
+					"editable": false
+				}, new FormBinding( null, "isBooked", null, null ) {
+					"columnName": "Is Booked"
+					"columnClass": "java.lang.Boolean"
+					"editable": false
+				} ]
+			} )
+		} )
+	}
+}
