@@ -1,11 +1,11 @@
-/**--- Generated at Fri Dec 24 00:10:00 CET 2021 
+/**--- Generated at Tue Jan 04 20:52:35 CET 2022 
  * --- No Change Allowed!  
  */
 package generated.cinemaService.commands.cShow;
 import generated.cinemaService.*;
 import commands.*;
 public class CShow_setFilm_Command extends ObjectCommand<CShow, Void>{
-   private static final long serialVersionUID = -475106434L;
+   private static final long serialVersionUID = 384165858L;
    private Film arg;
    public CShow_setFilm_Command(CShow receiver, Film arg){
       super(receiver);

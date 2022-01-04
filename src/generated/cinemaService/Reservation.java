@@ -1,4 +1,4 @@
-/**--- Generated at Fri Dec 24 00:10:00 CET 2021 
+/**--- Generated at Tue Jan 04 20:52:35 CET 2022 
  * --- Mode = Integrated Database 
  * --- Change only in Editable Sections!  
  * --- Do NOT touch section numbering!   
@@ -131,6 +131,12 @@ public class Reservation extends Observable implements java.io.Serializable, IRe
 	   if (this.getBooking().isPresent()) {
 		   Booking.delete(this.getBooking().get().getId());
 	}
+   }
+/**
+ * 
+ */
+   public Boolean isBooked(){
+      return this.getBooking().isPresent();
    }
 //90 ===== GENERATED: End of Your Operations ======
 }

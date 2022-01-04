@@ -1,11 +1,11 @@
-/**--- Generated at Fri Dec 24 00:10:00 CET 2021 
+/**--- Generated at Tue Jan 04 20:52:35 CET 2022 
  * --- No Change Allowed!  
  */
 package generated.cinemaService.commands;
 import generated.cinemaService.*;
 import commands.*;
 public class Password_constructor_Command extends ServiceCommand<Password>{
-   private static final long serialVersionUID = 819456557L;
+   private static final long serialVersionUID = 480649488L;
    private String  password;
    private String  salt;
    public Password_constructor_Command(String  password, String  salt){

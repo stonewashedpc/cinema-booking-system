@@ -4,13 +4,13 @@
 package generated.cinemaService.commands.seat;
 import generated.cinemaService.*;
 import commands.*;
-public class Seat_delete_Command extends ObjectCommand<Seat, Void>{
-   private static final long serialVersionUID = -1049071093L;
-   public Seat_delete_Command(Seat receiver){
+public class Seat_getPrice_Command extends ObjectCommand<Seat, Integer>{
+   private static final long serialVersionUID = 920793662L;
+   public Seat_getPrice_Command(Seat receiver){
       super(receiver);
    }
    public void execute(){
-      try{Seat.delete(receiver.getId());
+      try{this.result = this.receiver.getPrice();
       }catch(Exception e){this.e = e;
       }finally{this.receiver.notifyObservers(this);}
    }

@@ -1,4 +1,4 @@
-/**--- Generated at Fri Dec 24 00:10:00 CET 2021 
+/**--- Generated at Tue Jan 04 20:52:35 CET 2022 
  * --- Mode = Integrated Database 
  * --- Change only in Editable Sections!  
  * --- Do NOT touch section numbering!   
@@ -336,14 +336,15 @@ public class CinemaService extends Observable{
 		e.printStackTrace();
 	}
    }
+
 /**
  * 
  */
-   public Reservation reserve(User user, Seat seat, CShow show){
+   public Reservation reserve(User user, Collection<Seat> seats, CShow show){
 	   // TODO Handle double reservation
       try {
 		Reservation newReservation = Reservation.createFresh(user, show);
-		newReservation.addToSeat(seat);
+		seats.forEach((seat) -> newReservation.addToSeat(seat));
 		return newReservation;
 	} catch (PersistenceException e) {
 		// TODO Auto-generated catch block
@@ -396,6 +397,12 @@ public class CinemaService extends Observable{
  */
    public Collection<CShow> getReservableShows(){
       return this.getCShowCache().values().stream().filter(c -> c.getReservable()).map(c -> c.getTheObject()).collect(Collectors.toList());
+   }
+/**
+ * 
+ */
+   public Collection<Reservation> getReservations(User user){
+      return user.getReservations();
    }
 //90 ===== GENERATED: End of Your Operations ======
 }

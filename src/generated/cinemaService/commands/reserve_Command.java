@@ -3,20 +3,22 @@
  */
 package generated.cinemaService.commands;
 import generated.cinemaService.*;
+
+import java.util.Collection;
+
+import authentication.AuthenticationService;
 import commands.*;
 public class reserve_Command extends ServiceCommand<Reservation>{
    private static final long serialVersionUID = -2121514765L;
-   private User user;
-   private Seat seat;
+   private Collection<Seat> seats;
    private CShow show;
-   public reserve_Command(User user, Seat seat, CShow show){
+   public reserve_Command(Collection<Seat> seats, CShow show){
       super();
-      this.user = user;
-      this.seat = seat;
+      this.seats = seats;
       this.show = show;
    }
    public void execute(){
-      try{this.result = CinemaService.getInstance().reserve(user, seat, show);
+      try{this.result = CinemaService.getInstance().reserve(AuthenticationService.getInstance().findUser(authToken), seats, show);
       }catch(Exception e){this.e = e;
       }finally{CinemaService.getInstance().notifyObservers(this);}
    }

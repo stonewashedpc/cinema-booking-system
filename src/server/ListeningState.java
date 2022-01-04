@@ -24,10 +24,10 @@ public class ListeningState extends ServerState {
 					if (next.getAuthToken() == null) { // No AuthToken
 						if(DefaultWhitelist.getInstance().isWhitelisted(next.getClass())) { // Default Permissions sufficient
 							next.execute();
-						} else throw new AuthenticationException("Insufficient permissions to execute command"); // Insufficient Default Permissions
+						} else throw new AuthenticationException("Insufficient permissions to execute command: " + next.getClass().getCanonicalName()); // Insufficient Default Permissions
 					} else if (AuthenticationService.getInstance().findRole(next.getAuthToken()).getCommandWhitelist().isWhitelisted(next.getClass())) { // Role Permissions sufficient
 						next.execute();
-					} else throw new AuthenticationException("Insufficient permissions to execute command"); // Insufficient Role Permissions
+					} else throw new AuthenticationException("Insufficient permissions to execute command: " + next.getClass().getCanonicalName()); // Insufficient Role Permissions
 				} catch (AuthenticationException e) {
 					next.setE(e); // Invalid AuthToken
 				} finally {

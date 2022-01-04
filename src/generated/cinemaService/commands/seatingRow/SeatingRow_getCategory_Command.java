@@ -1,11 +1,11 @@
-/**--- Generated at Fri Dec 24 00:10:00 CET 2021 
+/**--- Generated at Tue Jan 04 20:52:35 CET 2022 
  * --- No Change Allowed!  
  */
 package generated.cinemaService.commands.seatingRow;
 import generated.cinemaService.*;
 import commands.*;
 public class SeatingRow_getCategory_Command extends ObjectCommand<SeatingRow, Category>{
-   private static final long serialVersionUID = -1079140994L;
+   private static final long serialVersionUID = -513190902L;
    public SeatingRow_getCategory_Command(SeatingRow receiver){
       super(receiver);
    }

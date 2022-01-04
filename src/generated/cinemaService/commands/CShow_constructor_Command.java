@@ -1,11 +1,11 @@
-/**--- Generated at Fri Dec 24 00:10:00 CET 2021 
+/**--- Generated at Tue Jan 04 20:52:35 CET 2022 
  * --- No Change Allowed!  
  */
 package generated.cinemaService.commands;
 import generated.cinemaService.*;
 import commands.*;
 public class CShow_constructor_Command extends ServiceCommand<CShow>{
-   private static final long serialVersionUID = 929565134L;
+   private static final long serialVersionUID = -1059327549L;
    private Film film;
    private Boolean  reservable;
    private Hall  hall;

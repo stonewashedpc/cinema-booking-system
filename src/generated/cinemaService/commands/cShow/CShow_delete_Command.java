@@ -1,11 +1,11 @@
-/**--- Generated at Fri Dec 24 00:10:00 CET 2021 
+/**--- Generated at Tue Jan 04 20:52:35 CET 2022 
  * --- No Change Allowed!  
  */
 package generated.cinemaService.commands.cShow;
 import generated.cinemaService.*;
 import commands.*;
 public class CShow_delete_Command extends ObjectCommand<CShow, Void>{
-   private static final long serialVersionUID = -828301634L;
+   private static final long serialVersionUID = -1503272250L;
    public CShow_delete_Command(CShow receiver){
       super(receiver);
    }

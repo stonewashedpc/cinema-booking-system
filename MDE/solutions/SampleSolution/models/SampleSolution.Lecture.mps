@@ -87,6 +87,19 @@
   </node>
   <node concept="3_Gd4U" id="1MdcxidCjBV">
     <property role="TrG5h" value="CinemaService" />
+    <node concept="3_Gd5r" id="580YpYi2uC5" role="2_wlaX">
+      <property role="3_Gd5q" value="getReservations" />
+      <node concept="BxOjD" id="580YpYi2uCX" role="BBx3f">
+        <property role="BFjhQ" value="true" />
+        <ref role="BxOjI" node="1MdcxidCjFL" resolve="Reservation" />
+      </node>
+      <node concept="3_Gf45" id="580YpYi2uD6" role="3_Gf4o">
+        <property role="TrG5h" value="user" />
+        <node concept="BxOjD" id="580YpYi2uDa" role="BBx2O">
+          <ref role="BxOjI" node="1MdcxidCjCK" resolve="User" />
+        </node>
+      </node>
+    </node>
     <node concept="3_Gd5r" id="23wyr667PC3" role="2_wlaX">
       <property role="3_Gd5q" value="getReservableShows" />
       <node concept="BxOjD" id="23wyr667PCT" role="BBx3f">
@@ -265,6 +278,12 @@
     </node>
     <node concept="3_Gd56" id="1MdcxidCjFL" role="3_Gd4Z">
       <property role="TrG5h" value="Reservation" />
+      <node concept="3_Gd5r" id="580YpYi2uDd" role="3_Gd4E">
+        <property role="3_Gd5q" value="isBooked" />
+        <node concept="BxOjD" id="580YpYi2uDi" role="BBx3f">
+          <ref role="BxOjI" node="5H4ykBYMXkd" resolve="Boolean" />
+        </node>
+      </node>
       <node concept="3_Gd5r" id="1MdcxidCjGs" role="3_Gd4E">
         <property role="3_Gd5q" value="book" />
         <node concept="BxOjD" id="1MdcxidCk_h" role="BBx3f">
@@ -369,6 +388,12 @@
     </node>
     <node concept="3_Gd56" id="1MdcxidCjLS" role="3_Gd4Z">
       <property role="TrG5h" value="Seat" />
+      <node concept="3_Gd5r" id="580YpYi2uDk" role="3_Gd4E">
+        <property role="3_Gd5q" value="getPrice" />
+        <node concept="BxOjD" id="580YpYi2uDm" role="BBx3f">
+          <ref role="BxOjI" node="5H4ykBYMXjV" resolve="Integer" />
+        </node>
+      </node>
       <node concept="2_wlaR" id="1MdcxidCjMF" role="2_wlle">
         <property role="3_FBD6" value="nr" />
         <ref role="3_FBDr" node="5H4ykBYMXjV" resolve="Integer" />
@@ -569,8 +594,9 @@
         </node>
       </node>
       <node concept="3_Gf45" id="1MdcxidCk6A" role="3_Gf4o">
-        <property role="TrG5h" value="seat" />
+        <property role="TrG5h" value="seats" />
         <node concept="BxOjD" id="1MdcxidCk6G" role="BBx2O">
+          <property role="BFjhQ" value="true" />
           <ref role="BxOjI" node="1MdcxidCjLS" resolve="Seat" />
         </node>
       </node>
