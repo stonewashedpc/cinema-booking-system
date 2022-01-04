@@ -64,4 +64,11 @@ public class AuthenticationService {
 		if (session.hasExpired()) throw new AuthenticationException("Session key has expired");
 		return session.getUser().getRole();
 	}
+	
+	public User findUser(String authToken) throws AuthenticationException {
+		Session session = this.authMap.get(authToken);
+		if (session == null) throw new AuthenticationException("Invalid Authentication Token");
+		if (session.hasExpired()) throw new AuthenticationException("Session key has expired");
+		return session.getUser();
+	}
 }
