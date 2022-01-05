@@ -16,7 +16,7 @@ class TestServerMain {
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 		ResetDB resetDB = new ResetDB();
-		resetDB.resetDB();
+		resetDB.resestDBForTest();
 		authToken = "";
 		
 		CinemaService.getInstance().register("Erika Musterfrau", "1234512345");
