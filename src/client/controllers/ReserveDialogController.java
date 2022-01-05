@@ -59,6 +59,10 @@ public class ReserveDialogController extends Controller<Client, ReserveDialogFor
 	}
 	
 	private void onButtonReserveClicked() {
+		if (this.view.getListViewSeats().getSelectedRowCount() == 0) {
+			view.getLogLabel().setText("Select one or more seats first");
+			return;
+		}
 		Collection<Seat> seats = Arrays.stream(view.getListViewSeats().getSelectedRows()).mapToObj((i) -> view.getObservableListSeats().get(i).getObject()).collect(Collectors.toList());
 		this.executorService.queueCommand(new reserve_Command(seats, this.currentCShow), new CommandCallback<Reservation>() {
 
