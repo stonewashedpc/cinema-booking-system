@@ -43,12 +43,12 @@ public class ReservationsDialogForm extends JDialog {
 		return buttonOk;
 	}
 
-	public JButton getButtonCancel() {
-		return buttonCancel;
-	}
-
 	public ObservableList<ReservationCell> getObservableListReservations() {
 		return observableListReservations;
+	}
+
+	public JLabel getLogLabel() {
+		return logLabel;
 	}
 
 	private void initComponents() {
@@ -60,8 +60,8 @@ public class ReservationsDialogForm extends JDialog {
 		buttonBookReservation = new JButton();
 		buttonCancelReservation = new JButton();
 		buttonBar = new JPanel();
+		logLabel = new JLabel();
 		buttonOk = new JButton();
-		buttonCancel = new JButton();
 
 		//======== this ========
 		setTitle("CinemaBookingClient - Reservations");
@@ -124,15 +124,15 @@ public class ReservationsDialogForm extends JDialog {
 				((GridBagLayout)buttonBar.getLayout()).columnWidths = new int[] {0, 85, 80};
 				((GridBagLayout)buttonBar.getLayout()).columnWeights = new double[] {1.0, 0.0, 0.0};
 
-				//---- buttonOk ----
-				buttonOk.setText("OK");
-				buttonBar.add(buttonOk, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
+				//---- logLabel ----
+				logLabel.setText("Log");
+				buttonBar.add(logLabel, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
 					GridBagConstraints.CENTER, GridBagConstraints.BOTH,
 					new Insets(0, 0, 0, 5), 0, 0));
 
-				//---- buttonCancel ----
-				buttonCancel.setText("Cancel");
-				buttonBar.add(buttonCancel, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
+				//---- buttonOk ----
+				buttonOk.setText("OK");
+				buttonBar.add(buttonOk, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
 					GridBagConstraints.CENTER, GridBagConstraints.BOTH,
 					new Insets(0, 0, 0, 0), 0, 0));
 			}
@@ -181,8 +181,8 @@ public class ReservationsDialogForm extends JDialog {
 	private JButton buttonBookReservation;
 	private JButton buttonCancelReservation;
 	private JPanel buttonBar;
+	private JLabel logLabel;
 	private JButton buttonOk;
-	private JButton buttonCancel;
 	private ObservableList<ReservationCell> observableListReservations;
 	private BindingGroup bindingGroup;
 	// JFormDesigner - End of variables declaration  //GEN-END:variables
