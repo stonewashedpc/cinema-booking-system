@@ -11,6 +11,8 @@ import generated.cinemaService.commands.reserve_Command;
 import generated.cinemaService.commands.cShow.CShow_getFilm_Command;
 import generated.cinemaService.commands.cShow.CShow_getHall_Command;
 import generated.cinemaService.commands.cShow.CShow_getReservableSeats_Command;
+import generated.cinemaService.commands.reservation.Reservation_book_Command;
+import generated.cinemaService.commands.reservation.Reservation_cancel_Command;
 import generated.cinemaService.commands.reservation.Reservation_getBooking_Command;
 import generated.cinemaService.commands.reservation.Reservation_getSeat_Command;
 import generated.cinemaService.commands.reservation.Reservation_getShow_Command;
@@ -32,7 +34,8 @@ public class CustomerWhiteList extends CommandWhitelist {
 				CShow_getReservableSeats_Command.class, SeatingRow_getCategory_Command.class, Seat_getRow_Command.class,
 				SeatingRow_getPrice_Command.class, SeatingRow_getCategoryName_Command.class,
 				getReservations_Command.class, Reservation_getShow_Command.class, Reservation_getSeat_Command.class,
-				Reservation_getBooking_Command.class, Seat_getPrice_Command.class, Reservation_isBooked_Command.class))); // Define Customer
+				Reservation_getBooking_Command.class, Seat_getPrice_Command.class, Reservation_isBooked_Command.class,
+				Reservation_book_Command.class, Reservation_cancel_Command.class))); // Define Customer
 		// Commands
 		// Here
 		this.includeWhiteList(DefaultWhitelist.getInstance());
