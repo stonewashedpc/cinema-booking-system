@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import db.connection.NoConnectionException;
 import db.executer.PersistenceExecuterFactory;
 import exceptions.ConstraintViolation;
+import exceptions.ServerException;
 import generated.cinemaService.relationControl.User_ReservationSupervisor;
 import generated.cinemaService.relationControl.Booking_For_ReservationSupervisor;
 import generated.cinemaService.relationControl.Reservation_ShowSupervisor;
@@ -125,12 +126,13 @@ public class Reservation extends Observable implements java.io.Serializable, IRe
  * @throws SQLException 
  * @throws ConstraintViolation 
  * @throws NoConnectionException 
+ * @throws ServerException 
  * 
  */
-   public void cancel() throws PersistenceException, ConstraintViolation, SQLException, NoConnectionException {
-	   if (this.getBooking().isPresent()) {
-		   Booking.delete(this.getBooking().get().getId());
-	}
+   public void cancel() throws ServerException, ConstraintViolation, SQLException, NoConnectionException {
+	   if (this.getBooking().isEmpty()) {
+		   Reservation.delete(this.id);
+	} else throw new ServerException("Unable to cancel a booked reservation");
    }
 /**
  * 
