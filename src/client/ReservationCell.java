@@ -62,4 +62,8 @@ public class ReservationCell extends Cell<Reservation> {
 		return isBooked;
 	}
 
+	public void setIsBooked(Boolean isBooked) {
+		this.isBooked = isBooked;
+	}
+
 }
