@@ -9,6 +9,7 @@ import generated.cinemaService.CinemaService;
 import generated.cinemaService.Film;
 import generated.cinemaService.Hall;
 import generated.cinemaService.Middle;
+import generated.cinemaService.Owner;
 import generated.cinemaService.Parterre;
 import generated.cinemaService.Seat;
 import generated.cinemaService.SeatingRow;
@@ -27,7 +28,8 @@ public class DatabaseInitializer {
 		Middle.getInstance().setName("Mitte");
 		Back.getInstance().setName("Hinten");
 		
-		CinemaService.getInstance().register("Erika Musterfrau", "1234512345");
+		CinemaService.getInstance().register("Erika Musterfrau", "1234512345", Owner.getInstance());
+		CinemaService.getInstance().register("Max Mustermann", "123");
 		
 		Film film1 = CinemaService.getInstance().addFilm("Bob der Baumeister");
 		Film film2 = CinemaService.getInstance().addFilm("Der rosarote Panther");
