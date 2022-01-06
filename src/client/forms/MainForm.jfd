@@ -38,11 +38,19 @@ new FormModel {
 							"JavaCodeGenerator.variableGetter": true
 						}
 					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "menuItemAdminSettings"
+						"text": "Admin Settings"
+						"visible": false
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+						}
+					} )
 				} )
 			}
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 80, 50 )
-			"size": new java.awt.Dimension( 1055, 510 )
+			"size": new java.awt.Dimension( 1055, 515 )
 		} )
 		add( new FormNonVisual( "org.jdesktop.observablecollections.ObservableList" ) {
 			name: "observableListShows"

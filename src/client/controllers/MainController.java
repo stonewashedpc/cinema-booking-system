@@ -8,17 +8,17 @@ import client.Client;
 import client.CommandCallback;
 import client.CommandExecutorService;
 import client.RowClickListener;
-import client.forms.CustomerForm;
+import client.forms.MainForm;
 import client.forms.ReservationsDialogForm;
 import client.forms.ReserveDialogForm;
 import generated.cinemaService.CShow;
 import generated.cinemaService.commands.getReservableShows_Command;
 
-public class CustomerController extends Controller<Client, CustomerForm> {
+public class MainController extends Controller<Client, MainForm> {
 
 	private CommandExecutorService executorService;
 
-	public CustomerController(Client model, CustomerForm view) {
+	public MainController(Client model, MainForm view) {
 		super(model, view);
 		this.executorService = new CommandExecutorService(model);
 		loadData();

@@ -29,9 +29,9 @@ import client.CShowCell;
 /**
  * @author Joel Benseler
  */
-public class CustomerForm extends JFrame {
+public class MainForm extends JFrame {
 	
-	public CustomerForm() {
+	public MainForm() {
 		this.observableListShows = ObservableCollections.observableList(new ArrayList<CShowCell>());
 		initComponents();
 	}
@@ -52,11 +52,16 @@ public class CustomerForm extends JFrame {
 		return menuItemReservations;
 	}
 
+	public JMenuItem getMenuItemAdminSettings() {
+		return menuItemAdminSettings;
+	}
+
 	private void initComponents() {
 		// JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
 		menuBar1 = new JMenuBar();
 		menu1 = new JMenu();
 		menuItemReservations = new JMenuItem();
+		menuItemAdminSettings = new JMenuItem();
 		scrollPane1 = new JScrollPane();
 		listViewShows = new JTable();
 		logLabel = new JLabel();
@@ -76,6 +81,11 @@ public class CustomerForm extends JFrame {
 				//---- menuItemReservations ----
 				menuItemReservations.setText("Reservations");
 				menu1.add(menuItemReservations);
+
+				//---- menuItemAdminSettings ----
+				menuItemAdminSettings.setText("Admin Settings");
+				menuItemAdminSettings.setVisible(false);
+				menu1.add(menuItemAdminSettings);
 			}
 			menuBar1.add(menu1);
 		}
@@ -135,6 +145,7 @@ public class CustomerForm extends JFrame {
 	private JMenuBar menuBar1;
 	private JMenu menu1;
 	private JMenuItem menuItemReservations;
+	private JMenuItem menuItemAdminSettings;
 	private JScrollPane scrollPane1;
 	private JTable listViewShows;
 	private JLabel logLabel;

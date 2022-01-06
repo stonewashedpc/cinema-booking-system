@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import client.Client;
 import client.CommandCallback;
 import client.CommandExecutorService;
-import client.forms.CustomerForm;
+import client.forms.MainForm;
 import client.forms.LoginForm;
 import generated.cinemaService.commands.login_Command;
 
@@ -31,8 +31,8 @@ public class LoginController extends Controller<Client, LoginForm> {
 			@Override
 			protected void onSuccess(String result) {
 				model.setAuthToken(result);
-				CustomerForm form = new CustomerForm();
-				new CustomerController(model, form);
+				MainForm form = new MainForm();
+				new MainController(model, form);
 				form.setVisible(true);
 				view.dispose();
 			}
