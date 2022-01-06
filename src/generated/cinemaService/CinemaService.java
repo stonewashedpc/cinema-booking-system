@@ -1,4 +1,4 @@
-/**--- Generated at Tue Jan 04 20:52:35 CET 2022 
+/**--- Generated at Thu Jan 06 20:07:30 CET 2022 
  * --- Mode = Integrated Database 
  * --- Change only in Editable Sections!  
  * --- Do NOT touch section numbering!   
@@ -403,6 +403,12 @@ public class CinemaService extends Observable{
  */
    public Collection<Reservation> getReservations(User user){
       return user.getReservations();
+   }
+/**
+ * 
+ */
+   public Boolean getAdminStatus(String authToken)throws AuthenticationException{
+	   return AuthenticationService.getInstance().findUser(authToken).getRole().equals(Owner.getInstance());
    }
 //90 ===== GENERATED: End of Your Operations ======
 }

@@ -87,6 +87,19 @@
   </node>
   <node concept="3_Gd4U" id="1MdcxidCjBV">
     <property role="TrG5h" value="CinemaService" />
+    <node concept="3_Gd5r" id="1u$2$xL4pwm" role="2_wlaX">
+      <property role="3_Gd5q" value="getAdminStatus" />
+      <ref role="3NuQEv" node="6eCPIMgbFTG" resolve="AuthenticationException" />
+      <node concept="3_Gf45" id="1u$2$xL4pxi" role="3_Gf4o">
+        <property role="TrG5h" value="authToken" />
+        <node concept="BxOjD" id="1u$2$xL4pxp" role="BBx2O">
+          <ref role="BxOjI" node="5H4ykBYMXjQ" resolve="String" />
+        </node>
+      </node>
+      <node concept="BxOjD" id="1u$2$xL4pxx" role="BBx3f">
+        <ref role="BxOjI" node="5H4ykBYMXkd" resolve="Boolean" />
+      </node>
+    </node>
     <node concept="3_Gd5r" id="580YpYi2uC5" role="2_wlaX">
       <property role="3_Gd5q" value="getReservations" />
       <node concept="BxOjD" id="580YpYi2uCX" role="BBx3f">

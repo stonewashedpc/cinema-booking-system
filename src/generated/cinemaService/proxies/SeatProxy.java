@@ -1,4 +1,4 @@
-/**--- Generated at Tue Jan 04 20:52:35 CET 2022 
+/**--- Generated at Thu Jan 06 20:07:30 CET 2022 
  * --- No Change Allowed!  
  */
 package generated.cinemaService.proxies;
@@ -55,8 +55,5 @@ public class SeatProxy implements ISeat{
    }
    public SeatingRow getRow() throws PersistenceException{
       return this.getTheObject().getRow();
-   }
-   public Integer getPrice(){
-      return this.getTheObject().getPrice();
    }
 }
