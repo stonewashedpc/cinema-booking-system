@@ -3,7 +3,7 @@ package authentication;
 import java.util.Arrays;
 import java.util.HashSet;
 
-import generated.cinemaService.commands.getCShowCache_Command;
+import generated.cinemaService.commands.getAdminStatus_Command;
 import generated.cinemaService.commands.getReservableShows_Command;
 import generated.cinemaService.commands.getReservations_Command;
 import generated.cinemaService.commands.logout_Command;
@@ -35,7 +35,7 @@ public class CustomerWhiteList extends CommandWhitelist {
 				SeatingRow_getPrice_Command.class, SeatingRow_getCategoryName_Command.class,
 				getReservations_Command.class, Reservation_getShow_Command.class, Reservation_getSeat_Command.class,
 				Reservation_getBooking_Command.class, Seat_getPrice_Command.class, Reservation_isBooked_Command.class,
-				Reservation_book_Command.class, Reservation_cancel_Command.class))); // Define Customer
+				Reservation_book_Command.class, Reservation_cancel_Command.class, getAdminStatus_Command.class))); // Define Customer
 		// Commands
 		// Here
 		this.includeWhiteList(DefaultWhitelist.getInstance());
