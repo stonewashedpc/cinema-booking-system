@@ -22,7 +22,7 @@ public class AdminDialogController extends Controller<Client, AdminDialogForm> {
 	protected void init() {
 		this.view.getButtonCreateHall().addActionListener((e) -> {
 			String hallName = this.view.getTextFieldHallName().getText();
-			if (hallName == "") {
+			if (hallName.equals("")) {
 				view.getLogLabel().setText("Please enter a name for the new hall first");
 				return;
 			}
@@ -42,7 +42,7 @@ public class AdminDialogController extends Controller<Client, AdminDialogForm> {
 		});
 		this.view.getButtonCreateFilm().addActionListener((e) -> {
 			String filmName = this.view.getTextFieldFilmName().getText();
-			if (filmName == "") {
+			if (filmName.equals("")) {
 				view.getLogLabel().setText("Please enter a name for the new film first");
 				return;
 			}
