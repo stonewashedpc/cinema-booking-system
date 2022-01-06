@@ -98,4 +98,8 @@ public class Client {
 		this.authToken = Optional.of(authToken);
 	}
 	
+	public String getAuthToken() {
+		return this.authToken.orElse("");
+	}
+	
 }
