@@ -12,10 +12,36 @@ new FormModel {
 				name: "dialogPane"
 				"border": new javax.swing.border.EmptyBorder( 12, 12, 12, 12 )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {space :0:814:x}"
-					"$verticalGroup": "par l {space :0:404:x}"
+					"$horizontalGroup": "par l {seq {par l {seq l {comp textFieldHallName:::p:209:p, space :::p, comp buttonCreateHall:::p::p}, seq {comp textFieldFilmName:::p:209:p, space :::p, comp buttonCreateFilm:::p::p}}, space :0:510:x}}"
+					"$verticalGroup": "par l {seq l {par b {comp textFieldHallName::b:p::p, comp buttonCreateHall::b:p::p}, space :::p, par b {comp textFieldFilmName::b:p::p, comp buttonCreateFilm::b:p::p}, space :0:352:x}}"
 				} ) {
 					name: "contentPanel"
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "textFieldHallName"
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+						}
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "textFieldFilmName"
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+						}
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "buttonCreateHall"
+						"text": "Create Hall"
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+						}
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "buttonCreateFilm"
+						"text": "Create Film"
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+						}
+					} )
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "Center"
 				} )
@@ -27,6 +53,13 @@ new FormModel {
 				} ) {
 					name: "buttonBar"
 					"border": new javax.swing.border.EmptyBorder( 12, 0, 0, 0 )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "logLabel"
+						"text": "Log"
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+						}
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "okButton"
 						"text": "OK"
