@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 
 import generated.cinemaService.commands.Film_constructor_Command;
+import generated.cinemaService.commands.Hall_constructor_Command;
 
 public class OwnerWhiteList extends CommandWhitelist {
 	
@@ -11,7 +12,7 @@ public class OwnerWhiteList extends CommandWhitelist {
 
 	private OwnerWhiteList() {
 		super();
-		this.setWhiteList(new HashSet<Class<?>>(Arrays.asList(Film_constructor_Command.class))); // Define Owner Commands Here
+		this.setWhiteList(new HashSet<Class<?>>(Arrays.asList(Hall_constructor_Command.class, Film_constructor_Command.class))); // Define Owner Commands Here
 		this.includeWhiteList(CustomerWhiteList.getInstance());
 	}
 
