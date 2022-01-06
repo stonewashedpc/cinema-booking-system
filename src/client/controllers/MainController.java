@@ -8,10 +8,12 @@ import client.Client;
 import client.CommandCallback;
 import client.CommandExecutorService;
 import client.RowClickListener;
+import client.forms.AdminDialogForm;
 import client.forms.MainForm;
 import client.forms.ReservationsDialogForm;
 import client.forms.ReserveDialogForm;
 import generated.cinemaService.CShow;
+import generated.cinemaService.commands.getAdminStatus_Command;
 import generated.cinemaService.commands.getReservableShows_Command;
 
 public class MainController extends Controller<Client, MainForm> {
@@ -39,17 +41,40 @@ public class MainController extends Controller<Client, MainForm> {
 			new ReservationsDialogController(model, form);
 			form.setVisible(true);
 		});
+		this.view.getMenuItemAdminSettings().addActionListener((e) -> {
+			AdminDialogForm form = new AdminDialogForm(view);
+			new AdminDialogController(model, form);
+			form.setVisible(true);
+		});
 	}
 	
 	private void loadData() {
 		this.executorService.queueCommand(new getReservableShows_Command(), new CommandCallback<Collection<CShow>>() {
-
 			protected void onSuccess(Collection<CShow> result) {
 				try {
 					view.getObservableListShows().addAll(CellCollections.toCShowCellCollection(result, model));
 				} catch (Exception e) {
 					e.printStackTrace();
 					view.getLogLabel().setText("An error occurred while loading shows");
+				}
+			}
+
+			@Override
+			protected void onException(Exception exception) {
+				view.getLogLabel().setText(exception.getMessage());
+				exception.printStackTrace();
+			}
+		});
+		this.executorService.queueCommand(new getAdminStatus_Command(this.model.getAuthToken()), new CommandCallback<Boolean>() {
+
+			@Override
+			protected void onSuccess(Boolean result) {
+				if (result) {
+					view.getMenuItemAdminSettings().setVisible(true);
+					view.getLogLabel().setText("Logged in as owner");
+				} else {
+					view.getMenuItemAdminSettings().setVisible(false);
+					view.getLogLabel().setText("Logged in as user");
 				}
 			}
 
