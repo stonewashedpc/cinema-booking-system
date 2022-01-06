@@ -15,11 +15,12 @@ import generated.cinemaService.Seat;
 import generated.cinemaService.SeatingRow;
 
 public class DatabaseInitializer {
+	
+	private static CShow show1;
 
-	public static void main(String[] args) {
+	public static void databaseInitializer() {
 		CinemaService.getInstance();
 		
-		// Set prices
 		Parterre.getInstance().setPrice(599);
 		Middle.getInstance().setPrice(899);
 		Back.getInstance().setPrice(1299);
@@ -28,18 +29,18 @@ public class DatabaseInitializer {
 		Middle.getInstance().setName("Mitte");
 		Back.getInstance().setName("Hinten");
 		
-		CinemaService.getInstance().register("Erika Musterfrau", "1234512345", Owner.getInstance());
-		CinemaService.getInstance().register("Max Mustermann", "123");
+		CinemaService.getInstance().register("Customer", "1234512345");
+		CinemaService.getInstance().register("Admin", "1234512345", Owner.getInstance());
 		
 		Film film1 = CinemaService.getInstance().addFilm("Bob der Baumeister");
 		Film film2 = CinemaService.getInstance().addFilm("Der rosarote Panther");
-		Hall hall1 = CinemaService.getInstance().addHall("Halle 1");
+		Hall hall1 = CinemaService.getInstance().addHall("Kinosaal");
 		
 		SeatingRow row1 = SeatingRow.createFresh(Parterre.getInstance(), 1, hall1);
 		SeatingRow row2 = SeatingRow.createFresh(Middle.getInstance(), 2, hall1);
 		SeatingRow row3 = SeatingRow.createFresh(Back.getInstance(), 3, hall1);
 		
-		Seat seat1 = Seat.createFresh(1, row1);
+		Seat seat1 = Seat.createFresh(1, row1); 
 		Seat seat2 = Seat.createFresh(2, row1);
 		Seat seat3 = Seat.createFresh(3, row1);
 		
@@ -51,7 +52,7 @@ public class DatabaseInitializer {
 		Seat seat8 = Seat.createFresh(2, row3);
 		Seat seat9 = Seat.createFresh(3, row3);
 		
-		CShow show1 = hall1.addShow(film1);
+		show1 = hall1.addShow(film1);
 		CShow show2 = hall1.addShow(film2);
 		show1.setOpenForReservations();
 		show2.setOpenForReservations();
@@ -63,7 +64,10 @@ public class DatabaseInitializer {
 		seats.add(seat5);
 		seats.add(seat8);
 		seats.add(seat9);
-		CinemaService.getInstance().reserve(CinemaService.getInstance().getUserByUsername("Erika Musterfrau"), seats, show1);
+		CinemaService.getInstance().reserve(CinemaService.getInstance().getUserByUsername("Customer"), seats, show1);
 	}
-
+	
+	public static CShow getShow() {
+		return show1;
+	}
 }
