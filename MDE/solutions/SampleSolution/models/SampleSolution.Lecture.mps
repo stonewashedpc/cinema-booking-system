@@ -87,6 +87,27 @@
   </node>
   <node concept="3_Gd4U" id="1MdcxidCjBV">
     <property role="TrG5h" value="CinemaService" />
+    <node concept="3_Gd5r" id="3Kt0LwOznKR" role="2_wlaX">
+      <property role="3_Gd5q" value="getShows" />
+      <node concept="BxOjD" id="3Kt0LwOznLV" role="BBx3f">
+        <property role="BFjhQ" value="true" />
+        <ref role="BxOjI" node="1MdcxidCjHo" resolve="CShow" />
+      </node>
+    </node>
+    <node concept="3_Gd5r" id="3Kt0LwOznJN" role="2_wlaX">
+      <property role="3_Gd5q" value="getHalls" />
+      <node concept="BxOjD" id="3Kt0LwOznKP" role="BBx3f">
+        <property role="BFjhQ" value="true" />
+        <ref role="BxOjI" node="1MdcxidCjIb" resolve="Hall" />
+      </node>
+    </node>
+    <node concept="3_Gd5r" id="3Kt0LwOznIL" role="2_wlaX">
+      <property role="3_Gd5q" value="getFilms" />
+      <node concept="BxOjD" id="3Kt0LwOznJL" role="BBx3f">
+        <property role="BFjhQ" value="true" />
+        <ref role="BxOjI" node="1MdcxidCjWL" resolve="Film" />
+      </node>
+    </node>
     <node concept="3_Gd5r" id="1u$2$xL4pwm" role="2_wlaX">
       <property role="3_Gd5q" value="getAdminStatus" />
       <ref role="3NuQEv" node="6eCPIMgbFTG" resolve="AuthenticationException" />

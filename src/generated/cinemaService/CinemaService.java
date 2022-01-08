@@ -1,4 +1,4 @@
-/**--- Generated at Thu Jan 06 20:07:30 CET 2022 
+/**--- Generated at Sat Jan 08 20:20:38 CET 2022 
  * --- Mode = Integrated Database 
  * --- Change only in Editable Sections!  
  * --- Do NOT touch section numbering!   
@@ -409,6 +409,24 @@ public class CinemaService extends Observable{
  */
    public Boolean getAdminStatus(String authToken)throws AuthenticationException{
 	   return AuthenticationService.getInstance().findUser(authToken).getRole().equals(Owner.getInstance());
+   }
+/**
+ * 
+ */
+   public Collection<Hall> getHalls(){
+      return this.getHallCache().values().stream().map(h -> h.getTheObject()).collect(Collectors.toList());
+   }
+/**
+ * 
+ */
+   public Collection<CShow> getShows(){
+	   return this.getCShowCache().values().stream().map(s -> s.getTheObject()).collect(Collectors.toList());
+   }
+/**
+ * 
+ */
+   public Collection<Film> getFilms(){
+	   return this.getFilmCache().values().stream().map(f -> f.getTheObject()).collect(Collectors.toList());
    }
 //90 ===== GENERATED: End of Your Operations ======
 }
