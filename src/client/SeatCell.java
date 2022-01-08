@@ -1,7 +1,5 @@
-package client.forms;
+package client;
 
-import client.Cell;
-import client.Client;
 import generated.cinemaService.Category;
 import generated.cinemaService.Seat;
 import generated.cinemaService.SeatingRow;
