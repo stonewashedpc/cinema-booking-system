@@ -1,6 +1,8 @@
 package client.controllers;
 
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.Collection;
 
 import client.CellCollections;
@@ -44,11 +46,18 @@ public class MainController extends Controller<Client, MainForm> {
 		this.view.getMenuItemAdminSettings().addActionListener((e) -> {
 			AdminDialogForm form = new AdminDialogForm(view);
 			new AdminDialogController(model, form);
+			form.addWindowListener(new WindowAdapter() {
+				@Override
+				public void windowClosed(WindowEvent e) {
+					loadData();
+				}
+			});
 			form.setVisible(true);
 		});
 	}
 	
 	private void loadData() {
+		view.getObservableListShows().clear();
 		this.executorService.queueCommand(new getReservableShows_Command(), new CommandCallback<Collection<CShow>>() {
 			protected void onSuccess(Collection<CShow> result) {
 				try {

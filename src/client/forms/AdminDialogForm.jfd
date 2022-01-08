@@ -1,4 +1,4 @@
-JFDML JFormDesigner: "7.0.4.0.360" Java: "11.0.2" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.5.0.404" Java: "11.0.8" encoding: "UTF-8"
 
 new FormModel {
 	contentType: "form/swing"
@@ -12,8 +12,8 @@ new FormModel {
 				name: "dialogPane"
 				"border": new javax.swing.border.EmptyBorder( 12, 12, 12, 12 )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {seq {par l {seq l {comp textFieldHallName:::p:209:p, space :::p, comp buttonCreateHall:::p::p}, seq {comp textFieldFilmName:::p:209:p, space :::p, comp buttonCreateFilm:::p::p}}, space :0:510:x}}"
-					"$verticalGroup": "par l {seq l {par b {comp textFieldHallName::b:p::p, comp buttonCreateHall::b:p::p}, space :::p, par b {comp textFieldFilmName::b:p::p, comp buttonCreateFilm::b:p::p}, space :0:352:x}}"
+					"$horizontalGroup": "par l {comp separator1::t::814:x, comp scrollPane1::l::814:x, comp separator2::l::814:x, comp scrollPane3::l::814:x, comp separator3::l::814:x, seq {par l {seq {comp textFieldHallName:::p:209:p, space :::p, comp buttonCreateHall:::p::p}, seq l {comp textFieldFilmName:::p:209:p, space :::p, comp buttonCreateFilm:::p::p}, seq l {comp comboBoxHall:::p:150:p, space :::p, comp comboBoxFilm:::p:150:p, space :::p, comp buttonCreateShow:::p:91:p, space :::p, comp buttonSetOpenForReservations:::p:158:p}}, space :0:247:x}, comp scrollPane4::l::814:x}"
+					"$verticalGroup": "par l {seq l {comp separator1:::p::p, space :::p, par b {comp textFieldHallName::b:p::p, comp buttonCreateHall::b:p::p}, space :::p, comp scrollPane1:::p:100:p, space u:::p, comp separator2:::p::p, space :::p, par b {comp textFieldFilmName::b:p::p, comp buttonCreateFilm::b:p::p}, space u:::p, comp scrollPane3:::p:100:p, space u:::p, comp separator3:::p::p, space :::p, par b {comp comboBoxHall::b:p::p, comp comboBoxFilm::b:p::p, comp buttonCreateShow::b:p::p, comp buttonSetOpenForReservations::b:p::p}, space :::p, comp scrollPane4:::p:100:p, space :::x}}"
 				} ) {
 					name: "contentPanel"
 					add( new FormComponent( "javax.swing.JTextField" ) {
@@ -42,6 +42,77 @@ new FormModel {
 							"JavaCodeGenerator.variableGetter": true
 						}
 					} )
+					add( new FormComponent( "com.jformdesigner.designer.wrapper.JGoodiesFormsSeparator" ) {
+						name: "separator1"
+						"text": "Halls"
+					} )
+					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+						name: "scrollPane1"
+						add( new FormComponent( "javax.swing.JTable" ) {
+							name: "listViewHalls"
+							"selectionMode": 0
+							auxiliary() {
+								"JavaCodeGenerator.variableGetter": true
+							}
+						} )
+					} )
+					add( new FormComponent( "com.jformdesigner.designer.wrapper.JGoodiesFormsSeparator" ) {
+						name: "separator2"
+						"text": "Films"
+					} )
+					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+						name: "scrollPane3"
+						add( new FormComponent( "javax.swing.JTable" ) {
+							name: "listViewFilms"
+							"selectionMode": 0
+							auxiliary() {
+								"JavaCodeGenerator.variableGetter": true
+							}
+						} )
+					} )
+					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+						name: "scrollPane4"
+						add( new FormComponent( "javax.swing.JTable" ) {
+							name: "listViewShows"
+							"selectionMode": 0
+							auxiliary() {
+								"JavaCodeGenerator.variableGetter": true
+							}
+						} )
+					} )
+					add( new FormComponent( "com.jformdesigner.designer.wrapper.JGoodiesFormsSeparator" ) {
+						name: "separator3"
+						"text": "Shows"
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "buttonCreateShow"
+						"text": "Create Show"
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+						}
+					} )
+					add( new FormComponent( "javax.swing.JComboBox" ) {
+						name: "comboBoxHall"
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+							"JavaCodeGenerator.typeParameters": "HallCell"
+						}
+					} )
+					add( new FormComponent( "javax.swing.JComboBox" ) {
+						name: "comboBoxFilm"
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+							"JavaCodeGenerator.typeParameters": "FilmCell"
+						}
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "buttonSetOpenForReservations"
+						"text": "Set open for reservations"
+						"enabled": false
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+						}
+					} )
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "Center"
 				} )
@@ -63,6 +134,9 @@ new FormModel {
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "okButton"
 						"text": "OK"
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+						}
 					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 						"gridx": 1
 						"gridy": 0
@@ -75,7 +149,67 @@ new FormModel {
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 840, 495 )
+			"size": new java.awt.Dimension( 840, 560 )
+		} )
+		add( new FormNonVisual( "org.jdesktop.observablecollections.ObservableList" ) {
+			name: "observableListHalls"
+			auxiliary() {
+				"JavaCodeGenerator.variableGetter": true
+				"JavaCodeGenerator.typeParameters": "HallCell"
+			}
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 845, 15 )
+		} )
+		add( new FormNonVisual( "org.jdesktop.observablecollections.ObservableList" ) {
+			name: "observableListFilms"
+			auxiliary() {
+				"JavaCodeGenerator.variableGetter": true
+				"JavaCodeGenerator.typeParameters": "FilmCell"
+			}
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 855, 75 )
+		} )
+		add( new FormNonVisual( "org.jdesktop.observablecollections.ObservableList" ) {
+			name: "observableListShows"
+			auxiliary() {
+				"JavaCodeGenerator.variableGetter": true
+				"JavaCodeGenerator.typeParameters": "CShowCell"
+			}
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 855, 140 )
+		} )
+		addBindingGroup( new FormBindingGroup( class org.jdesktop.beansbinding.BindingGroup ) {
+			"name": "bindingGroup"
+			addBinding( new FormBinding( "observableListHalls", null, "listViewHalls", "elements" ) {
+				"subBindings": new com.jformdesigner.model.FormBinding[ new FormBinding( null, "hallName", null, null ) {
+					"columnName": "Hall Name"
+					"columnClass": "java.lang.String"
+					"editable": false
+				} ]
+			} )
+			addBinding( new FormBinding( "observableListFilms", null, "listViewFilms", "elements" ) {
+				"subBindings": new com.jformdesigner.model.FormBinding[ new FormBinding( null, "filmName", null, null ) {
+					"columnName": "Film Name"
+					"editable": false
+				} ]
+			} )
+			addBinding( new FormBinding( "observableListShows", null, "listViewShows", "elements" ) {
+				"subBindings": new com.jformdesigner.model.FormBinding[ new FormBinding( null, "hallName", null, null ) {
+					"columnName": "Hall Name"
+					"columnClass": "java.lang.String"
+					"editable": false
+				}, new FormBinding( null, "filmName", null, null ) {
+					"columnName": "Film Name"
+					"columnClass": "java.lang.String"
+					"editable": false
+				}, new FormBinding( null, "reservable", null, null ) {
+					"columnName": "Reservable"
+					"columnClass": "java.lang.Boolean"
+					"editable": false
+				} ]
+			} )
+			addBinding( new FormBinding( "observableListHalls", null, "comboBoxHall", "elements" ) )
+			addBinding( new FormBinding( "observableListFilms", null, "comboBoxFilm", "elements" ) )
 		} )
 	}
 }

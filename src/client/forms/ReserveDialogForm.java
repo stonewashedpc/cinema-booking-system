@@ -13,6 +13,8 @@ import javax.swing.border.*;
 import com.jgoodies.forms.factories.*;
 
 import client.CShowCell;
+import client.SeatCell;
+
 import org.jdesktop.beansbinding.*;
 import org.jdesktop.beansbinding.AutoBinding.UpdateStrategy;
 
