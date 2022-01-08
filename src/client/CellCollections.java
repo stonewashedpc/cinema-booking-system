@@ -3,8 +3,9 @@ package client;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import client.forms.SeatCell;
 import generated.cinemaService.CShow;
+import generated.cinemaService.Film;
+import generated.cinemaService.Hall;
 import generated.cinemaService.Reservation;
 import generated.cinemaService.Seat;
 
@@ -41,4 +42,26 @@ public final class CellCollections {
 		}
 		return cellCollection;
 	}
+	
+	public static Collection<FilmCell> toFilmCellCollection(Collection<Film> objects,
+			Client client) throws Exception {
+		Collection<FilmCell> cellCollection = new ArrayList<>();
+		for (Film film : objects) {
+			FilmCell cell = new FilmCell(film);
+			cellCollection.add(cell.initialize(client));
+		}
+		return cellCollection;
+	}
+	
+	public static Collection<HallCell> toHallCellCollection(Collection<Hall> objects,
+			Client client) throws Exception {
+		Collection<HallCell> cellCollection = new ArrayList<>();
+		for (Hall hall : objects) {
+			HallCell cell = new HallCell(hall);
+			cellCollection.add(cell.initialize(client));
+		}
+		return cellCollection;
+	}
+	
+	
 }
