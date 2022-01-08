@@ -17,6 +17,10 @@ import generated.cinemaService.SeatingRow;
 public class DatabaseInitializer {
 	
 	private static CShow show1;
+	
+	public static void main(String args[]) {
+		databaseInitializer();
+	}
 
 	public static void databaseInitializer() {
 		CinemaService.getInstance();
