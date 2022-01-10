@@ -87,6 +87,13 @@
   </node>
   <node concept="3_Gd4U" id="1MdcxidCjBV">
     <property role="TrG5h" value="CinemaService" />
+    <node concept="3_Gd5r" id="3d2p4rizusY" role="2_wlaX">
+      <property role="3_Gd5q" value="getCategories" />
+      <node concept="BxOjD" id="3d2p4rizuu4" role="BBx3f">
+        <property role="BFjhQ" value="true" />
+        <ref role="BxOjI" node="1MdcxidCjNx" resolve="Category" />
+      </node>
+    </node>
     <node concept="3_Gd5r" id="3Kt0LwOznKR" role="2_wlaX">
       <property role="3_Gd5q" value="getShows" />
       <node concept="BxOjD" id="3Kt0LwOznLV" role="BBx3f">

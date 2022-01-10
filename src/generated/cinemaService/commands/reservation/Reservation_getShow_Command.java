@@ -1,11 +1,11 @@
-/**--- Generated at Sat Jan 08 20:20:38 CET 2022 
+/**--- Generated at Mon Jan 10 23:02:47 CET 2022 
  * --- No Change Allowed!  
  */
 package generated.cinemaService.commands.reservation;
 import generated.cinemaService.*;
 import commands.*;
 public class Reservation_getShow_Command extends ObjectCommand<Reservation, CShow>{
-   private static final long serialVersionUID = -1412076763L;
+   private static final long serialVersionUID = 1185984242L;
    public Reservation_getShow_Command(Reservation receiver){
       super(receiver);
    }

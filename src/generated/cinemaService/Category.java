@@ -1,4 +1,4 @@
-/**--- Generated at Sat Jan 08 20:20:38 CET 2022 
+/**--- Generated at Mon Jan 10 23:02:47 CET 2022 
  * --- Mode = Integrated Database 
  * --- Change only in Editable Sections!  
  * --- Do NOT touch section numbering!   
@@ -21,9 +21,10 @@ public abstract class Category extends Observable implements java.io.Serializabl
 {
    //30 ===== GENERATED:      Attribute Section ======
    private Integer id;
-   private Optional<Integer> price;
-   private Optional<String> name;
+   private transient Optional<Integer> price;
+   private transient Optional<String> name;
    //40 ===== Editable : Your Attribute Section ======
+   private String nameString = "";
    //50 ===== GENERATED:      Constructor ============
    public Category(Integer id, Optional<Integer> price, Optional<String> name, boolean objectOnly)
    {
@@ -67,5 +68,14 @@ public abstract class Category extends Observable implements java.io.Serializabl
       }catch(SQLException|NoConnectionException e){throw new PersistenceException(e.getMessage());}
    }
    //80 ===== Editable : Your Operations =============
+   public void setNameString(String nameString) {
+	   this.nameString = nameString;
+   }
+   
+   @Override
+   public String toString() {
+	   return this.nameString;
+   }
+   
 //90 ===== GENERATED: End of Your Operations ======
 }

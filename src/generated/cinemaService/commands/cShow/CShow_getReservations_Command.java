@@ -1,4 +1,4 @@
-/**--- Generated at Sat Jan 08 20:20:38 CET 2022 
+/**--- Generated at Mon Jan 10 23:02:47 CET 2022 
  * --- No Change Allowed!  
  */
 package generated.cinemaService.commands.cShow;
@@ -6,7 +6,7 @@ import generated.cinemaService.*;
 import commands.*;
 import java.util.Collection;
 public class CShow_getReservations_Command extends ObjectCommand<CShow, Collection<Reservation>>{
-   private static final long serialVersionUID = 480634470L;
+   private static final long serialVersionUID = 622116180L;
    public CShow_getReservations_Command(CShow receiver){
       super(receiver);
    }

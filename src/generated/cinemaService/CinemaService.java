@@ -1,4 +1,4 @@
-/**--- Generated at Sat Jan 08 20:20:38 CET 2022 
+/**--- Generated at Mon Jan 10 23:02:47 CET 2022 
  * --- Mode = Integrated Database 
  * --- Change only in Editable Sections!  
  * --- Do NOT touch section numbering!   
@@ -25,6 +25,7 @@ import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.KeySpec;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Collection;
 import java.util.Iterator;
@@ -431,6 +432,19 @@ public class CinemaService extends Observable{
  */
    public Collection<Film> getFilms(){
 	   return this.getFilmCache().values().stream().map(f -> f.getTheObject()).collect(Collectors.toList());
+   }
+/**
+ * 
+ */
+   public Collection<Category> getCategories(){
+      Collection<Category> categories = new ArrayList<>();
+      Parterre.getInstance().setNameString(Parterre.getInstance().getName().get());
+      Middle.getInstance().setNameString(Middle.getInstance().getName().get());
+      Back.getInstance().setNameString(Back.getInstance().getName().get());
+      categories.add(Parterre.getInstance());
+      categories.add(Middle.getInstance());
+      categories.add(Back.getInstance());
+      return categories;
    }
 //90 ===== GENERATED: End of Your Operations ======
 }
