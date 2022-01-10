@@ -76,18 +76,18 @@ public class HandshakeState extends ServerState {
 	        aesCipherEncrypt.init(Cipher.ENCRYPT_MODE, aesKey, new IvParameterSpec(new byte[16]));
 			
 	        // Initialize OutputStream
-			CipherOutputStream cipherOutputStream = new CipherOutputStream(this.getMyServerThread().getClientSocket().getOutputStream(), aesCipherEncrypt);
+			//CipherOutputStream cipherOutputStream = new CipherOutputStream(this.getMyServerThread().getClientSocket().getOutputStream(), aesCipherEncrypt);
 			
-			this.getMyServerThread().setOut(new ObjectOutputStream(cipherOutputStream));
+			this.getMyServerThread().setOut(new ObjectOutputStream(this.getMyServerThread().getClientSocket().getOutputStream()));
 			
 			this.getMyServerThread().getOut().flush();
 			
 			System.out.println("ObjectOutputStream initialized");
 
 			// Initialize InputStream
-			CipherInputStream cipherInputStream = new CipherInputStream(this.getMyServerThread().getClientSocket().getInputStream(), aesCipherDecrypt);
+			//CipherInputStream cipherInputStream = new CipherInputStream(this.getMyServerThread().getClientSocket().getInputStream(), aesCipherDecrypt);
 			
-			this.getMyServerThread().setIn(new ObjectInputStream(cipherInputStream));
+			this.getMyServerThread().setIn(new ObjectInputStream(this.getMyServerThread().getClientSocket().getInputStream()));
 			
 			System.out.println("ObjectInputStream initialized");
 			

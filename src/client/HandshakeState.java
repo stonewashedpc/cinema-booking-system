@@ -71,18 +71,18 @@ public class HandshakeState extends ClientState {
 			aesCipherDecrypt.init(Cipher.DECRYPT_MODE, aesKey, new IvParameterSpec(new byte[16]));
 	        
 			// Initialize OutputStream
-	        CipherOutputStream cipherOutputStream = new CipherOutputStream(this.getMyClient().getClientSocket().getOutputStream(), aesCipherEncrypt);
+	        //CipherOutputStream cipherOutputStream = new CipherOutputStream(this.getMyClient().getClientSocket().getOutputStream(), aesCipherEncrypt);
 	        
-	        this.getMyClient().setOut(new ObjectOutputStream(cipherOutputStream));
+	        this.getMyClient().setOut(new ObjectOutputStream(this.getMyClient().getClientSocket().getOutputStream()));
 	        
 	        this.getMyClient().getOut().flush();
 	        
 	        System.out.println("ObjectOutputStream initialized");
 	        
 	        // Initialize InputStream
-	        CipherInputStream cipherInputStream = new CipherInputStream(this.getMyClient().getClientSocket().getInputStream(), aesCipherDecrypt);
+	        //CipherInputStream cipherInputStream = new CipherInputStream(this.getMyClient().getClientSocket().getInputStream(), aesCipherDecrypt);
 	        
-	        this.getMyClient().setIn(new ObjectInputStream(cipherInputStream));
+	        this.getMyClient().setIn(new ObjectInputStream(this.getMyClient().getClientSocket().getInputStream()));
 	        
 	        System.out.println("ObjectInputStream initialized");
 	        
