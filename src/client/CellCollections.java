@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import generated.cinemaService.CShow;
+import generated.cinemaService.Category;
 import generated.cinemaService.Film;
 import generated.cinemaService.Hall;
 import generated.cinemaService.Reservation;
 import generated.cinemaService.Seat;
+import generated.cinemaService.SeatingRow;
 
 public final class CellCollections {
 
@@ -63,5 +65,14 @@ public final class CellCollections {
 		return cellCollection;
 	}
 	
+	public static Collection<SeatingRowCell> toSeatingRowCellCollection(Collection<SeatingRow> objects,
+			Client client) throws Exception {
+		Collection<SeatingRowCell> cellCollection = new ArrayList<>();
+		for (SeatingRow row : objects) {
+			SeatingRowCell cell = new SeatingRowCell(row);
+			cellCollection.add(cell.initialize(client));
+		}
+		return cellCollection;
+	}
 	
 }

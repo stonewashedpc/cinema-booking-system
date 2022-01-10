@@ -1,5 +1,6 @@
 package client.controllers;
 
+import java.awt.event.MouseEvent;
 import java.util.Collection;
 import java.util.List;
 
@@ -10,8 +11,10 @@ import client.CommandCallback;
 import client.CommandExecutorService;
 import client.FilmCell;
 import client.HallCell;
+import client.RowClickListener;
 import client.forms.AdminDialogForm;
 import client.forms.IncomeDialogForm;
+import client.forms.RowsDialogForm;
 import generated.cinemaService.CShow;
 import generated.cinemaService.Film;
 import generated.cinemaService.Hall;
@@ -164,6 +167,14 @@ public class AdminDialogController extends Controller<Client, AdminDialogForm> {
 			IncomeDialogForm form = new IncomeDialogForm(this.view);
 			new IncomeDialogController(model, form, selectedCell);
 			form.setVisible(true);
+		});
+		this.view.getListViewHalls().addMouseListener(new RowClickListener() {
+			@Override
+			public void onDoubleClick(MouseEvent event) {
+				RowsDialogForm form = new RowsDialogForm(view);
+				new RowsDialogController(model, form, view.getObservableListHalls().get(view.getListViewHalls().rowAtPoint(event.getPoint())));
+				form.setVisible(true);
+			}
 		});
 	}
 	

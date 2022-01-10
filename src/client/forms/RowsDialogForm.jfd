@@ -1,0 +1,128 @@
+JFDML JFormDesigner: "7.0.5.0.404" Java: "11.0.8" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JDialog", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+			name: "this"
+			"title": "Seating Rows"
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+				name: "dialogPane"
+				"border": new javax.swing.border.EmptyBorder( 12, 12, 12, 12 )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+					"$horizontalGroup": "par l {seq {comp comboBoxCategory:::p:146:p, space :::p, comp spinnerSeatCount:::p::p, space :::p, comp buttonCreateRow:::p:112:p, space :::p, comp labelCurrentRowNumber::::320:x}, comp scrollPane1::l::624:x}"
+					"$verticalGroup": "par l {seq l {par b {comp comboBoxCategory::b:p::p, comp spinnerSeatCount::b:p::p, comp buttonCreateRow::b:p::p, comp labelCurrentRowNumber::b:p::p}, space :::p, comp scrollPane1::::184:x}}"
+				} ) {
+					name: "contentPanel"
+					add( new FormComponent( "javax.swing.JComboBox" ) {
+						name: "comboBoxCategory"
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+						}
+					} )
+					add( new FormComponent( "javax.swing.JSpinner" ) {
+						name: "spinnerSeatCount"
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+						}
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "buttonCreateRow"
+						"text": "Create Row"
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+						}
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "labelCurrentRowNumber"
+						"text": "Current Row Nr.: 1"
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+						}
+					} )
+					add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+						name: "scrollPane1"
+						add( new FormComponent( "javax.swing.JTable" ) {
+							name: "listViewSeatingRows"
+							auxiliary() {
+								"JavaCodeGenerator.variableGetter": true
+							}
+						} )
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "Center"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
+					"$columnSpecs": "0:1.0, 80"
+					"$rowSpecs": "0"
+					"$hGap": 5
+					"$vGap": 5
+				} ) {
+					name: "buttonBar"
+					"border": new javax.swing.border.EmptyBorder( 12, 0, 0, 0 )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "logLabel"
+						"text": "Log"
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+						}
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "buttonOk"
+						"text": "OK"
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+						}
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridx": 1
+						"gridy": 0
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "South"
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "Center"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 650, 300 )
+		} )
+		add( new FormNonVisual( "org.jdesktop.observablecollections.ObservableList" ) {
+			name: "observableListSeatingRow"
+			auxiliary() {
+				"JavaCodeGenerator.typeParameters": "SeatingRowCell"
+				"JavaCodeGenerator.variableGetter": true
+			}
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 675, 30 )
+		} )
+		add( new FormNonVisual( "org.jdesktop.observablecollections.ObservableList" ) {
+			name: "observableListCategories"
+			auxiliary() {
+				"JavaCodeGenerator.typeParameters": "Category"
+				"JavaCodeGenerator.variableGetter": true
+			}
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 680, 100 )
+		} )
+		addBindingGroup( new FormBindingGroup( class org.jdesktop.beansbinding.BindingGroup ) {
+			"name": "bindingGroup"
+			addBinding( new FormBinding( "observableListSeatingRow", null, "listViewSeatingRows", "elements" ) {
+				"subBindings": new com.jformdesigner.model.FormBinding[ new FormBinding( null, "nr", null, null ) {
+					"columnName": "Nr"
+					"columnClass": "java.lang.Integer"
+					"editable": false
+				}, new FormBinding( null, "categoryName", null, null ) {
+					"columnName": "Category Name"
+					"columnClass": "java.lang.String"
+					"editable": false
+				}, new FormBinding( null, "seatCount", null, null ) {
+					"columnName": "Seat Count"
+					"columnClass": "java.lang.Integer"
+					"editable": false
+				} ]
+			} )
+			addBinding( new FormBinding( "observableListCategories", null, "comboBoxCategory", "elements" ) )
+		} )
+	}
+}
