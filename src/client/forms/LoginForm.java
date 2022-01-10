@@ -42,6 +42,10 @@ public class LoginForm extends JFrame {
 		return logLabel;
 	}
 
+	public JButton getButtonRegister() {
+		return buttonRegister;
+	}
+
 	private void initComponents() {
 		// JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
 		usernameField = new JTextField();
@@ -50,6 +54,7 @@ public class LoginForm extends JFrame {
 		label2 = new JLabel();
 		loginButton = new JButton();
 		logLabel = new JLabel();
+		buttonRegister = new JButton();
 
 		//======== this ========
 		setTitle("CinemaBookingClient - Login");
@@ -68,6 +73,9 @@ public class LoginForm extends JFrame {
 		//---- logLabel ----
 		logLabel.setText("Log");
 
+		//---- buttonRegister ----
+		buttonRegister.setText("Register...");
+
 		GroupLayout contentPaneLayout = new GroupLayout(contentPane);
 		contentPane.setLayout(contentPaneLayout);
 		contentPaneLayout.setHorizontalGroup(
@@ -75,20 +83,21 @@ public class LoginForm extends JFrame {
 				.addGroup(contentPaneLayout.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(contentPaneLayout.createParallelGroup()
+						.addComponent(logLabel, GroupLayout.DEFAULT_SIZE, 453, Short.MAX_VALUE)
 						.addGroup(contentPaneLayout.createSequentialGroup()
 							.addGroup(contentPaneLayout.createParallelGroup()
 								.addComponent(label1)
 								.addComponent(label2))
 							.addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
 							.addGroup(contentPaneLayout.createParallelGroup()
+								.addGroup(contentPaneLayout.createSequentialGroup()
+									.addComponent(loginButton, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+									.addComponent(buttonRegister, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
+									.addGap(0, 81, Short.MAX_VALUE))
 								.addComponent(passwordField)
 								.addComponent(usernameField))
-							.addContainerGap())
-						.addGroup(contentPaneLayout.createSequentialGroup()
-							.addGap(143, 143, 143)
-							.addComponent(loginButton, GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
-							.addGap(155, 155, 155))
-						.addComponent(logLabel, GroupLayout.DEFAULT_SIZE, 453, Short.MAX_VALUE)))
+							.addContainerGap())))
 		);
 		contentPaneLayout.setVerticalGroup(
 			contentPaneLayout.createParallelGroup()
@@ -101,9 +110,11 @@ public class LoginForm extends JFrame {
 					.addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
 						.addComponent(label2)
 						.addComponent(passwordField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-					.addComponent(loginButton)
 					.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+					.addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+						.addComponent(loginButton)
+						.addComponent(buttonRegister))
+					.addGap(18, 18, 18)
 					.addComponent(logLabel)
 					.addContainerGap())
 		);
@@ -119,5 +130,6 @@ public class LoginForm extends JFrame {
 	private JLabel label2;
 	private JButton loginButton;
 	private JLabel logLabel;
+	private JButton buttonRegister;
 	// JFormDesigner - End of variables declaration  //GEN-END:variables
 }

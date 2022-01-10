@@ -6,6 +6,7 @@ import client.Client;
 import client.CommandCallback;
 import client.CommandExecutorService;
 import client.forms.MainForm;
+import client.forms.RegisterDialogForm;
 import client.forms.LoginForm;
 import generated.cinemaService.commands.login_Command;
 
@@ -23,8 +24,17 @@ public class LoginController extends Controller<Client, LoginForm> {
 		this.view.getLoginButton().addActionListener((event) -> {
 			loginButtonClicked(event);
 		});
+		this.view.getButtonRegister().addActionListener((e) -> {
+			registerButtonClicked(e);
+		});
 	}
 	
+	private void registerButtonClicked(ActionEvent e) {
+		RegisterDialogForm form = new RegisterDialogForm(this.view);
+		new RegisterDialogController(model, form);
+		form.setVisible(true);
+	}
+
 	private void loginButtonClicked(ActionEvent e) {
 		this.executorService.queueCommand(new login_Command(this.view.getUsernameField().getText(), String.valueOf(this.view.getPasswordField().getPassword())), new CommandCallback<String>() {
 

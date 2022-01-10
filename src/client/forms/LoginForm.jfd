@@ -1,11 +1,11 @@
-JFDML JFormDesigner: "7.0.4.0.360" Java: "11.0.2" encoding: "UTF-8"
+JFDML JFormDesigner: "7.0.5.0.404" Java: "11.0.8" encoding: "UTF-8"
 
 new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq {space :::p, par l {seq l {par l {comp label1::l:p::p, comp label2::l:p::p}, space u:::p, par l {comp passwordField:::::x, comp usernameField:::::x}, space :::p}, seq l {space :p:143:p, comp loginButton::::155:x, space :p:155:p}, comp logLabel::l::453:x}}}"
-			"$verticalGroup": "par l {seq l {space :::p, par b {comp label1::b:p::p, comp usernameField::b:p::p}, space :::p, par b {comp label2::b:p::p, comp passwordField::b:p::p}, space u:::p, comp loginButton:::p::p, space ::7:x, comp logLabel:::p::p, space :::p}}"
+			"$horizontalGroup": "par l {seq {space :::p, par l {comp logLabel::l::453:x, seq l {par l {comp label1::l:p::p, comp label2::l:p::p}, space u:::p, par l {seq {comp loginButton:::p:150:p, space :::p, comp buttonRegister:::p:150:p, space :0:81:x}, comp passwordField:::::x, comp usernameField:::::x}, space :::p}}}}"
+			"$verticalGroup": "par l {seq l {space :::p, par b {comp label1::b:p::p, comp usernameField::b:p::p}, space :::p, par b {comp label2::b:p::p, comp passwordField::b:p::p}, space ::7:x, par b {comp loginButton::b:p::p, comp buttonRegister::b:p::p}, space s:::p, comp logLabel:::p::p, space :::p}}"
 		} ) {
 			name: "this"
 			"title": "CinemaBookingClient - Login"
@@ -40,6 +40,13 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "logLabel"
 				"text": "Log"
+				auxiliary() {
+					"JavaCodeGenerator.variableGetter": true
+				}
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "buttonRegister"
+				"text": "Register..."
 				auxiliary() {
 					"JavaCodeGenerator.variableGetter": true
 				}
