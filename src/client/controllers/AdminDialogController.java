@@ -11,6 +11,7 @@ import client.CommandExecutorService;
 import client.FilmCell;
 import client.HallCell;
 import client.forms.AdminDialogForm;
+import client.forms.IncomeDialogForm;
 import generated.cinemaService.CShow;
 import generated.cinemaService.Film;
 import generated.cinemaService.Hall;
@@ -130,6 +131,7 @@ public class AdminDialogController extends Controller<Client, AdminDialogForm> {
 				@Override
 				protected void onSuccess(Void result) {
 					selectedCell.setReservable(true);
+					selectedCell.getObject().setReservable(true); // Bugfix
 					replaceListElement(view.getObservableListShows(), selectionIndex, selectedCell);
 					view.getLogLabel().setText("Successfully opened for reservations");
 				}
@@ -145,13 +147,23 @@ public class AdminDialogController extends Controller<Client, AdminDialogForm> {
 			int selectionIndex = this.view.getListViewShows().getSelectedRow();
 			if(selectionIndex == -1) {
 				this.view.getButtonSetOpenForReservations().setEnabled(false);
+				this.view.getButtonShowIncome().setEnabled(false);
 				return;
 			}
 			CShowCell selectedCell = this.view.getObservableListShows().get(selectionIndex);
 			this.view.getButtonSetOpenForReservations().setEnabled(!selectedCell.getReservable());
+			this.view.getButtonShowIncome().setEnabled(true);
 		});
 		this.view.getOkButton().addActionListener((e) -> {
 			this.view.dispose();
+		});
+		this.view.getButtonShowIncome().addActionListener((e) -> {
+			int selectionIndex = this.view.getListViewShows().getSelectedRow();
+			if(selectionIndex == -1) return;
+			CShowCell selectedCell = this.view.getObservableListShows().get(selectionIndex);
+			IncomeDialogForm form = new IncomeDialogForm(this.view);
+			new IncomeDialogController(model, form, selectedCell);
+			form.setVisible(true);
 		});
 	}
 	

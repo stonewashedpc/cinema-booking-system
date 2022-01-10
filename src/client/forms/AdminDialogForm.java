@@ -115,6 +115,10 @@ public class AdminDialogForm extends JDialog {
 		return buttonSetOpenForReservations;
 	}
 
+	public JButton getButtonShowIncome() {
+		return buttonShowIncome;
+	}
+
 	private void initComponents() {
 		// JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
 		DefaultComponentFactory compFactory = DefaultComponentFactory.getInstance();
@@ -137,6 +141,7 @@ public class AdminDialogForm extends JDialog {
 		comboBoxHall = new JComboBox<>();
 		comboBoxFilm = new JComboBox<>();
 		buttonSetOpenForReservations = new JButton();
+		buttonShowIncome = new JButton();
 		buttonBar = new JPanel();
 		logLabel = new JLabel();
 		okButton = new JButton();
@@ -193,6 +198,10 @@ public class AdminDialogForm extends JDialog {
 				buttonSetOpenForReservations.setText("Set open for reservations");
 				buttonSetOpenForReservations.setEnabled(false);
 
+				//---- buttonShowIncome ----
+				buttonShowIncome.setText("Show income");
+				buttonShowIncome.setEnabled(false);
+
 				GroupLayout contentPanelLayout = new GroupLayout(contentPanel);
 				contentPanel.setLayout(contentPanelLayout);
 				contentPanelLayout.setHorizontalGroup(
@@ -219,8 +228,10 @@ public class AdminDialogForm extends JDialog {
 									.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
 									.addComponent(buttonCreateShow, GroupLayout.PREFERRED_SIZE, 91, GroupLayout.PREFERRED_SIZE)
 									.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-									.addComponent(buttonSetOpenForReservations, GroupLayout.PREFERRED_SIZE, 158, GroupLayout.PREFERRED_SIZE)))
-							.addGap(0, 247, Short.MAX_VALUE))
+									.addComponent(buttonSetOpenForReservations, GroupLayout.PREFERRED_SIZE, 158, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+									.addComponent(buttonShowIncome, GroupLayout.PREFERRED_SIZE, 158, GroupLayout.PREFERRED_SIZE)))
+							.addGap(0, 83, Short.MAX_VALUE))
 						.addComponent(scrollPane4, GroupLayout.DEFAULT_SIZE, 814, Short.MAX_VALUE)
 				);
 				contentPanelLayout.setVerticalGroup(
@@ -248,7 +259,8 @@ public class AdminDialogForm extends JDialog {
 								.addComponent(comboBoxHall, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 								.addComponent(comboBoxFilm, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 								.addComponent(buttonCreateShow)
-								.addComponent(buttonSetOpenForReservations))
+								.addComponent(buttonSetOpenForReservations)
+								.addComponent(buttonShowIncome))
 							.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
 							.addComponent(scrollPane4, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
 							.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -345,6 +357,7 @@ public class AdminDialogForm extends JDialog {
 	private JComboBox<HallCell> comboBoxHall;
 	private JComboBox<FilmCell> comboBoxFilm;
 	private JButton buttonSetOpenForReservations;
+	private JButton buttonShowIncome;
 	private JPanel buttonBar;
 	private JLabel logLabel;
 	private JButton okButton;

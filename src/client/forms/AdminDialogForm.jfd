@@ -12,8 +12,8 @@ new FormModel {
 				name: "dialogPane"
 				"border": new javax.swing.border.EmptyBorder( 12, 12, 12, 12 )
 				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-					"$horizontalGroup": "par l {comp separator1::t::814:x, comp scrollPane1::l::814:x, comp separator2::l::814:x, comp scrollPane3::l::814:x, comp separator3::l::814:x, seq {par l {seq {comp textFieldHallName:::p:209:p, space :::p, comp buttonCreateHall:::p::p}, seq l {comp textFieldFilmName:::p:209:p, space :::p, comp buttonCreateFilm:::p::p}, seq l {comp comboBoxHall:::p:150:p, space :::p, comp comboBoxFilm:::p:150:p, space :::p, comp buttonCreateShow:::p:91:p, space :::p, comp buttonSetOpenForReservations:::p:158:p}}, space :0:247:x}, comp scrollPane4::l::814:x}"
-					"$verticalGroup": "par l {seq l {comp separator1:::p::p, space :::p, par b {comp textFieldHallName::b:p::p, comp buttonCreateHall::b:p::p}, space :::p, comp scrollPane1:::p:100:p, space u:::p, comp separator2:::p::p, space :::p, par b {comp textFieldFilmName::b:p::p, comp buttonCreateFilm::b:p::p}, space u:::p, comp scrollPane3:::p:100:p, space u:::p, comp separator3:::p::p, space :::p, par b {comp comboBoxHall::b:p::p, comp comboBoxFilm::b:p::p, comp buttonCreateShow::b:p::p, comp buttonSetOpenForReservations::b:p::p}, space :::p, comp scrollPane4:::p:100:p, space :::x}}"
+					"$horizontalGroup": "par l {comp separator1::t::814:x, comp scrollPane1::l::814:x, comp separator2::l::814:x, comp scrollPane3::l::814:x, comp separator3::l::814:x, seq {par l {seq {comp textFieldHallName:::p:209:p, space :::p, comp buttonCreateHall:::p::p}, seq l {comp textFieldFilmName:::p:209:p, space :::p, comp buttonCreateFilm:::p::p}, seq l {comp comboBoxHall:::p:150:p, space :::p, comp comboBoxFilm:::p:150:p, space :::p, comp buttonCreateShow:::p:91:p, space :::p, comp buttonSetOpenForReservations:::p:158:p, space :::p, comp buttonShowIncome:::p:158:p}}, space :0:83:x}, comp scrollPane4::l::814:x}"
+					"$verticalGroup": "par l {seq l {comp separator1:::p::p, space :::p, par b {comp textFieldHallName::b:p::p, comp buttonCreateHall::b:p::p}, space :::p, comp scrollPane1:::p:100:p, space u:::p, comp separator2:::p::p, space :::p, par b {comp textFieldFilmName::b:p::p, comp buttonCreateFilm::b:p::p}, space u:::p, comp scrollPane3:::p:100:p, space u:::p, comp separator3:::p::p, space :::p, par b {comp comboBoxHall::b:p::p, comp comboBoxFilm::b:p::p, comp buttonCreateShow::b:p::p, comp buttonSetOpenForReservations::b:p::p, comp buttonShowIncome::b:p::p}, space :::p, comp scrollPane4:::p:100:p, space :::x}}"
 				} ) {
 					name: "contentPanel"
 					add( new FormComponent( "javax.swing.JTextField" ) {
@@ -108,6 +108,14 @@ new FormModel {
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "buttonSetOpenForReservations"
 						"text": "Set open for reservations"
+						"enabled": false
+						auxiliary() {
+							"JavaCodeGenerator.variableGetter": true
+						}
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "buttonShowIncome"
+						"text": "Show income"
 						"enabled": false
 						auxiliary() {
 							"JavaCodeGenerator.variableGetter": true

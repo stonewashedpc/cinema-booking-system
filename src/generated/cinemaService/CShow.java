@@ -132,6 +132,7 @@ public class CShow extends Observable implements java.io.Serializable, ICShow
  */
    public void setOpenForReservations(){
       this.setReservable(true);
+      CinemaService.getInstance().getCShowCache().get(this.id).setReservable(true); // Bugfix
    }
 /**
  * 
