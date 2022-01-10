@@ -12,6 +12,7 @@ import utilities.InitialProxyLoader;
 import utilities.InitialRelationLoader;
 import utilities.InitialRelationLoader.IntegerPair;
 import exceptions.ConstraintViolation;
+import exceptions.ServerException;
 import generated.cinemaService.proxies.*;
 import observation.Observable;
 import db.executer.PersistenceExecuterFactory;
@@ -291,7 +292,10 @@ public class CinemaService extends Observable{
 /**
  * 
  */
-   public User register(String name, String password, Role role){
+   public User register(String name, String password, Role role) throws ServerException {
+	   if(this.getUserByUsername(name) != null) {
+		   throw new ServerException("User already exists");
+	   }
 	   byte[] salt = new byte[16];
 	   SecureRandom random = new SecureRandom();
 	   random.nextBytes(salt);
@@ -377,7 +381,7 @@ public class CinemaService extends Observable{
 /**
  * 
  */
-   public User register(String name, String password){
+   public User register(String name, String password) throws ServerException {
 	   return register(name, password, Customer.getInstance());
    }
 /**

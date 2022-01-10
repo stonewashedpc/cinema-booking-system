@@ -3,6 +3,7 @@ package server;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import exceptions.ServerException;
 import generated.cinemaService.Back;
 import generated.cinemaService.CShow;
 import generated.cinemaService.CinemaService;
@@ -33,8 +34,12 @@ public class DatabaseInitializer {
 		Middle.getInstance().setName("Mitte");
 		Back.getInstance().setName("Hinten");
 		
-		CinemaService.getInstance().register("Customer", "1234512345");
-		CinemaService.getInstance().register("Admin", "1234512345", Owner.getInstance());
+		try {
+			CinemaService.getInstance().register("Customer", "1234512345");
+			CinemaService.getInstance().register("Admin", "1234512345", Owner.getInstance());
+		} catch(ServerException exc) {
+			exc.printStackTrace();
+		}
 		
 		Film film1 = CinemaService.getInstance().addFilm("Bob der Baumeister");
 		Film film2 = CinemaService.getInstance().addFilm("Der rosarote Panther");
