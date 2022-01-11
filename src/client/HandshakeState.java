@@ -33,12 +33,12 @@ public class HandshakeState extends ClientState {
 			
 			System.out.println("Generated AES-SecretKey");
 			
-			// START ============= Receive RSA-PublicKey from Client
+			// START ============= Receive RSA-PublicKey from Server
 	        ObjectInputStream objectInputStream = new ObjectInputStream(this.getMyClient().getClientSocket().getInputStream());
 
 	        PublicKey publicKey = (PublicKey) objectInputStream.readObject();
 	        System.out.println("Received RSA-PublicKey from server: " + publicKey.toString());
-	        // END =============== Receive RSA-PublicKey from Client
+	        // END =============== Receive RSA-PublicKey from Server
 	        
 	        // START ============= Initialize Cipher for RSA encryption
 	        Cipher rsaCipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
