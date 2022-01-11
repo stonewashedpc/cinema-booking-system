@@ -46,7 +46,7 @@ class TestForAuthentification {
 		
 		//login user 
 		try {
-			authToken = client.executeCommand(new login_Command("Customer", "1234512345")).getResult();
+			authToken = client.executeCommand(new login_Command("Customer", "bobross1942")).getResult();
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
@@ -75,7 +75,7 @@ class TestForAuthentification {
 		
 		//login admin 
 		try {
-			authToken = client.executeCommand(new login_Command("Admin", "1234512345")).getResult();
+			authToken = client.executeCommand(new login_Command("Admin", "hakunamatata")).getResult();
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}

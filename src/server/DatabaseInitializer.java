@@ -6,6 +6,7 @@ import java.util.Collection;
 import exceptions.ServerException;
 import generated.cinemaService.Back;
 import generated.cinemaService.CShow;
+import generated.cinemaService.Category;
 import generated.cinemaService.CinemaService;
 import generated.cinemaService.Film;
 import generated.cinemaService.Hall;
@@ -35,45 +36,48 @@ public class DatabaseInitializer {
 		Back.getInstance().setName("Hinten");
 		
 		try {
-			CinemaService.getInstance().register("Customer", "1234512345");
-			CinemaService.getInstance().register("Admin", "1234512345", Owner.getInstance());
+			CinemaService.getInstance().register("Customer", "bobross1942");
+			CinemaService.getInstance().register("Admin", "hakunamatata", Owner.getInstance());
 		} catch(ServerException exc) {
 			exc.printStackTrace();
 		}
 		
-		Film film1 = CinemaService.getInstance().addFilm("Bob der Baumeister");
-		Film film2 = CinemaService.getInstance().addFilm("Der rosarote Panther");
-		Hall hall1 = CinemaService.getInstance().addHall("Kinosaal");
+		Film film1 = CinemaService.getInstance().addFilm("Harry Potter");
+		Film film2 = CinemaService.getInstance().addFilm("Spider Man");
+		Film film3 = CinemaService.getInstance().addFilm("Star Wars");
+		Film film4 = CinemaService.getInstance().addFilm("American Pie");
+		Film film5 = CinemaService.getInstance().addFilm("The Wolf of Wallstreet");
+		Hall hall1 = CinemaService.getInstance().addHall("Kinosaal 1");
+		Hall hall2 = CinemaService.getInstance().addHall("Kinosaal 2");
 		
-		SeatingRow row1 = SeatingRow.createFresh(Parterre.getInstance(), 1, hall1);
-		SeatingRow row2 = SeatingRow.createFresh(Middle.getInstance(), 2, hall1);
-		SeatingRow row3 = SeatingRow.createFresh(Back.getInstance(), 3, hall1);
+		createRow(1, 5, Parterre.getInstance(), hall1);
+		createRow(2, 7, Middle.getInstance(), hall1);
+		createRow(3, 10, Back.getInstance(), hall1);
 		
-		Seat seat1 = Seat.createFresh(1, row1); 
-		Seat seat2 = Seat.createFresh(2, row1);
-		Seat seat3 = Seat.createFresh(3, row1);
-		
-		Seat seat4 = Seat.createFresh(1, row2);
-		Seat seat5 = Seat.createFresh(2, row2);
-		Seat seat6 = Seat.createFresh(3, row2);
-		
-		Seat seat7 = Seat.createFresh(1, row3);
-		Seat seat8 = Seat.createFresh(2, row3);
-		Seat seat9 = Seat.createFresh(3, row3);
+		createRow(1, 3, Parterre.getInstance(), hall2);
+		createRow(2, 5, Middle.getInstance(), hall2);
+		createRow(3, 10, Middle.getInstance(), hall2);
+		createRow(4, 10, Back.getInstance(), hall2);
+		createRow(5, 8, Back.getInstance(), hall2);
 		
 		show1 = hall1.addShow(film1);
 		CShow show2 = hall1.addShow(film2);
+		CShow show3 = hall2.addShow(film3);
+		CShow show4 = hall2.addShow(film4);
+		CShow show5 = hall1.addShow(film5);
+		hall2.addShow(film1);
 		show1.setOpenForReservations();
 		show2.setOpenForReservations();
-		
-		Collection<Seat> seats = new ArrayList<Seat>();
-		seats.add(seat1);
-		seats.add(seat2);
-		seats.add(seat3);
-		seats.add(seat5);
-		seats.add(seat8);
-		seats.add(seat9);
-		CinemaService.getInstance().reserve(CinemaService.getInstance().getUserByUsername("Customer"), seats, show1);
+		show3.setOpenForReservations();
+		show4.setOpenForReservations();
+		show5.setOpenForReservations();
+	}
+	
+	private static void createRow(int rowNr, int seatCount, Category c, Hall hall) {
+		SeatingRow row = SeatingRow.createFresh(c, rowNr, hall);
+		for (int i = 1; i < seatCount + 1; i++) {
+			Seat.createFresh(i, row);
+		}
 	}
 	
 	public static CShow getShow() {
