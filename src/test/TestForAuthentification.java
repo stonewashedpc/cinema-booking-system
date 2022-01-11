@@ -82,7 +82,7 @@ class TestForAuthentification {
 		client.setAuthToken(authToken);
 		//execute admin commands
 		try {
-			client.executeCommand(new CShow_calculateTotalIncome_Command(DatabaseInitializer.getShow()));
+			client.executeCommand(new CShow_calculateTotalIncome_Command(DatabaseInitializer.getShow())).getResult();
 		} catch (Exception e) {
 			fail("Exception thrown when not expected!");
 		}
